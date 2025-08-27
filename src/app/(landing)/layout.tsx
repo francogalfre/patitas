@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { SEO_CONFIG } from "@/constants/seo";
 
+import Navbar from "./components/Navbar";
+import Background from "./components/Background";
+
 import { fontVariables } from "@/styles/font";
 import "@/styles/globals.css";
 
@@ -9,6 +12,10 @@ export const metadata: Metadata = {
   description: SEO_CONFIG.description,
   keywords: SEO_CONFIG.keywords,
   authors: SEO_CONFIG.author,
+
+  icons: {
+    icon: "/favicon.ico"
+  }
 };
 
 export default function RootLayout({
@@ -18,7 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontVariables} antialiased`}>{children}</body>
+      <body className={`${fontVariables} antialiased`}>
+        <>
+        <Navbar />
+        <Background />
+        {children}
+        </>
+      </body>
     </html>
   );
 }

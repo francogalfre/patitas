@@ -1,4 +1,4 @@
-import { Poppins, Geist } from "next/font/google";
+import { Poppins, Raleway } from "next/font/google";
 
 // Fuente para headings y títulos
 export const poppins = Poppins({
@@ -10,17 +10,17 @@ export const poppins = Poppins({
   fallback: ["system-ui", "arial"],
 });
 
-export const geist = Geist({
+export const raleway = Raleway({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-raleway",
   display: "swap",
   preload: true,
   fallback: ["system-ui", "arial"],
 });
 
 export const fontConfig = {
-  body: geist.className,
+  body: raleway.className,
   heading: poppins.className,
 } as const;
 
-export const fontVariables = [geist.variable, poppins.variable].join(" ");
+export const fontVariables = [raleway.variable, poppins.variable].join(" ");

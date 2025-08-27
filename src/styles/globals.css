@@ -12,8 +12,8 @@
   --color-secondary: var(--secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-poppins: var(--font-geist-sans);
-  --font-geist: var(--font-geist-mono);
+  --font-poppins: var(--font-poppins);
+  --font-raleway: var(--font-raleway);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,6 +32,6 @@ h1, h2, h3, h3, h4, h5 {
   font-family: var(--font-poppins), 'system-ui';
 }
 
-p {
-  font-family: var(--font-geist), 'system-ui';
+p, span, a {
+  font-family: var(--font-raleway), 'system-ui';
 }
