@@ -5,6 +5,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -57,12 +59,13 @@ const Navbar = () => {
         </div>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
+          <Button
             type="button"
-            className="text-white bg-primary hover:bg-primary/80 hover:scale-105 focus:ring-4 focus:outline-none cursor-pointer font-medium rounded-lg text-sm px-4 py-2 text-center transition-all"
+            size={"lg"}
+            className="text-white bg-primary hover:bg-primary/80 hover:scale-105 focus:ring-4 focus:outline-none cursor-pointer font-medium rounded-lg text-sm px-4 py-4 text-center transition-all"
           >
             Crear una cuenta
-          </button>
+          </Button>
         </div>
       </div>
     </nav>
