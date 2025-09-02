@@ -2,7 +2,7 @@ import SectionContainer from "./components/SectionContainer";
 
 import HeroSection from "./sections/Hero";
 
-export default function Home() {
+export default function PatitasHomePage() {
   return (
     <>
       <SectionContainer>
@@ -12,6 +12,5 @@ export default function Home() {
         <HeroSection />
       </SectionContainer>
     </>
-    
   );
 }

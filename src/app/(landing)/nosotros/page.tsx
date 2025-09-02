@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const PageSobreNosotros = () => {
+const PatitasAboutPage = () => {
   return (
     <div>
       <h3>Pagina sobre nosotros</h3>
-      <p>En esta pagina van a encontrar informacion sobre el proyectos y sobre nosotros los creadores</p>
+      <p>
+        En esta pagina van a encontrar informacion sobre el proyectos y sobre
+        nosotros los creadores
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default PageSobreNosotros
+export default PatitasAboutPage;

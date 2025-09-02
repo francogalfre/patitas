@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   authors: SEO_CONFIG.author,
 
   icons: {
-    icon: "/favicon.ico"
-  }
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -25,11 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontVariables} antialiased min-h-screen`}>
+      <body
+        className={`${fontVariables} antialiased min-h-screen overflow-x-hidden`}
+      >
         <>
-        <Navbar />
-        <Background />
-        {children}
+          <Navbar />
+          <Background />
+          {children}
         </>
       </body>
     </html>

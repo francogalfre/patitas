@@ -30,27 +30,47 @@ const Navbar = () => {
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 font-geist">
             <li>
-              <Link href="/" className={pathname == "/" ? "text-primary font-medium" : "hover:text-primary transition-colors"} >
+              <Link
+                href="/"
+                className={
+                  pathname == "/"
+                    ? "text-primary font-medium"
+                    : "hover:text-primary transition-colors"
+                }
+              >
                 Inicio
               </Link>
             </li>
             <li>
               <Link
                 href="adoptar"
-                className={pathname == "/adoptar" ? "text-primary font-medium" : "hover:text-primary transition-colors"}
+                className={
+                  pathname == "/adoptar"
+                    ? "text-primary font-medium"
+                    : "hover:text-primary transition-colors"
+                }
               >
                 Adoptar
               </Link>
             </li>
             <li>
-              <Link href="guias" className={pathname == "/guias" ? "text-primary font-medium" : "hover:text-primary transition-colors"}>
+              <Link
+                href="guias"
+                className={
+                  pathname == "/guias"
+                    ? "text-primary font-medium"
+                    : "hover:text-primary transition-colors"
+                }
+              >
                 Guías
               </Link>
             </li>
             <li>
               <Link
                 href="nosotros"
-                className={`${pathname == "/nosotros" && "text-primary font-medium"} hover:text-primary transition-all `}
+                className={`${
+                  pathname == "/nosotros" && "text-primary font-medium"
+                } hover:text-primary transition-all `}
               >
                 Quienes somos
               </Link>
@@ -59,13 +79,15 @@ const Navbar = () => {
         </div>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Button
-            type="button"
-            size={"lg"}
-            className="text-white bg-primary hover:bg-primary/80 hover:scale-105 focus:ring-4 focus:outline-none cursor-pointer font-medium rounded-lg text-sm px-4 py-4 text-center transition-all"
-          >
-            Crear una cuenta
-          </Button>
+          <Link href="/auth/register">
+            <Button
+              type="button"
+              size={"lg"}
+              className="text-white bg-primary hover:bg-primary/80 cursor-pointer font-medium rounded-lg text-sm px-4 py-4 text-center transition-color"
+            >
+              Crear una cuenta
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
