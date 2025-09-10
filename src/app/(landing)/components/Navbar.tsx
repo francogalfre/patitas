@@ -78,7 +78,16 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 space-x-3">
+          <Link href="/auth/login">
+            <Button
+              type="button"
+              size={"lg"}
+              className="text-white bg-primary hover:bg-primary/80 cursor-pointer font-medium rounded-lg text-sm px-4 py-4 text-center transition-color"
+            >
+              Iniciar Sesion
+            </Button>
+          </Link>
           <Link href="/auth/register">
             <Button
               type="button"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import React from "react";
 
@@ -26,7 +27,7 @@ const HeroSection = () => {
               size={"lg"}
               className="text-white py-6 text-md rounded-sm hover:bg-primary/80 transition-color"
             >
-              Explorar Mascotas
+              <Link href={"/adoptar"}>Explorar Mascotas</Link>
             </Button>
             <Button
               size={"lg"}

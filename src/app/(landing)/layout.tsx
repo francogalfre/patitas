@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontVariables} antialiased min-h-screen overflow-x-hidden`}
+        className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
         <>
           <Navbar />

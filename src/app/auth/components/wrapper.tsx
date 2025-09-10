@@ -15,7 +15,7 @@ const AuthWrapper = ({ children, image, alt }: AuthWrapperProps) => {
         </div>
         <img
           src={image}
-          className="rounded-xl flex-3 object-cover"
+          className="rounded-3xl flex-3 object-cover brightness-75 opacity-95"
           alt={alt}
           fetchPriority="high"
         />
