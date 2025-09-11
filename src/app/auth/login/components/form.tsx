@@ -1,13 +1,49 @@
+"use client";
+
 import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import AuthFormInput from "../../components/input";
+
 import { Button } from "@/components/ui/button";
+import { FieldError, useForm } from "react-hook-form";
+
+import { LoginFormSchema, LoginFormData } from "../schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const AuthLoginForm = () => {
+  const {
+    setError,
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting, isLoading },
+  } = useForm({
+    resolver: zodResolver(LoginFormSchema),
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    await authClient.signIn.email(
+      {
+        email: data.email,
+        password: data.password,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (ctx) => {
+          redirect("/");
+        },
+        onError: (ctx) => {
+          setError("root", { message: "Email o contraseña incorrecta" });
+        },
+      }
+    );
+  };
+
   return (
     <>
       <header className="space-y-2 pb-6">
@@ -26,33 +62,30 @@ const AuthLoginForm = () => {
 
       <hr className="text-gray-300 pb-6" />
 
-      <form action="" className="space-y-6">
-        <div className="space-y-3">
-          <Label htmlFor="name" className="text-md font-normal text-gray-700">
-            Email
-          </Label>
-          <Input
-            type="email"
-            name="email"
-            required
-            className="h-12 border-gray-400"
-            placeholder="ejemplo@email.com"
-          />
-        </div>
-        <div className="space-y-3">
-          <Label htmlFor="name" className="text-md font-normal text-gray-700">
-            Contraseña
-          </Label>
-          <Input
-            type="password"
-            name="password"
-            required
-            className="h-12 border-gray-400"
-            placeholder="Al menos 8 caracteres"
-          />
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <AuthFormInput
+          label="Email"
+          type="email"
+          placeholder="ejemplo@email.com"
+          registration={{ ...register("email") }}
+          error={errors.email as FieldError}
+        />
+
+        <AuthFormInput
+          label="Contraseña"
+          type="password"
+          placeholder="Al menos 8 caracteres"
+          registration={{ ...register("password") }}
+          error={errors.password as FieldError}
+        />
+
+        {errors.root && (
+          <p className="text-red-500 text-sm">{errors.root.message}</p>
+        )}
+
         <div className="text-center">
           <Button
+            disabled={isSubmitting || isLoading}
             type="submit"
             className="text-white w-full text-md h-12 mb-6"
             size={"lg"}

@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+
 import AuthWrapper from "../components/wrapper";
 import AuthLoginForm from "./components/form";
 
-const PatitasLoginPage = () => {
+export const metadata: Metadata = {
+  title: "Iniciar Sesión | Patitas",
+  description:
+    "Inicia sesión en tu cuenta para acceder a la plataforma de adopción responsable de Patitas.",
+};
+
+const PatitasLoginPage = async () => {
   return (
     <AuthWrapper
       image="/auth/login.webp"

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SEO_CONFIG } from "@/constants/seo";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import Background from "./components/Background";
 
 import { fontVariables } from "@/styles/font";

@@ -42,6 +42,8 @@ const HeroSection = () => {
       </div>
       <div className="relative w-full">
         <Image
+          priority
+          fetchPriority="high"
           width={660}
           height={100}
           src="/landing/hero.webp"

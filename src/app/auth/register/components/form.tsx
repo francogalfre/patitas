@@ -5,14 +5,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-
 import AuthFormInput from "../../components/input";
 
+import { Button } from "@/components/ui/button";
 import { FieldError, useForm } from "react-hook-form";
 
 import { RegisterFormSchema, RegisterFormData } from "../schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const AuthRegisterForm = () => {
   const {
@@ -23,8 +25,23 @@ const AuthRegisterForm = () => {
     resolver: zodResolver(RegisterFormSchema),
   });
 
-  const onSubmit = (data: RegisterFormData) => {
-    console.log(data);
+  const onSubmit = async (data: RegisterFormData) => {
+    await authClient.signUp.email(
+      {
+        name: data.fullName,
+        email: data.email,
+        password: data.password,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (ctx) => {
+          redirect("/");
+        },
+        onError: (ctx) => {
+          console.error(ctx.error.message);
+        },
+      }
+    );
   };
 
   return (

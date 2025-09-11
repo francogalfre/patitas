@@ -11,7 +11,7 @@ export default function PatitasAuthLayout(props: PatitasAuthLayoutProps) {
       <body
         className={`${fontVariables} antialiased min-h-screen overflow-x-hidden`}
       >
-        <>{children}</>
+        <main>{children}</main>
       </body>
     </html>
   );
