@@ -13,24 +13,19 @@ import {
 
 import { authClient } from "@/lib/auth-client";
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  emailVerified: boolean;
-  image?: string | null;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { TriangleAlert } from "lucide-react";
 
-interface SessionDropdownProps {
-  session: User;
-}
+import Link from "next/link";
+import Image from "next/image";
 
-export const SessionDropdown = ({ session }: SessionDropdownProps) => {
+import { User } from "@/db/schema/user";
+
+export const SessionDropdown = ({ user }: { user: User }) => {
   const handleSignOut = () => {
     authClient.signOut();
   };
+
+  console.log(user);
 
   return (
     <DropdownMenu>
@@ -38,18 +33,38 @@ export const SessionDropdown = ({ session }: SessionDropdownProps) => {
         className="cursor-pointer bg-primary px-4 py-2 rounded-sm text-white"
         asChild
       >
-        <p className="font-medium">{session.name}</p>
+        <p className="font-medium">{user.name}</p>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 p-1 mt-1">
-        <DropdownMenuLabel className="text-md font-geist pb-0">
-          {session.name}
-        </DropdownMenuLabel>
-        <DropdownMenuLabel className="text-sm text-gray-600 font-raleway pt-0">
-          {session.email}
-        </DropdownMenuLabel>
+      <DropdownMenuContent className="max-w-72 p-2 pr-4 mt-1">
+        <div className="flex items-center">
+          {user.image && (
+            <Image
+              className="rounded-full"
+              src={user.image}
+              alt="User's Avatar"
+              width={48}
+              height={48}
+            />
+          )}
+          <div className="flex flex-col">
+            <DropdownMenuLabel className="text-md font-geist pb-0">
+              {user.name}
+            </DropdownMenuLabel>
+            <DropdownMenuLabel
+              className={`text-sm font-raleway pt-0 ${user.emailVerified ? "text-gray-600" : "text-red-500"}`}
+            >
+              {user.email}
+            </DropdownMenuLabel>
+          </div>
+        </div>
+        {!user.emailVerified && (
+          <p className="flex items-center gap-1 pt-2 text-red-500 text-sm font-raleway py-2 pl-2">
+            <TriangleAlert className="size-4" /> Verifica tu correo electronico
+          </p>
+        )}
         <DropdownMenuSeparator className="bg-gray-300" />
         <DropdownMenuItem className="transition-colors font-raleway">
-          Mi Perfil
+          <Link href={`/profiles/${user.id}`}>Mi Perfil</Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="transition-colors font-raleway">
           Soporte

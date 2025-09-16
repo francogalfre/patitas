@@ -13,6 +13,8 @@ import { NavLinks } from "./NavLinks";
 import { SessionDropdown } from "./SessionDropdown";
 import { AuthButtons } from "./AuthButtons";
 
+import { User } from "@/db/schema/user";
+
 const Navbar = () => {
   const pathname = usePathname();
   const { data } = authClient.useSession();
@@ -35,7 +37,7 @@ const Navbar = () => {
 
         <div className="flex md:order-2 space-x-3">
           {isAuthorized ? (
-            <SessionDropdown session={data.user} />
+            <SessionDropdown user={data.user as User} />
           ) : (
             <AuthButtons />
           )}

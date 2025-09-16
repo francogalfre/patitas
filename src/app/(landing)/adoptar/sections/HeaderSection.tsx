@@ -8,7 +8,8 @@ export const HeaderSection = () => {
   return (
     <div className="relative flex min-h-screen w-full flex-col items-start justify-start overflow-hidden">
       <BackgroundRippleEffect rows={15} cols={24} cellSize={64} />
-      <header className="w-full justify-center text-center space-y-12 z-20">
+
+      <header className="w-full flex flex-col justify-center text-center gap-8 z-20">
         <div className="space-y-6">
           <h2 className="text-5xl font-semibold">
             Encuentra a tu nuevo{" "}

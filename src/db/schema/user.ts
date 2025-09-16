@@ -1,11 +1,19 @@
+import { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
+  bio: text("biography").notNull().default("Sin biografia por el momento"),
+  image: text("avatar_url")
+    .default(
+      "https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfMS5wbmciLCJpYXQiOjE3NTgwNTExNTEsImV4cCI6MTc4OTU4NzE1MX0.-oz7aFy0C9vGttAcyWPEl300af19t1vYh8jj94j6SI4"
+    )
+    .notNull(),
+  location: text(),
+  is_shelter: boolean().notNull().default(false),
   emailVerified: boolean("email_verified").default(false).notNull(),
-  image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -59,3 +67,5 @@ export const verification = pgTable("verification", {
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+
+export type User = InferSelectModel<typeof user>;

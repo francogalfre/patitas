@@ -12,6 +12,7 @@ export default function PatitasHomePage() {
       <SectionContainer>
         <AdoptionStepsSection />
       </SectionContainer>
+
       <SectionContainer classname="pb-32">
         <section className="w-full flex flex-col items-center text-center space-y-8">
           <h2 className="text-4xl font-semibold">
@@ -62,11 +63,6 @@ export default function PatitasHomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 w-full max-w-4xl">
             <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-              <img
-                src="/img/testimonio1.jpg"
-                alt="Testimonio 1"
-                className="w-16 h-16 rounded-full mb-4 object-cover"
-              />
               <p className="text-gray-600 italic mb-2">
                 "Adoptar a Luna fue la mejor decisión. Ahora mi casa está llena
                 de alegría y amor."
@@ -74,11 +70,6 @@ export default function PatitasHomePage() {
               <span className="font-bold text-primary">- Carla M.</span>
             </div>
             <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-              <img
-                src="/img/testimonio2.jpg"
-                alt="Testimonio 2"
-                className="w-16 h-16 rounded-full mb-4 object-cover"
-              />
               <p className="text-gray-600 italic mb-2">
                 "El proceso fue muy sencillo y el equipo de Patitas me ayudó en
                 todo momento."
@@ -86,11 +77,6 @@ export default function PatitasHomePage() {
               <span className="font-bold text-primary">- Andrés G.</span>
             </div>
             <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-              <img
-                src="/img/testimonio3.jpg"
-                alt="Testimonio 3"
-                className="w-16 h-16 rounded-full mb-4 object-cover"
-              />
               <p className="text-gray-600 italic mb-2">
                 "Ahora Rocky es parte de nuestra familia. ¡Gracias Patitas!"
               </p>
@@ -100,7 +86,7 @@ export default function PatitasHomePage() {
         </section>
       </SectionContainer>
 
-      <div className="mb-32 w-full bg-primary py-12 flex flex-col items-center justify-center text-center rounded-xl shadow-lg mb-16">
+      <div className="mb-32 w-full bg-primary py-12 flex flex-col items-center justify-center text-center">
         <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
           ¿Listo para cambiar una vida?
         </h3>
