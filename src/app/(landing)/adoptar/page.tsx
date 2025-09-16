@@ -1,14 +1,14 @@
 import React from "react";
 
+import SectionContainer from "../components/SectionContainer";
+
+import { HeaderSection } from "./sections/HeaderSection";
+
 const PatitasAdoptPage = () => {
   return (
-    <div>
-      <h3>Pagina de adopcion</h3>
-      <p>
-        En esta pagina se van a encontrar las diferentes mascotas disponibles
-        para adoptar ademas de un buscador
-      </p>
-    </div>
+    <SectionContainer classname="pb-96">
+      <HeaderSection />
+    </SectionContainer>
   );
 };
 

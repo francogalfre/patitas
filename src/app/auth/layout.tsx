@@ -1,5 +1,5 @@
 import { fontVariables } from "@/styles/font";
-import "@/styles/globals.css";
+import "@/app/globals.css";
 
 interface PatitasAuthLayoutProps extends React.PropsWithChildren {}
 

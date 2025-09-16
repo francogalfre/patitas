@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 
 import HeroStats from "../components/HeroStats";
 
-const HeroSection = () => {
+export const HeroSection = () => {
   return (
-    <div className="flex w-full justify-between pt-36 gap-16">
+    <div className="flex w-full justify-between pt-20 gap-16">
       <div className="w-contain space-y-12">
         <header className="space-y-6">
           <h2 className="text-5xl">
@@ -65,5 +65,3 @@ const HeroSection = () => {
     </div>
   );
 };
-
-export default HeroSection;

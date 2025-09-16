@@ -20,9 +20,7 @@ const Navbar = () => {
   const isAuthorized = data?.session;
 
   return (
-    <nav
-      className={`w-full z-10 top-0 left-0 right-0 transition-all duration-100`}
-    >
+    <nav className="w-full z-10 top-0 left-0 right-0 transition-all duration-100 pt-2">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/">
           <Image

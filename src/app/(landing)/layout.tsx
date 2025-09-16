@@ -3,9 +3,10 @@ import { SEO_CONFIG } from "@/constants/seo";
 
 import Navbar from "./components/navbar";
 import Background from "./components/Background";
+import Footer from "./components/Footer";
 
 import { fontVariables } from "@/styles/font";
-import "@/styles/globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: SEO_CONFIG.title,
@@ -31,7 +32,8 @@ export default function RootLayout({
         <>
           <Navbar />
           <Background />
-          {children}
+          <main className="pt-16">{children}</main>
+          <Footer />
         </>
       </body>
     </html>

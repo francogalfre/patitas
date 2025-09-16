@@ -39,6 +39,10 @@ const AuthLoginForm = () => {
         },
         onError: (ctx) => {
           setError("root", { message: "Email o contraseña incorrecta" });
+
+          if (ctx.error.status === 403) {
+            setError("root", { message: "Porfavor verifica tu correo" });
+          }
         },
       }
     );

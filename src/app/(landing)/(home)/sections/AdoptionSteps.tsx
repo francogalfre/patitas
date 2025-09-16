@@ -27,7 +27,7 @@ const steps = [
   },
 ];
 
-const AdoptionStepsSection = () => {
+export const AdoptionStepsSection = () => {
   return (
     <div className="text-center">
       <h2 className="text-4xl pb-4 font-medium">¿Cómo Funciona?</h2>
@@ -47,5 +47,3 @@ const AdoptionStepsSection = () => {
     </div>
   );
 };
-
-export default AdoptionStepsSection;
