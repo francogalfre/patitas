@@ -1,5 +1,7 @@
-import { InferInsertModel, InferSelectModel } from "drizzle-orm";
+import { InferSelectModel, relations } from "drizzle-orm";
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+
+import { pet } from "./pet";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -20,6 +22,10 @@ export const user = pgTable("user", {
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+
+export const userRelation = relations(user, ({ many }) => ({
+  pets: many(pet),
+}));
 
 export const session = pgTable("session", {
   id: text("id").primaryKey(),

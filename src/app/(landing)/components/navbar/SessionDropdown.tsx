@@ -25,8 +25,6 @@ export const SessionDropdown = ({ user }: { user: User }) => {
     authClient.signOut();
   };
 
-  console.log(user);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -62,12 +60,15 @@ export const SessionDropdown = ({ user }: { user: User }) => {
             <TriangleAlert className="size-4" /> Verifica tu correo electronico
           </p>
         )}
-        <DropdownMenuSeparator className="bg-gray-300" />
-        <DropdownMenuItem className="transition-colors font-raleway">
+        <DropdownMenuSeparator className="bg-gray-300 mb-2" />
+        <DropdownMenuItem asChild className="transition-colors font-raleway">
           <Link href={`/profiles/${user.id}`}>Mi Perfil</Link>
         </DropdownMenuItem>
+        <DropdownMenuItem asChild className="transition-colors font-raleway">
+          <Link href={`/`}>Subir una mascota</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem className="transition-colors font-raleway">
-          Soporte
+          <a href="mailto:francogalfre.code@gmail.com">Soporte</a>
         </DropdownMenuItem>
         <DropdownMenuItem
           className="transition-colors font-raleway"

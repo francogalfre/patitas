@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import { fontVariables } from "@/styles/font";
 import "@/app/globals.css";
 
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+
 export const metadata: Metadata = {
   title: SEO_CONFIG.title,
   description: SEO_CONFIG.description,
@@ -29,12 +31,12 @@ export default function RootLayout({
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
-        <>
+        <NuqsAdapter>
           <Navbar />
           <Background />
           <main className="pt-16">{children}</main>
           <Footer />
-        </>
+        </NuqsAdapter>
       </body>
     </html>
   );

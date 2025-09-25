@@ -7,7 +7,7 @@ const NAV_LINKS = [
   },
   {
     text: "Adoptar",
-    href: "/adoptar",
+    href: "/mascotas",
   },
   {
     text: "Guías",

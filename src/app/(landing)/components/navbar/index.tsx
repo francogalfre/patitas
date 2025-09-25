@@ -17,6 +17,7 @@ import { User } from "@/db/schema/user";
 
 const Navbar = () => {
   const pathname = usePathname();
+
   const { data } = authClient.useSession();
 
   const isAuthorized = data?.session;
@@ -24,16 +25,18 @@ const Navbar = () => {
   return (
     <nav className="w-full z-10 top-0 left-0 right-0 transition-all duration-100 pt-2">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/">
-          <Image
-            src="/patitas/logo1000.webp"
-            alt="Logo de Patitas"
-            width={60}
-            height={60}
-          />
-        </Link>
+        <div className="flex items-center gap-12">
+          <Link href="/">
+            <Image
+              src="/patitas/logo1000.webp"
+              alt="Logo de Patitas"
+              width={60}
+              height={60}
+            />
+          </Link>
 
-        <NavLinks pathname={pathname} />
+          <NavLinks pathname={pathname} />
+        </div>
 
         <div className="flex md:order-2 space-x-3">
           {isAuthorized ? (
