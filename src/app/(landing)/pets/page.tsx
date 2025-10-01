@@ -38,7 +38,7 @@ const PatitasMascotsPage = () => {
     <>
       <HeaderSection search={search} setSearch={setSearch} />
 
-      <SectionContainer classname="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6">
+      <SectionContainer classname="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-10">
         {filteredPets.length > 0 ? (
           filteredPets.map((pet) => (
             <Link

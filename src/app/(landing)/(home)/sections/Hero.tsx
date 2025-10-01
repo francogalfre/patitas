@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 import HeroStats from "../components/HeroStats";
 
-export const HeroSection = () => {
+export const HeroSection = async () => {
   return (
     <div className="flex w-full justify-between pt-20 gap-16">
       <div className="w-contain space-y-12">
@@ -23,19 +23,24 @@ export const HeroSection = () => {
             Argentina. Cada adopción es una segunda oportunidad para ser feliz.
           </p>
           <div className="space-x-3">
-            <Button
-              size={"lg"}
-              className="text-white py-6 text-md rounded-sm hover:bg-primary/80 transition-color"
-            >
-              <Link href={"/adoptar"}>Explorar Mascotas</Link>
-            </Button>
-            <Button
-              size={"lg"}
-              variant="secondary"
-              className="text-white py-6 text-md hover:bg-secondary/80 transition-color"
-            >
-              Publicar Mascota
-            </Button>
+            <Link href={"/pets"}>
+              <Button
+                size={"lg"}
+                className="text-white py-6 text-md rounded-sm hover:bg-primary/80 transition-color"
+              >
+                Explorar Mascotas
+              </Button>
+            </Link>
+
+            <Link href={"/new-pet"}>
+              <Button
+                size={"lg"}
+                variant="secondary"
+                className="text-white py-6 text-md hover:bg-secondary/80 transition-color"
+              >
+                Publicar nueva mascota
+              </Button>
+            </Link>
           </div>
         </header>
         <HeroStats />

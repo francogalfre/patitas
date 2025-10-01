@@ -1,9 +1,180 @@
 {
-  "id": "92ab748b-62c9-460f-a75a-e7b4c4912b37",
-  "prevId": "ebd18a5d-c52a-4ccd-9c2c-4542b1f65f0d",
+  "id": "2c692ead-5909-4e5e-8741-768baaae525a",
+  "prevId": "1ab7d577-a8ef-4b3e-925d-ed7a96d2ae2f",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.pets": {
+      "name": "pets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "species": {
+          "name": "species",
+          "type": "pet_species",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "gender": {
+          "name": "gender",
+          "type": "pet_gender",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "age": {
+          "name": "age",
+          "type": "pet_ages",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "size": {
+          "name": "size",
+          "type": "pet_size",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "good_with_kids": {
+          "name": "good_with_kids",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "good_with_dogs": {
+          "name": "good_with_dogs",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "good_with_cats": {
+          "name": "good_with_cats",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "is_vaccinated": {
+          "name": "is_vaccinated",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "is_sterilized": {
+          "name": "is_sterilized",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "special_care": {
+          "name": "special_care",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "photos": {
+          "name": "photos",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact_name": {
+          "name": "contact_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact_phone": {
+          "name": "contact_phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact_email": {
+          "name": "contact_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "location_city": {
+          "name": "location_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_adopted": {
+          "name": "is_adopted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pets_owner_id_user_id_fk": {
+          "name": "pets_owner_id_user_id_fk",
+          "tableFrom": "pets",
+          "tableTo": "user",
+          "columnsFrom": [
+            "owner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.account": {
       "name": "account",
       "schema": "",
@@ -227,7 +398,7 @@
           "name": "avatar_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": "'https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfMS5wbmciLCJpYXQiOjE3NTgwNTExNTEsImV4cCI6MTc4OTU4NzE1MX0.-oz7aFy0C9vGttAcyWPEl300af19t1vYh8jj94j6SI4'"
         },
         "location": {
@@ -333,7 +504,46 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.pet_ages": {
+      "name": "pet_ages",
+      "schema": "public",
+      "values": [
+        "cachorro",
+        "joven",
+        "adulto",
+        "senior"
+      ]
+    },
+    "public.pet_gender": {
+      "name": "pet_gender",
+      "schema": "public",
+      "values": [
+        "macho",
+        "hembra"
+      ]
+    },
+    "public.pet_size": {
+      "name": "pet_size",
+      "schema": "public",
+      "values": [
+        "pequeño",
+        "mediano",
+        "grande"
+      ]
+    },
+    "public.pet_species": {
+      "name": "pet_species",
+      "schema": "public",
+      "values": [
+        "perro",
+        "gato",
+        "conejo",
+        "ave",
+        "otro"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

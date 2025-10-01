@@ -7,15 +7,15 @@ const NAV_LINKS = [
   },
   {
     text: "Adoptar",
-    href: "/mascotas",
+    href: "/pets",
   },
   {
     text: "Guías",
-    href: "/guias",
+    href: "/guides",
   },
   {
     text: "Quienes Somos",
-    href: "/nosotros",
+    href: "/about-us",
   },
 ];
 

@@ -65,7 +65,7 @@ export const SessionDropdown = ({ user }: { user: User }) => {
           <Link href={`/profiles/${user.id}`}>Mi Perfil</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="transition-colors font-raleway">
-          <Link href={`/`}>Subir una mascota</Link>
+          <Link href={`/new-pet`}>Subir una mascota</Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="transition-colors font-raleway">
           <a href="mailto:francogalfre.code@gmail.com">Soporte</a>

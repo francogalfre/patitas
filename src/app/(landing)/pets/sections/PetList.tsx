@@ -2,8 +2,7 @@ import React from "react";
 import { pets } from "../mock-pets";
 
 const PetList = () => {
-  // Filtrar solo mascotas disponibles
-  const availablePets = pets.filter(pet => pet.status === "disponible");
+  const availablePets = pets.filter((pet) => pet.status === "disponible");
 
   return (
     <main className="py-8 px-4 max-w-7xl mx-auto">
@@ -16,7 +15,7 @@ const PetList = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {availablePets.map((pet) => (
           <div
             key={pet.id}
@@ -31,18 +30,30 @@ const PetList = () => {
 
             <div className="p-4">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-semibold text-gray-900">{pet.name}</h3>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {pet.name}
+                </h3>
                 <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
                   {pet.status}
                 </span>
               </div>
 
               <div className="space-y-1 text-sm text-gray-600 mb-3">
-                <p><span className="font-medium">Especie:</span> {pet.species}</p>
-                <p><span className="font-medium">Raza:</span> {pet.breed}</p>
-                <p><span className="font-medium">Edad:</span> {pet.age} años</p>
-                <p><span className="font-medium">Género:</span> {pet.gender}</p>
-                <p><span className="font-medium">Ubicación:</span> {pet.location}</p>
+                <p>
+                  <span className="font-medium">Especie:</span> {pet.species}
+                </p>
+                <p>
+                  <span className="font-medium">Raza:</span> {pet.breed}
+                </p>
+                <p>
+                  <span className="font-medium">Edad:</span> {pet.age} años
+                </p>
+                <p>
+                  <span className="font-medium">Género:</span> {pet.gender}
+                </p>
+                <p>
+                  <span className="font-medium">Ubicación:</span> {pet.location}
+                </p>
               </div>
 
               <p className="text-gray-700 text-sm mb-4 line-clamp-2">

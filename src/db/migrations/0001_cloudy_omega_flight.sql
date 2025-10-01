@@ -1,0 +1,1 @@
+ALTER TYPE "public"."pet_age" RENAME TO "pet_ages";
