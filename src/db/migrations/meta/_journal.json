@@ -15,6 +15,13 @@
       "when": 1759181091068,
       "tag": "0001_cloudy_omega_flight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1759291155758,
+      "tag": "0002_exotic_ghost_rider",
+      "breakpoints": true
     }
   ]
 }

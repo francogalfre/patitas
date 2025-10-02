@@ -10,11 +10,12 @@ import { Eye, EyeOff } from "lucide-react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 interface AuthFormInputProps {
-  label: string;
+  label?: string;
   registration: UseFormRegisterReturn;
   type?: string;
   placeholder?: string;
   error: FieldError;
+  isRequired?: boolean;
 }
 
 const AuthFormInput = ({
@@ -23,14 +24,18 @@ const AuthFormInput = ({
   type = "text",
   placeholder,
   error,
+  isRequired = false,
 }: AuthFormInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <div className="space-y-3">
-      <Label htmlFor={label} className="text-md font-normal text-gray-700">
-        {label}
-      </Label>
+      {label && (
+        <Label className="text-md font-normal text-gray-700 flex items-center gap-1">
+          {label}
+          {isRequired && <span className="text-red-500 text-4xl">*</span>}
+        </Label>
+      )}
 
       {type !== "password" ? (
         <Input
@@ -43,6 +48,7 @@ const AuthFormInput = ({
       ) : (
         <div className="relative">
           <Input
+            required={isRequired}
             id={label}
             type={isPasswordVisible ? "text" : "password"}
             {...registration}

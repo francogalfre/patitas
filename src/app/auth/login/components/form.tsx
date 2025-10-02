@@ -5,7 +5,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import AuthFormInput from "../../components/input";
+import AuthFormInput from "@/components/form-input";
 
 import { Button } from "@/components/ui/button";
 import { FieldError, useForm } from "react-hook-form";

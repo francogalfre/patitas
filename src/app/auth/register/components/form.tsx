@@ -5,7 +5,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import AuthFormInput from "../../components/input";
+import AuthFormInput from "@/components/form-input";
 
 import { Button } from "@/components/ui/button";
 import { FieldError, useForm } from "react-hook-form";
@@ -80,6 +80,7 @@ const AuthRegisterForm = () => {
           placeholder="John Doe"
           registration={{ ...register("fullName") }}
           error={errors.fullName as FieldError}
+          isRequired
         />
 
         <AuthFormInput
@@ -88,6 +89,7 @@ const AuthRegisterForm = () => {
           placeholder="ejemplo@email.com"
           registration={{ ...register("email") }}
           error={errors.email as FieldError}
+          isRequired
         />
 
         <AuthFormInput
@@ -96,6 +98,7 @@ const AuthRegisterForm = () => {
           placeholder="Al menos 8 caracteres"
           registration={{ ...register("password") }}
           error={errors.password as FieldError}
+          isRequired
         />
 
         <div className="text-center">

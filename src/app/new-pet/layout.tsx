@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+
 import { fontVariables } from "@/styles/font";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Patitas | Perfil",
+  title: "Patitas | Publicar nueva mascota",
   description: "Perfiles",
 };
 
@@ -18,9 +20,11 @@ export default function RootLayout({
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
-        <>
-          <main className="">{children}</main>
-        </>
+        <NuqsAdapter>
+          <main className="py-24 px-48 space-y-12 max-w-7xl w-full mx-auto">
+            {children}
+          </main>
+        </NuqsAdapter>
       </body>
     </html>
   );

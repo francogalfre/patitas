@@ -52,8 +52,6 @@ export const pet = pgTable("pets", {
 
   location_city: text("location_city").notNull(),
 
-  is_adopted: boolean("is_adopted").default(false).notNull(),
-
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
