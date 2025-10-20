@@ -6,9 +6,8 @@ import { AdoptionStepsSection } from "./sections/AdoptionSteps";
 export default function PatitasHomePage() {
   return (
     <>
-      <SectionContainer id="hero" classname="pb-96">
-        <HeroSection />
-      </SectionContainer>
+      <HeroSection />
+
       <SectionContainer>
         <AdoptionStepsSection />
       </SectionContainer>

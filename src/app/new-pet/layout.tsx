@@ -7,7 +7,7 @@ import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Patitas | Publicar nueva mascota",
-  description: "Perfiles",
+  description: "Publicar una nueva mascota",
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
         <NuqsAdapter>
-          <main className="py-24 px-48 space-y-12 max-w-7xl w-full mx-auto">
+          <main className="py-12 px-48 space-y-12 max-w-7xl w-full mx-auto">
             {children}
           </main>
         </NuqsAdapter>

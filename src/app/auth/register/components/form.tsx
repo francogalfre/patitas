@@ -5,7 +5,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import AuthFormInput from "@/components/form-input";
+import { FormTextInput } from "@/components/text-input";
 
 import { Button } from "@/components/ui/button";
 import { FieldError, useForm } from "react-hook-form";
@@ -75,7 +75,7 @@ const AuthRegisterForm = () => {
       <hr className="text-gray-300 pb-6" />
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <AuthFormInput
+        <FormTextInput
           label="Nombre y Apellido"
           placeholder="John Doe"
           registration={{ ...register("fullName") }}
@@ -83,7 +83,7 @@ const AuthRegisterForm = () => {
           isRequired
         />
 
-        <AuthFormInput
+        <FormTextInput
           label="Email"
           type="email"
           placeholder="ejemplo@email.com"
@@ -92,7 +92,7 @@ const AuthRegisterForm = () => {
           isRequired
         />
 
-        <AuthFormInput
+        <FormTextInput
           label="Contraseña"
           type="password"
           placeholder="Al menos 8 caracteres"

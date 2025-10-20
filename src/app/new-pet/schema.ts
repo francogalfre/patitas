@@ -1,14 +1,19 @@
 import { z } from "zod";
 
-const validSpecies = ["perro", "gato", "conejo", "ave", "otro"] as const;
-const validAge = ["cachorro", "joven", "adulto", "senior"] as const;
-const validSize = ["pequeño", "mediano", "grande"] as const;
-const validGender = ["macho", "hembra"] as const;
+import { validSpecies, validAge, validSize, validGender } from "./petEnums";
 
-const SpeciesEnum = z.enum(validSpecies);
-const AgeEnum = z.enum(validAge);
-const SizeEnum = z.enum(validSize);
-const GenderEnum = z.enum(validGender);
+const SpeciesEnum = z.enum(validSpecies, {
+  message: "Porfavor selecciona una especie",
+});
+const AgeEnum = z.enum(validAge, {
+  message: "Porfavor selecciona una edad",
+});
+const SizeEnum = z.enum(validSize, {
+  message: "Porfavor selecciona un tamaño",
+});
+const GenderEnum = z.enum(validGender, {
+  message: "Porfavor selecciona un genero",
+});
 
 export const Step1FormShema = z.object({
   name: z.string().min(1, { message: "El nombre es requerido" }),
@@ -18,19 +23,19 @@ export const Step1FormShema = z.object({
   size: SizeEnum,
   description: z
     .string()
-    .min(50, { message: "La descripcion debe tener al menos 50 caracteres" }),
+    .min(50, { message: "La descripcion debe tener al menos 50 caracteres" })
+    .max(500, { message: "La descripcion solo puede tener 500 caracteres" }),
 });
 
 export const Step2FormShema = z.object({
-  photos: z
-    .string()
-    .array()
-    .min(1, { message: "Al menos debes subir una imagen" }),
-  good_with_kids: z.boolean().default(false),
-  good_with_dogs: z.boolean().default(false),
-  good_with_cats: z.boolean().default(false),
+  photos: z.custom<FileList>(),
+
+  good_with_kids: z.boolean(),
+  good_with_dogs: z.boolean(),
+  good_with_cats: z.boolean(),
   is_vaccinated: z.boolean(),
   is_sterilized: z.boolean(),
+
   special_care: z
     .string()
     .max(255, { message: "Maximo de 255 caracteres" })

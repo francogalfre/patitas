@@ -25,6 +25,7 @@ export const pet = pgTable("pets", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
+
   owner_id: text("owner_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),

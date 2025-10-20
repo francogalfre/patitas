@@ -9,7 +9,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
-interface AuthFormInputProps {
+interface FormTextInputProps {
   label?: string;
   registration: UseFormRegisterReturn;
   type?: string;
@@ -18,14 +18,14 @@ interface AuthFormInputProps {
   isRequired?: boolean;
 }
 
-const AuthFormInput = ({
+export const FormTextInput = ({
   label,
   registration,
   type = "text",
   placeholder,
   error,
   isRequired = false,
-}: AuthFormInputProps) => {
+}: FormTextInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
@@ -73,5 +73,3 @@ const AuthFormInput = ({
     </div>
   );
 };
-
-export default AuthFormInput;
