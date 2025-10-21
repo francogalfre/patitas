@@ -14,25 +14,16 @@ import {
   MIN_STEP,
 } from "./schema";
 
-import { validSpecies, validAge, validSize, validGender } from "./petEnums";
-
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FormTextInput } from "@/components/text-input";
 
-import {
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-} from "@radix-ui/react-select";
-
-import { db } from "@/db";
-import { pet } from "@/db/schema/pet";
 import { authClient } from "@/lib/auth-client";
 import { createPetAdoption } from "./actions/createPet";
 
 import CreatePetStep1Form from "./components/forms/step1";
+import CreatePetFormHeader from "./components/header";
 
 const PatitasCreateNewPetPage = () => {
   const [step, setStep] = useState(MIN_STEP);
@@ -42,6 +33,7 @@ const PatitasCreateNewPetPage = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting, isLoading },
+    control,
     trigger,
   } = useForm({
     resolver: zodResolver(PetRegistrationFormSchema),
@@ -93,16 +85,8 @@ const PatitasCreateNewPetPage = () => {
 
   return (
     <>
-      <header className="space-y-3">
-        <h2 className="text-2xl font-medium">
-          Publicar una mascota en adopción
-        </h2>
-        <p>Ayúdanos a encontrarle el hogar perfecto a tu amigo.</p>
-        <span>
-          Paso: {step} de {MAX_STEP}
-        </span>
-      </header>
-      <hr />
+      <CreatePetFormHeader step={step} MAX_STEP={MAX_STEP} />
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white border-1 border-gray-300 p-12 rounded-xl space-y-8"
@@ -112,7 +96,11 @@ const PatitasCreateNewPetPage = () => {
             <h2 className="text-xl font-poppins font-light">
               Datos basicos de la mascota
             </h2>
-            <CreatePetStep1Form errors={errors} register={register} />
+            <CreatePetStep1Form
+              errors={errors}
+              register={register}
+              control={control}
+            />
           </>
         )}
 
@@ -126,6 +114,10 @@ const PatitasCreateNewPetPage = () => {
               type="file"
               id="photos"
               className="mb-4"
+              multiple
+              accept="/image/**"
+              maxLength={3}
+              required
             />
             {errors.photos && (
               <p className="text-red-500 text-sm">

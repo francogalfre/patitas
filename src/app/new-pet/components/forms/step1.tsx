@@ -5,12 +5,7 @@ import { useState } from "react";
 import { FormTextInput } from "@/components/text-input";
 import { FormSelectInput } from "@/components/select-input";
 
-import {
-  UseFormRegister,
-  FieldValues,
-  FieldError,
-  FieldErrors,
-} from "react-hook-form";
+import { UseFormRegister, FieldError, FieldErrors, Control } from "react-hook-form";
 
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,9 +17,14 @@ import { PetRegistrationFormType } from "../../schema";
 interface CreatePetStep1FormProps {
   errors: FieldErrors<PetRegistrationFormType>;
   register: UseFormRegister<PetRegistrationFormType>;
+  control: Control<PetRegistrationFormType>;
 }
 
-const CreatePetStep1Form = ({ errors, register }: CreatePetStep1FormProps) => {
+const CreatePetStep1Form = ({
+  errors,
+  register,
+  control,
+}: CreatePetStep1FormProps) => {
   const [descriptionLenght, setDescriptionLenght] = useState(0);
 
   const handleDescriptionChange = (
@@ -49,18 +49,18 @@ const CreatePetStep1Form = ({ errors, register }: CreatePetStep1FormProps) => {
           <FormSelectInput
             label="Especie"
             placeholder="Selecciona la especie"
+            name="species"
+            control={control}
             options={validSpecies}
-            registration={register("species")}
-            error={errors.species as FieldError}
             isRequired
           />
 
           <FormSelectInput
             label="Edad"
             placeholder="Selecciona la edad"
+            name="age"
+            control={control}
             options={validAge}
-            registration={register("age")}
-            error={errors.age as FieldError}
             isRequired
           />
         </div>
@@ -69,18 +69,18 @@ const CreatePetStep1Form = ({ errors, register }: CreatePetStep1FormProps) => {
           <FormSelectInput
             label="Tamaño"
             placeholder="Selecciona el tamaño"
+            name="size"
+            control={control}
             options={validSize}
-            registration={register("size")}
-            error={errors.size as FieldError}
             isRequired
           />
 
           <FormSelectInput
             label="Género"
             placeholder="Selecciona el género"
+            name="gender"
+            control={control}
             options={validGender}
-            registration={register("gender")}
-            error={errors.gender as FieldError}
             isRequired
           />
         </div>

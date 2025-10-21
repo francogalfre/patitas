@@ -5,25 +5,38 @@ import { pet } from "@/db/schema/pet";
 
 import { PetRegistrationFormType } from "../schema";
 
+import { uploadPetPhotos } from "./uploadPhotos";
+import { eq } from "drizzle-orm";
+
 export async function createPetAdoption(
   formData: PetRegistrationFormType,
   ownerId: string
 ) {
-  const photosUrls = ["url_de_la_imagen_subida"];
-
   try {
-    await db
+    const [createdPet] = await db
       .insert(pet)
       .values({
         owner_id: ownerId,
         ...formData,
-        photos: photosUrls,
+        photos: [],
       })
-      .execute();
+      .returning({
+        id: pet.id
+      });
+
+    const { urls, success, error } = await uploadPetPhotos(createdPet.id, formData.photos)
+
+    if (!success) {
+      return { success: false, message: `Fallo al guardar las imagenes: ${error}.` };
+    }
+
+    await db.update(pet).set({
+      photos: urls 
+    }).where(eq(pet.id, createdPet.id))
 
     return { success: true, message: "Mascota registrada con éxito." };
   } catch (error) {
     console.error("DB Error:", error);
-    return { success: false, message: "Fallo al registrar la mascota." };
+    return { success: false, message: `Fallo al registrar la mascota: ${error}` };
   }
 }
