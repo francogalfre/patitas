@@ -7,15 +7,15 @@ const links = [
   },
   {
     title: "Encontrar Mascotas",
-    href: "/adoptar",
+    href: "/pets",
   },
   {
     title: "Nuestras Guías",
-    href: "/guias",
+    href: "/guides",
   },
   {
     title: "Quienes somos",
-    href: "/nosotros",
+    href: "/about-us",
   },
 ];
 
