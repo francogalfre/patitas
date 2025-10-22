@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -15,18 +16,20 @@ import {
 } from "./schema";
 
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { FormTextInput } from "@/components/text-input";
 
 import { authClient } from "@/lib/auth-client";
 import { createPetAdoption } from "./actions/createPet";
 
-import CreatePetStep1Form from "./components/forms/step1";
 import CreatePetFormHeader from "./components/header";
+
+import CreatePetStep1Form from "./components/forms/step1";
+import CreatePetStep2Form from "./components/forms/step2";
+import CreatePetStep3Form from "./components/forms/step3";
 
 const PatitasCreateNewPetPage = () => {
   const [step, setStep] = useState(MIN_STEP);
+
+  const router = useRouter()
   const session = authClient.useSession();
 
   const {
@@ -35,6 +38,7 @@ const PatitasCreateNewPetPage = () => {
     formState: { errors, isSubmitting, isLoading },
     control,
     trigger,
+    clearErrors
   } = useForm({
     resolver: zodResolver(PetRegistrationFormSchema),
     defaultValues: {
@@ -44,11 +48,16 @@ const PatitasCreateNewPetPage = () => {
       good_with_dogs: false,
       good_with_cats: false,
     },
-    mode: "onBlur",
+    mode: "onSubmit",
+    reValidateMode: "onChange",
   });
 
+  useEffect(() => {
+    clearErrors();
+  }, [step, clearErrors]);
+
   const handleNextStep = async () => {
-    const currentStepSchema = stepSchema[step as StepKey];
+    const currentStepSchema = stepSchema[step as StepKey];  
     const currentStepFields = Object.keys(
       currentStepSchema.shape
     ) as (keyof PetRegistrationFormType)[];
@@ -56,13 +65,12 @@ const PatitasCreateNewPetPage = () => {
     const isValid = await trigger(currentStepFields, { shouldFocus: true });
 
     if (isValid) {
+      clearErrors()
       setStep(step + 1);
     }
   };
 
   const onSubmit = async (data: PetRegistrationFormType) => {
-    console.log("¡Formulario de Mascota Completo!", data);
-
     const ownerId = session.data?.user.id;
 
     if (!ownerId) {
@@ -74,6 +82,7 @@ const PatitasCreateNewPetPage = () => {
       const result = await createPetAdoption(data, ownerId);
 
       if (result.success) {
+        router.push("/new-pet/success");
         console.log(result.message);
       } else {
         console.error(result.message);
@@ -107,129 +116,17 @@ const PatitasCreateNewPetPage = () => {
         {step == 2 && (
           <>
             <h2 className="text-lg font-medium">Características y Cuidados</h2>
-
-            <Label htmlFor="photos">Fotos de la mascota (Opcional)</Label>
-            <input
-              {...register("photos")}
-              type="file"
-              id="photos"
-              className="mb-4"
-              multiple
-              accept="/image/**"
-              maxLength={3}
-              required
-            />
-            {errors.photos && (
-              <p className="text-red-500 text-sm">
-                {(errors.photos as any).message}
-              </p>
-            )}
-            <br />
-
-            <div className="space-y-4">
-              <Label className="block text-md font-normal text-gray-700">
-                Comportamiento y Estado
-              </Label>
-              <div className="flex items-center gap-2">
-                <input
-                  {...register("good_with_kids")}
-                  type="checkbox"
-                  id="good_with_kids"
-                />
-                <Label htmlFor="good_with_kids">Se lleva bien con niños</Label>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  {...register("good_with_dogs")}
-                  type="checkbox"
-                  id="good_with_dogs"
-                />
-                <Label htmlFor="good_with_dogs">
-                  Se lleva bien con otros perros
-                </Label>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  {...register("good_with_cats")}
-                  type="checkbox"
-                  id="good_with_cats"
-                />
-                <Label htmlFor="good_with_cats">Se lleva bien con gatos</Label>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  {...register("is_sterilized")}
-                  type="checkbox"
-                  id="is_sterilized"
-                />
-                <Label htmlFor="is_sterilized">Está esterilizado/a</Label>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  {...register("is_vaccinated")}
-                  type="checkbox"
-                  id="is_vaccinated"
-                />
-                <Label htmlFor="is_vaccinated">Está vacunado/a</Label>
-              </div>
-            </div>
-            <br />
-            <div className="space-y-2">
-              <Label className="text-md font-normal text-gray-700 flex items-center gap-1">
-                Cuidados especiales o condiciones medicas (Opcional)
-              </Label>
-              <Textarea
-                {...register("special_care")}
-                placeholder="description"
-                className="border-gray-400"
-              />
-            </div>
+            <CreatePetStep2Form errors={errors} register={register} />
           </>
         )}
 
         {step == 3 && (
-          <div className="space-y-4">
-            <h2 className="text-lg pb-8 font-medium">
+          <>
+            <h2 className="text-lg font-medium">
               Datos de Contacto y Ubicación
             </h2>
-
-            <FormTextInput
-              type="text"
-              placeholder="Tu nombre completo"
-              label="Nombre de Contacto"
-              registration={register("contact_name")}
-              error={errors.contact_name as FieldError}
-              isRequired
-            />
-            <FormTextInput
-              type="tel"
-              placeholder="Teléfono (ej: +549...)"
-              label="Teléfono de Contacto"
-              registration={register("contact_phone")}
-              error={errors.contact_phone as FieldError}
-              isRequired
-            />
-            <FormTextInput
-              type="email"
-              placeholder="correo@ejemplo.com"
-              label="Correo de Contacto"
-              registration={register("contact_email")}
-              error={errors.contact_email as FieldError}
-              isRequired
-            />
-            <FormTextInput
-              type="text"
-              placeholder="Ciudad donde se encuentra la mascota"
-              label="Ciudad"
-              registration={register("location_city")}
-              error={errors.location_city as FieldError}
-              isRequired
-            />
-          </div>
+            <CreatePetStep3Form errors={errors} register={register} />
+          </>
         )}
 
         <div className="w-full flex justify-between">

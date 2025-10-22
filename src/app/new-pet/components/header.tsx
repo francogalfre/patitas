@@ -25,8 +25,6 @@ const CreatePetFormHeader = ({ step, MAX_STEP }: CreatePetFormHeaderProps) => {
           Paso: {step} de {MAX_STEP}
         </span>
       </header>
-
-      <hr />
     </>
   )
 }

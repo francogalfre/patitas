@@ -12,8 +12,6 @@ export async function uploadPetPhotos(petId: string, photos: FileList): Promise<
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
     const invalidFiles = Array.from(photos).filter((photo) => !allowedTypes.includes(photo.type));
 
-    console.log(photos)
-
     if (invalidFiles.length > 0) {
         return {
             success: false,

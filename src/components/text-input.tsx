@@ -44,6 +44,7 @@ export const FormTextInput = ({
           {...registration}
           className={`h-12 border-gray-400 ${error ? "border-red-500" : ""}`}
           placeholder={placeholder}
+          required={isRequired}
         />
       ) : (
         <div className="relative">

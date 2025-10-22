@@ -33,7 +33,7 @@ export const SessionDropdown = ({ user }: { user: User }) => {
       >
         <p className="font-medium">{user.name}</p>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-w-72 p-2 pr-4 mt-1">
+      <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-1">
         <div className="flex items-center">
           {user.image && (
             <Image

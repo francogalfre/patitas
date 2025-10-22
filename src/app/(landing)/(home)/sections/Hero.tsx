@@ -9,7 +9,7 @@ import HeroStats from "../components/HeroStats";
 
 export const HeroSection = async () => {
   return (
-    <div className="relative w-full bg-cover bg-center bg-no-repeat min-h-screen">
+    <div className="relative w-full bg-cover bg-center bg-no-repeat min-h-screen mx-4">
       <div className="flex w-full justify-between pt-20 gap-16 max-w-7xl mx-auto">
         <div className="w-contain space-y-12">
           <header className="space-y-6">

@@ -16,17 +16,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 
-const DEFAULT_AVATARS = [
-  "https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfMS5wbmciLCJpYXQiOjE3NTgwNTg3MzIsImV4cCI6MjA3MzQxODczMn0.NJ8CSDyScIeUc-aS6hmarctrwU9F6dmamfwCkSZqhG4",
-  "https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfMi5wbmciLCJpYXQiOjE3NTgwNTg3NTMsImV4cCI6MjA3MzQxODc1M30.slaEyYrocZddz8x0ioRS-eiwQ0N_VZpTGNYslf9yirE",
-  "https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_3.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfMy5wbmciLCJpYXQiOjE3NTgwNTg3NjcsImV4cCI6MjA3MzQxODc2N30.ADyF-sL8PE4tt6ulxYqTIuUcvWpNsBsG9U_QNr3WayI",
-  "https://nfvknpjkltkafcrhveff.supabase.co/storage/v1/object/sign/avatars/patitas_default_avatar_4.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZjgxMjM3YS03YTI0LTRlMjEtODA5OC1lYzc4NDRhZTA3ZmIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdmF0YXJzL3BhdGl0YXNfZGVmYXVsdF9hdmF0YXJfNC5wbmciLCJpYXQiOjE3NTgwNTg3NzgsImV4cCI6MjA3MzQxODc3OH0.NkL1b6ljfyXAS2kl4INFX99kIpb2sCEijONSzMjMus8",
-];
-
-const getRandomAvatar = () => {
-  return DEFAULT_AVATARS[Math.floor(Math.random() * DEFAULT_AVATARS.length)];
-};
-
 const AuthRegisterForm = () => {
   const {
     handleSubmit,
@@ -42,7 +31,6 @@ const AuthRegisterForm = () => {
         name: data.fullName,
         email: data.email,
         password: data.password,
-        image: getRandomAvatar(),
         callbackURL: "/",
       },
       {
@@ -66,9 +54,9 @@ const AuthRegisterForm = () => {
           height={100}
         />
         <h2 className="font-medium text-2xl pt-6">Crea tu cuenta</h2>
-        <p className="text-gray-800">
           Bienvenido a Patitas - Únete a nuestra comunidad de amantes de los
           animales para ayudar a quienes te necesitan
+        <p className="text-gray-800">
         </p>
       </header>
 

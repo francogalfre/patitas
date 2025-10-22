@@ -15,7 +15,7 @@ const NAV_LINKS = [
   },
   {
     text: "Quienes Somos",
-    href: "/about-us",
+    href: "/about-us",  
   },
 ];
 

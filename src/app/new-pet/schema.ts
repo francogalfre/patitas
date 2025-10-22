@@ -28,7 +28,7 @@ export const Step1FormShema = z.object({
 });
 
 export const Step2FormShema = z.object({
-  photos: z.custom<FileList>(),
+  photos: z.custom<FileList>().refine((files) => files?.length >= 1, "Debes subir al menos una foto."),
 
   good_with_kids: z.boolean(),
   good_with_dogs: z.boolean(),
@@ -44,12 +44,10 @@ export const Step2FormShema = z.object({
 });
 
 export const Step3FormShema = z.object({
-  contact_name: z.string().min(1, "El nombre de contacto es obligatorio."),
-  contact_phone: z
-    .string()
-    .regex(/^\+?(\d[\d\s-]{8,}\d)$/, "Número de teléfono inválido."),
+  contact_name: z.string(),
+  contact_phone: z.string(),
   contact_email: z.email("El formato del correo electrónico es inválido."),
-  location_city: z.string().min(1, "La ciudad es obligatoria."),
+  location_city: z.string(),
 });
 
 export const PetRegistrationFormSchema = z.object({

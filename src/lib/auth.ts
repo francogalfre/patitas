@@ -7,6 +7,7 @@ import { Resend } from "resend";
 import { EmailTemplate } from "@/components/email-template";
 
 import { eq } from "drizzle-orm";
+import { supabaseStorage } from "@/db/supabase/storage/client";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
