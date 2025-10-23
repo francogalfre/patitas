@@ -21,7 +21,7 @@ export default function RootLayout({
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
         <NuqsAdapter>
-          <main className="py-12 px-48 space-y-12 max-w-7xl w-full mx-auto">
+          <main className="flex items-center justify-center py-12 max-w-7xl w-full h-screen mx-auto">
             {children}
           </main>
         </NuqsAdapter>

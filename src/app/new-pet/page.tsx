@@ -29,7 +29,7 @@ import CreatePetStep3Form from "./components/forms/step3";
 const PatitasCreateNewPetPage = () => {
   const [step, setStep] = useState(MIN_STEP);
 
-  const router = useRouter()
+  const router = useRouter();
   const session = authClient.useSession();
 
   const {
@@ -38,7 +38,7 @@ const PatitasCreateNewPetPage = () => {
     formState: { errors, isSubmitting, isLoading },
     control,
     trigger,
-    clearErrors
+    clearErrors,
   } = useForm({
     resolver: zodResolver(PetRegistrationFormSchema),
     defaultValues: {
@@ -57,7 +57,7 @@ const PatitasCreateNewPetPage = () => {
   }, [step, clearErrors]);
 
   const handleNextStep = async () => {
-    const currentStepSchema = stepSchema[step as StepKey];  
+    const currentStepSchema = stepSchema[step as StepKey];
     const currentStepFields = Object.keys(
       currentStepSchema.shape
     ) as (keyof PetRegistrationFormType)[];
@@ -65,7 +65,7 @@ const PatitasCreateNewPetPage = () => {
     const isValid = await trigger(currentStepFields, { shouldFocus: true });
 
     if (isValid) {
-      clearErrors()
+      clearErrors();
       setStep(step + 1);
     }
   };
@@ -93,12 +93,12 @@ const PatitasCreateNewPetPage = () => {
   };
 
   return (
-    <>
+    <main className="flex w-full bg-white border-1 border-gray-300 rounded-xl">
       <CreatePetFormHeader step={step} MAX_STEP={MAX_STEP} />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white border-1 border-gray-300 p-12 rounded-xl space-y-8"
+        className=" rounded-xl space-y-8 flex-2 p-12"
       >
         {step == 1 && (
           <>
@@ -148,7 +148,7 @@ const PatitasCreateNewPetPage = () => {
           )}
         </div>
       </form>
-    </>
+    </main>
   );
 };
 

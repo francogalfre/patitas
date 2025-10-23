@@ -44,12 +44,11 @@ export function EmailTemplate({ username, url }: EmailTemplateProps) {
             ¿Qué puedes hacer en Patitas?
           </h3>
           <ul className="text-left text-gray-600 text-sm pl-5 space-y-2">
-            <li>• Explorar mascotas disponibles para adopción</li>
-            <li>• Conectar con familias que buscan adoptar</li>
-            <li>• Acceder a guías de cuidado para mascotas</li>
+            <li>Explorar mascotas disponibles para adopción</li>
+            <li>Conectar con familias que buscan adoptar</li>
+            <li>Acceder a guías de cuidado para mascotas</li>
             <li>
-              • Formar parte de una comunidad comprometida con el bienestar
-              animal
+              Formar parte de una comunidad comprometida con el bienestar animal
             </li>
           </ul>
         </div>
