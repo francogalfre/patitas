@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SearchInput } from "../components/Search";
+import { SearchInput } from "../components/search";
 
 interface HeaderSectionProps {
   search: string;
