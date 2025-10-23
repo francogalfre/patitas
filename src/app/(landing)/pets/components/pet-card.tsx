@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const PetCard = ({ id, photos, name, gender, age, location_city }: Pet) => {
   return (
-    <Link key={id} href={`/mascotas/${id}`} className="cursor-pointer">
+    <Link key={id} href={`/pets/${id}`} className="cursor-pointer">
       <DirectionAwareHover imageUrl={photos?.[0]}>
         <h2 className="text-xl">{name}</h2>
         <p className="capitalize">
