@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "motion/react"
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -24,7 +27,13 @@ export const NavLinks = ({ pathname }: { pathname: string }) => {
     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
       <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 font-geist">
         {NAV_LINKS.map((link, index) => (
-          <li key={index} className={pathname == "/" ? "text-white" : ""}>
+          <motion.li 
+            whileHover={{ translateY: -2 }} 
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring" }}
+            key={index} 
+            className={pathname == "/" ? "text-white" : ""}
+          >
             <Link
               href={link.href}
               className={
@@ -35,7 +44,7 @@ export const NavLinks = ({ pathname }: { pathname: string }) => {
             >
               {link.text}
             </Link>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </div>

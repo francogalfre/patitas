@@ -20,6 +20,10 @@ import Image from "next/image";
 
 import { User } from "@/db/schema/user";
 
+import { motion } from "motion/react";
+
+const DropdownTrigger = motion(DropdownMenuTrigger)
+
 export const SessionDropdown = ({ user }: { user: User }) => {
   const handleSignOut = () => {
     authClient.signOut();
@@ -27,12 +31,15 @@ export const SessionDropdown = ({ user }: { user: User }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
+      <DropdownTrigger
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring" }}
         className="cursor-pointer bg-primary px-4 py-2 rounded-sm text-white"
         asChild
       >
         <p className="font-medium">{user.name}</p>
-      </DropdownMenuTrigger>
+      </DropdownTrigger>
       <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-1">
         <div className="flex items-center">
           {user.image && (

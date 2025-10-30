@@ -9,7 +9,6 @@ import { fontVariables } from "@/styles/font";
 import "@/app/globals.css";
 
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: SEO_CONFIG.title,
@@ -27,19 +26,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const fullUrl = headersList.get("x-url");
-  const pathname = fullUrl ? new URL(fullUrl).pathname : "/";
-
-  const showNavbar = pathname !== "/";
-
   return (
     <html lang="en">
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
         <NuqsAdapter>
-          {showNavbar && <Navbar />}
+          <Navbar />
           <Background />
           <main className="p-4 space-y-32">{children}</main>
           <Footer />
