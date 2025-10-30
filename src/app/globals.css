@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-poppins: var(--font-poppins);
   --font-raleway: var(--font-raleway);
+  --font-serif: var(--font-serif) !important;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -160,10 +161,6 @@ body::-webkit-scrollbar {
 ::selection {
   background-color: #a18ed1;
   color: #ffffff;
-}
-
-h1, h2, h3, h3, h4, h5 {
-  font-family: var(--font-poppins), 'system-ui';
 }
 
 p, span, a {

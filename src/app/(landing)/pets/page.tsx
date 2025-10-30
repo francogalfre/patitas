@@ -7,9 +7,11 @@ import SectionContainer from "../components/SectionContainer";
 import { HeaderSection } from "./sections/HeaderSection";
 
 import { parseAsString, useQueryState } from "nuqs";
-import { getAllPets } from "./actions/getPets";
 
+
+import { getAllPets } from "./actions/getPets";
 import { Pet } from "@/db/schema/pet";
+
 import PetList from "./sections/PetList";
 
 const PatitasMascotsPage = () => {
@@ -41,6 +43,8 @@ const PatitasMascotsPage = () => {
       )
     );
   }, [search, pets]);
+
+  console.log(pets)
 
   return (
     <>

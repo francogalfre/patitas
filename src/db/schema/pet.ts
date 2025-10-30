@@ -45,7 +45,7 @@ export const pet = pgTable("pets", {
   is_sterilized: boolean("is_sterilized").default(false).notNull(),
   special_care: text("special_care"),
 
-  photos: text("photos").array(),
+  photos: text("photos").array().notNull(),
 
   contact_name: text("contact_name").notNull(),
   contact_phone: text("contact_phone").notNull(),

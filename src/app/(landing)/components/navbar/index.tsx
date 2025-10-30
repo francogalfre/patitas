@@ -2,9 +2,6 @@
 
 import React from "react";
 
-import Image from "next/image";
-import Link from "next/link";
-
 import { usePathname } from "next/navigation";
 
 import { authClient } from "@/lib/auth-client";
@@ -15,28 +12,23 @@ import { AuthButtons } from "./AuthButtons";
 
 import { User } from "@/db/schema/user";
 
+import { motion } from "motion/react"
+
 const Navbar = () => {
   const pathname = usePathname();
-
   const { data } = authClient.useSession();
 
   const isAuthorized = data?.session;
 
   return (
-    <nav className="w-full z-10 top-0 left-0 right-0 transition-all duration-100 pt-2">
+    <motion.nav
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", duration: 1.5, stiffness: 200 }}
+      className="w-full z-10 top-0 left-0 right-0 pt-2"
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <div className="flex items-center gap-12">
-          <Link href="/">
-            <Image
-              src="/patitas/logo1000.webp"
-              alt="Logo de Patitas"
-              width={60}
-              height={60}
-            />
-          </Link>
-
-          <NavLinks pathname={pathname} />
-        </div>
+        <NavLinks pathname={pathname} />
 
         <div className="flex md:order-2 space-x-3">
           {isAuthorized ? (
@@ -46,7 +38,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
