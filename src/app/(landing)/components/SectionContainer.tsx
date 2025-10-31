@@ -12,7 +12,7 @@ const SectionContainer = ({
   return (
     <section
       id={id}
-      className={`max-w-7xl w-full full mx-auto px-4 pb-48 ${classname}`}
+      className={`max-w-6xl w-full mx-auto px-4 ${classname}`}
     >
       {children}
     </section>

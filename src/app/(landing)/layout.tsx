@@ -34,7 +34,7 @@ export default async function RootLayout({
         <NuqsAdapter>
           <Navbar />
           <Background />
-          <main className="space-y-32">{children}</main>
+          <main>{children}</main>
           <Footer />
         </NuqsAdapter>
       </body>

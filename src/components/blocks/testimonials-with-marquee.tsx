@@ -25,17 +25,17 @@ export function TestimonialsSection({
   return (
     <section className={cn(
       "text-foreground",
-      "py-12 sm:py-24 md:py-32 px-0",
+      "py-12 sm:py-24 md:py-48 px-0",
       className
     )}>
       <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16">
-        <div className="flex flex-col items-center gap-4 px-4 sm:gap-4">
+        <div className="max-w-6xl flex flex-col items-center gap-4 px-4 sm:gap-4">
           <motion.h2
             initial={{ opacity: 0, y: -10, x: -20 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", duration: 1.5, delay: 0.1, stiffness: 200 }}
-            className="max-w-[720px] font-poppins text-3xl font-medium leading-tight sm:max-w-7xl sm:text-5xl sm:leading-tight">
+            className="max-w-[720px] font-poppins text-3xl font-medium leading-tight sm:max-w-7xl sm:text-5xl sm:leading-tight tracking-tight">
             {title}
           </motion.h2>
           <motion.p 
@@ -43,7 +43,7 @@ export function TestimonialsSection({
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", duration: 1.5, delay: 0.2, stiffness: 200}}
-            className="text-md max-w-[600px] sm:max-w-4xl font-raleway text-muted-foreground sm:text-xl">
+            className="text-md max-w-[600px] sm:max-w-6xl font-raleway text-muted-foreground sm:text-xl">
             {description}
           </motion.p>
         </div>
