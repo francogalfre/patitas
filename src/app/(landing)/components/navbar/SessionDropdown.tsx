@@ -22,7 +22,7 @@ import { User } from "@/db/schema/user";
 
 import { motion } from "motion/react";
 
-const DropdownTrigger = motion(DropdownMenuTrigger)
+const DropdownTrigger = motion.create(DropdownMenuTrigger)
 
 export const SessionDropdown = ({ user }: { user: User }) => {
   const handleSignOut = () => {
@@ -32,15 +32,15 @@ export const SessionDropdown = ({ user }: { user: User }) => {
   return (
     <DropdownMenu>
       <DropdownTrigger
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring" }}
-        className="cursor-pointer bg-primary px-4 py-2 rounded-sm text-white"
+        className="cursor-pointer bg-primary px-6 py-2 text-white rounded-full"
         asChild
       >
         <p className="font-medium">{user.name}</p>
       </DropdownTrigger>
-      <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-1">
+      <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-2">
         <div className="flex items-center">
           {user.image && (
             <Image

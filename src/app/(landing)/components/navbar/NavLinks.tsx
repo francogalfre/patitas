@@ -25,14 +25,13 @@ const NAV_LINKS = [
 export const NavLinks = ({ pathname }: { pathname: string }) => {
   return (
     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-      <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 font-geist">
+      <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-6 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 font-geist">
         {NAV_LINKS.map((link, index) => (
           <motion.li 
-            whileHover={{ translateY: -2 }} 
+            whileHover={{ translateY: -1 }} 
             whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring" }}
+            transition={{ type: "spring", duration: 0.3 }}
             key={index} 
-            className={pathname == "/" ? "text-white" : ""}
           >
             <Link
               href={link.href}

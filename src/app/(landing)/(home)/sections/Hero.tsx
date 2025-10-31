@@ -10,18 +10,19 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 
 import { motion } from "motion/react";
 
-const MotionImage = motion(Image)
-const MotionLink = motion(Link)
+const MotionImage = motion.create(Image)
+const MotionLink = motion.create(Link)
 
 export const HeroSection = () => {
   return (
     <div 
-      className="relative w-full bg-cover bg-center bg-no-repeat rounded-4xl flex items-center justify-center bottom-14 z-0" 
-      style={{ backgroundImage: "url('/landing/hero-background.webp')", minHeight: "calc(100vh - 32px)",}}
+      className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center z-0" 
+      style={{ backgroundImage: "url('/landing/hero-background.webp')" }}
     > 
       <div className="flex w-full mx-auto z-10 text-center justify-center">
         <header className="space-y-6">
           <MotionImage 
+            priority={true} 
             src={"/patitas/logo1000.webp"} 
             width={100} height={100} 
             alt="Logo de Patitas" 
@@ -63,7 +64,7 @@ export const HeroSection = () => {
               <Link href={"/pets"}>
                 <Button
                   size={"lg"}
-                  className="text-white py-6 text-md rounded-full hover:bg-primary/80 transition-color"
+                  className="text-white py-6 text-md rounded-lg hover:bg-primary/80 transition-color"
                 >
                   Explorar Mascotas
                 </Button>
@@ -77,7 +78,7 @@ export const HeroSection = () => {
               <Button
                 size={"lg"}
                 variant="secondary"
-                className="text-white bg-secondary/90 py-6 rounded-full text-md hover:bg-secondary/80 transition-color"
+                className="text-white bg-secondary/90 py-6 rounded-lg text-md hover:bg-secondary/80 transition-color"
               >
                 Publicar nueva mascota
               </Button>
@@ -90,7 +91,7 @@ export const HeroSection = () => {
         initial={{ backdropFilter: "blur(20px)" }}
         animate={{ backdropFilter: "blur(0px)" }}
         transition={{ duration: 0.4, ease: "easeOut" }} 
-        className="absolute inset-0 bg-black/50 backdrop-brightness-90 rounded-4xl" />
+        className="absolute inset-0 bg-black/50 backdrop-brightness-90 h-screen"  />
     </div>
   );
 };

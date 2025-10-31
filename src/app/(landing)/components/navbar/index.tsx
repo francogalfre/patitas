@@ -25,9 +25,9 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", duration: 1.5, stiffness: 200 }}
-      className="relative w-full z-50 top-8 left-0 right-0"
+      className="fixed max-w-3xl backdrop-blur-xl w-full justify-self-center flex items-center z-50 top-6 left-0 right-0 bg-white/90 rounded-full border-1 border-gray-400 shadow-sm"
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-4">
+      <div className="flex flex-wrap w-full px-6 py-3 items-center justify-between">
         <NavLinks pathname={pathname} />
 
         <div className="flex md:order-2 space-x-3">

@@ -45,9 +45,9 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
-  
+
   var(--delay, 0ms);
- 
+
   @keyframes cell-ripple {
     0% {
       opacity: 0.4;
@@ -57,6 +57,29 @@
     }
     100% {
       opacity: 0.4;
+    }
+  }
+
+  --animate-marquee: marquee var(--duration) linear infinite;
+
+  --color-brand-foreground: var(----brand-foreground);
+
+  --color-brand: var(----brand);
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
     }
   }
 }
@@ -96,6 +119,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --brand: hsl(266 100% 50%);
+  --brand-foreground: hsl(270 100% 98%);
 }
 
 .dark {
@@ -134,6 +159,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --brand: hsl(266 70% 60%);
+  --brand-foreground: hsl(270 100% 98%);
 }
 
 @layer base {
