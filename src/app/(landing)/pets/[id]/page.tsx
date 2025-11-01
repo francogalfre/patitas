@@ -18,7 +18,7 @@ const PatitasMascotDetailsPage = async ({
   const owner = await getUserById(pet.owner_id)
 
   const whatsappLink = `https://wa.me/${pet.contact_phone}`;
-  const mailtoLink = `mailto:${pet.contact_email}?subject=Consulta sobre una mascota`;
+  const mailtoLink = `https://mail.google.com/mail/?view=cm&to=${pet.contact_email}`;
 
   return (
     <section className="min-h-screen py-12 antialiased">

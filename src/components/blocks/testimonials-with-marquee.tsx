@@ -35,7 +35,7 @@ export function TestimonialsSection({
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", duration: 1.5, delay: 0.1, stiffness: 200 }}
-            className="max-w-[720px] font-poppins text-3xl font-medium leading-tight sm:max-w-7xl sm:text-5xl sm:leading-tight tracking-tight">
+            className="max-w-[720px] font-poppins text-3xl font-medium leading-tight sm:max-w-5xl sm:text-5xl sm:leading-tight tracking-tight">
             {title}
           </motion.h2>
           <motion.p 
@@ -43,7 +43,7 @@ export function TestimonialsSection({
             whileInView={{ opacity: 1, y: 0, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", duration: 1.5, delay: 0.2, stiffness: 200}}
-            className="text-md max-w-[600px] sm:max-w-6xl font-raleway text-muted-foreground sm:text-xl">
+            className="text-md max-w-[600px] sm:max-w-5xl font-raleway text-muted-foreground sm:text-xl">
             {description}
           </motion.p>
         </div>
