@@ -32,7 +32,12 @@ const features = [
 export const FeaturesSection = () => {
   return (
     <div className='block'>
-        <Feature features={features} />
+        <Feature 
+          features={features} 
+          badge='¿Por qué elegir Patitas?'
+          title='Todo lo que necesitas para adoptar con confianza'
+          description='Facilitamos cada paso para que adoptes de forma simple, segura y responsable. Desde filtros inteligentes hasta el contacto con refugios, te guiamos para decidir mejor.'
+        />
     </div>
   )
 }

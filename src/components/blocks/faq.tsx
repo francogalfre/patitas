@@ -16,7 +16,7 @@ interface FAQSectionProps {
   faqs: Array<FaqItem>
 }
 
-export const Faq5 = ({
+export const Faq = ({
   badge = "FAQ",
   heading = "Common Questions & Answers",
   description = "Find out all the essential details about our platform and how it can serve your needs.",
@@ -69,7 +69,7 @@ export const Faq5 = ({
               viewport={{ once: true }}
               transition={{ type: "spring", duration: 1.5, delay: 0.4 * index, stiffness: 200 }}  
             >
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm font-serif bg-gray-200 text-lg text-primary">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-sm font-serif bg-primary text-lg text-white/80">
                 {index + 1}
               </span>
               <div>

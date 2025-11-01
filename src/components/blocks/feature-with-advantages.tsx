@@ -12,9 +12,12 @@ interface Feature {
 
 interface FeaturesSectionProps {
   features: Array<Feature>
+  badge: string,
+  title: string,
+  description: string
 }
 
-function Feature({ features }: FeaturesSectionProps) {
+function Feature({ features, badge, title, description }: FeaturesSectionProps) {
   return (
     <section className="w-full lg:py-16">
       <div className="container mx-auto">
@@ -26,7 +29,9 @@ function Feature({ features }: FeaturesSectionProps) {
             whileHover={{ scale: 1.02, rotate: 2 }}
             transition={{ type: "spring", duration: 1.5, delay: 0.1, stiffness: 200 }}
           >
-            <Badge className="text-md px-4 py-1 font-medium font-raleway bg-primary/70 mb-4">¿Por qué elegir Patitas?</Badge>
+            <Badge className="text-md px-4 py-1 font-medium font-raleway bg-primary/70 mb-4">
+              {badge}
+            </Badge>
           </motion.div>
           <div className="flex gap-4 flex-col">
             <motion.h2
@@ -34,17 +39,18 @@ function Feature({ features }: FeaturesSectionProps) {
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", duration: 1.5, delay: 0.2, stiffness: 200 }} 
-              className="font-poppins text-3xl font-medium tracking-tight sm:max-w-6xl sm:text-5xl leading-14">
-              Todo lo que necesitas para adoptar con confianza
+              className="font-poppins text-3xl font-medium tracking-tight sm:max-w-6xl sm:text-5xl leading-14"
+            >
+              {title}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: -10, x: -20 }}
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", duration: 1.5, delay: 0.3, stiffness: 200 }} 
-              className="text-md max-w-[600px] sm:max-w-6xl font-raleway text-muted-foreground sm:text-xl">
-              Facilitamos cada paso para que adoptes de forma simple, segura y responsable. 
-              Desde filtros inteligentes hasta el contacto con refugios, te guiamos para decidir mejor.
+              className="text-md max-w-[600px] sm:max-w-6xl font-raleway text-muted-foreground sm:text-xl"
+            >
+              {description}
             </motion.p>
           </div>
         </header>

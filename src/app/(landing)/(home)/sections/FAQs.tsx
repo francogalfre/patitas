@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Faq5 } from '@/components/blocks/faq-5'
+import { Faq } from '@/components/blocks/faq'
 
 const faqs = [
   {
@@ -27,7 +27,7 @@ const faqs = [
 
 export const FAQSection = () => {
   return (
-    <Faq5 
+    <Faq 
       badge="Preguntas Frecuentes" 
       heading="Todo lo que necesitas saber sobre Patitas" 
       description="Resolvemos las dudas más comunes sobre nuestro proceso de adopción, requisitos y cómo usar la plataforma." 
