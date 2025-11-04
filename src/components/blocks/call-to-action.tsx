@@ -5,6 +5,7 @@ import { MoveRight, Heart, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { motion } from "motion/react";
+import Link from "next/link";
 
 interface CallToActionSectionProps {
   title: string,
@@ -31,20 +32,24 @@ function CTA({ title, description }: CallToActionSectionProps) {
             </p>
           </div>
           <div className="flex flex-row gap-4">
-            <Button 
-              size={"lg"} 
-              variant="outline" 
-              className="py-6 gap-2 rounded-lg text-md font-raleway" 
-            >
-              Explorar Mascotas <Heart className="w-4 h-4" />
-            </Button>
-            <Button 
-              size={"lg"} 
-              variant="secondary"
-              className="text-white bg-secondary/90 py-6 gap-2 rounded-lg text-md hover:bg-secondary/80 transition-color font-raleway"
-            >
-              Publicar Mascota <Plus className="w-4 h-4" />
-            </Button>
+            <Link href={"/pets"}>
+              <Button 
+                size={"lg"} 
+                variant="outline" 
+                className="py-6 gap-2 rounded-lg text-md font-raleway" 
+              >
+                Explorar Mascotas <Heart className="w-4 h-4" />
+              </Button>
+            </Link>
+            <Link href={"/new-pet"}>
+              <Button 
+                size={"lg"} 
+                variant="secondary"
+                className="text-white bg-secondary/90 py-6 gap-2 rounded-lg text-md hover:bg-secondary/80 transition-color font-raleway"
+              >
+                Publicar Mascota <Plus className="w-4 h-4" />
+              </Button>           
+            </Link>
           </div>
         </motion.div>
       </div>

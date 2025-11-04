@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { fontVariables } from "@/styles/font";
 import "@/app/globals.css";
 
+import { AuthProvider } from "@/providers/AuthProvider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
@@ -31,12 +32,14 @@ export default async function RootLayout({
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
-        <NuqsAdapter>
-          <Navbar />
-          <Background />
-          <main>{children}</main>
-          <Footer />
-        </NuqsAdapter>
+        <AuthProvider>
+          <NuqsAdapter>
+            <Navbar />
+            <Background />
+            <main>{children}</main>
+            <Footer />
+          </NuqsAdapter>
+        </AuthProvider>
       </body>
     </html>
   );

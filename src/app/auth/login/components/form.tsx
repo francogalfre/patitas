@@ -57,7 +57,7 @@ const AuthLoginForm = () => {
           width={100}
           height={100}
         />
-        <h2 className="font-medium text-2xl pt-6">Bienvenido de nuevo </h2>
+        <h2 className="font-medium text-3xl font-serif pt-6">Bienvenido de nuevo </h2>
         <p className="text-gray-800">
           Vuelve a Patitas para conectar con nuestra comunidad y seguir el
           camino de la adopción responsable.

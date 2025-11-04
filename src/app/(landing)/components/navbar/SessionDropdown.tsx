@@ -24,10 +24,37 @@ import { motion } from "motion/react";
 
 const DropdownTrigger = motion.create(DropdownMenuTrigger)
 
+const base_navigation_items = [
+  {
+    text: "Subir una mascota",
+    href: "/new-pet",
+  },
+  {
+    text: "Mis publicaciones",
+    href: "/posts",
+  },
+];
+
 export const SessionDropdown = ({ user }: { user: User }) => {
   const handleSignOut = () => {
     authClient.signOut();
   };
+
+  const profileItem = {
+    text: "Mi Perfil",
+    href: `/profile/${user.id}`,
+  };
+
+  const supportItem = {
+    text: "Soporte",
+    href: "mailto:francogalfre.code@gmail.com",
+  };
+
+  const final_dropwdown_items = [
+    profileItem,
+    ...base_navigation_items,
+    supportItem,
+  ];
 
   return (
     <DropdownMenu>
@@ -62,24 +89,23 @@ export const SessionDropdown = ({ user }: { user: User }) => {
             </DropdownMenuLabel>
           </div>
         </div>
+
         {!user.emailVerified && (
           <p className="flex items-center gap-1 pt-2 text-red-500 text-sm font-raleway py-2 pl-2">
             <TriangleAlert className="size-4" /> Verifica tu correo electronico
           </p>
         )}
+
         <DropdownMenuSeparator className="bg-gray-300 mb-2" />
-        <DropdownMenuItem asChild className="transition-colors font-raleway">
-          <Link href={`/profiles/${user.id}`}>Mi Perfil</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild className="transition-colors font-raleway">
-          <Link href={`/new-pet`}>Subir una mascota</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild className="transition-colors font-raleway">
-          <Link href={`/`}>Mis mascotas</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="transition-colors font-raleway">
-          <a href="mailto:francogalfre.code@gmail.com">Soporte</a>
-        </DropdownMenuItem>
+
+        {
+          final_dropwdown_items.map((item, index) => (
+            <DropdownMenuItem asChild key={index} className="transition-colors font-raleway">
+              <Link href={item.href}>{item.text}</Link>
+            </DropdownMenuItem>
+          ))
+        }
+  
         <DropdownMenuItem
           className="transition-colors font-raleway"
           onClick={handleSignOut}

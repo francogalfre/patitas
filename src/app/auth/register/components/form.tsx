@@ -53,7 +53,7 @@ const AuthRegisterForm = () => {
           width={100}
           height={100}
         />
-        <h2 className="font-medium text-2xl pt-6">Crea tu cuenta</h2>
+        <h2 className="font-medium text-3xl font-serif pt-6">Crea tu cuenta</h2>
           Bienvenido a Patitas - Únete a nuestra comunidad de amantes de los
           animales para ayudar a quienes te necesitan
         <p className="text-gray-800">

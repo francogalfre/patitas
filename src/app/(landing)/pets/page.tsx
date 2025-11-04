@@ -8,7 +8,6 @@ import { HeaderSection } from "./sections/HeaderSection";
 
 import { parseAsString, useQueryState } from "nuqs";
 
-
 import { getAllPets } from "./actions/getPets";
 import { Pet } from "@/db/schema/pet";
 
