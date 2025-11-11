@@ -1,4 +1,4 @@
-import { CTA } from "@/components/blocks/call-to-action";
+import { CTA } from "../components/blocks/call-to-action";
 
 export const CallToActionSection = () => {
 	return (

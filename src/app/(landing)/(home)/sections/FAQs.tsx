@@ -1,4 +1,4 @@
-import { Faq } from "@/components/blocks/faq";
+import { Faq } from "../components/blocks/faq";
 
 const faqs = [
 	{

@@ -12,35 +12,35 @@ import { AuthProvider } from "@/providers/AuthProvider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
-  title: SEO_CONFIG.title,
-  description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
-  authors: SEO_CONFIG.author,
+	title: SEO_CONFIG.title,
+	description: SEO_CONFIG.description,
+	keywords: SEO_CONFIG.keywords,
+	authors: SEO_CONFIG.author,
 
-  icons: {
-    icon: "/favicon.ico",
-  },
+	icons: {
+		icon: "/favicon.ico",
+	},
 };
 
 export default async function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
-      >
-        <AuthProvider>
-          <NuqsAdapter>
-            <Navbar />
-            <Background />
-            <main>{children}</main>
-            <Footer />
-          </NuqsAdapter>
-        </AuthProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body
+				className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
+			>
+				<AuthProvider>
+					<NuqsAdapter>
+						<Navbar />
+						<Background />
+						<main>{children}</main>
+						<Footer />
+					</NuqsAdapter>
+				</AuthProvider>
+			</body>
+		</html>
+	);
 }

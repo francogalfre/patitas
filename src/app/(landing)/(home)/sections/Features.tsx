@@ -1,4 +1,4 @@
-import { Feature } from "@/components/blocks/feature-with-advantages";
+import { Feature } from "../components/blocks/feature-with-advantages";
 
 const features = [
 	{

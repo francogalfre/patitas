@@ -4,6 +4,7 @@ import { HeroSection } from "./sections/Hero";
 import { FeaturesSection } from "./sections/Features";
 import { FAQSection } from "./sections/FAQs";
 import { CallToActionSection } from "./sections/CallToAction";
+import { TestimonialsSection } from "./sections/Testimonials";
 
 export default function PatitasHomePage() {
 	return (
@@ -13,6 +14,8 @@ export default function PatitasHomePage() {
 			<SectionContainer classname="pt-12">
 				<FeaturesSection />
 			</SectionContainer>
+
+			<TestimonialsSection />
 
 			<SectionContainer>
 				<FAQSection />
