@@ -5,6 +5,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import SectionContainer from "../components/SectionContainer";
 
 import { HeaderSection } from "./sections/HeaderSection";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 
 import { parseAsString, useQueryState } from "nuqs";
 
@@ -43,20 +44,20 @@ const PatitasMascotsPage = () => {
     );
   }, [search, pets]);
 
-  console.log(pets)
-
   return (
-    <>
+    <main className="pt-48">
       <HeaderSection search={search} setSearch={setSearch} />
 
       <SectionContainer classname="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-10">
         {isLoading ? (
-          <h2>Cargando...</h2>
+          <div className="col-span-full flex items-center justify-center py-20">
+            <LoadingSpinner />
+          </div>
         ) : (
           <PetList filteredPets={filteredPets} />
         )}
       </SectionContainer>
-    </>
+    </main>
   );
 };
 
