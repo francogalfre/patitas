@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "motion/react";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,12 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const SuccessModal = () => {
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 50, type: "spring" }}
-			className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-		>
+		<div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
 			<div className="bg-white max-w-lg w-full mx-4 p-12 rounded-xl text-center space-y-6">
 				<Image
 					className="justify-self-center"
@@ -41,7 +32,7 @@ const SuccessModal = () => {
 					</Button>
 				</Link>
 			</div>
-		</motion.div>
+		</div>
 	);
 };
 

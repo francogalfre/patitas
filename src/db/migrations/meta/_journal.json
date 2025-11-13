@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1759181028690,
-      "tag": "0000_organic_gorgon",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1759181091068,
-      "tag": "0001_cloudy_omega_flight",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1759291155758,
-      "tag": "0002_exotic_ghost_rider",
+      "when": 1762982862049,
+      "tag": "0000_shiny_nuke",
       "breakpoints": true
     }
   ]

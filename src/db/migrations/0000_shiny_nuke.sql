@@ -1,4 +1,4 @@
-CREATE TYPE "public"."pet_age" AS ENUM('cachorro', 'joven', 'adulto', 'senior');--> statement-breakpoint
+CREATE TYPE "public"."pet_ages" AS ENUM('cachorro', 'joven', 'adulto', 'senior');--> statement-breakpoint
 CREATE TYPE "public"."pet_gender" AS ENUM('macho', 'hembra');--> statement-breakpoint
 CREATE TYPE "public"."pet_size" AS ENUM('pequeño', 'mediano', 'grande');--> statement-breakpoint
 CREATE TYPE "public"."pet_species" AS ENUM('perro', 'gato', 'conejo', 'ave', 'otro');--> statement-breakpoint
@@ -8,7 +8,7 @@ CREATE TABLE "pets" (
 	"name" text NOT NULL,
 	"species" "pet_species" NOT NULL,
 	"gender" "pet_gender" NOT NULL,
-	"age" "pet_age" NOT NULL,
+	"age" "pet_ages" NOT NULL,
 	"size" "pet_size" NOT NULL,
 	"description" text NOT NULL,
 	"good_with_kids" boolean DEFAULT false NOT NULL,

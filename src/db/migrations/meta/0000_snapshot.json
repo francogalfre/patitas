@@ -1,5 +1,5 @@
 {
-  "id": "1ab7d577-a8ef-4b3e-925d-ed7a96d2ae2f",
+  "id": "c5bcd241-f456-4295-b39f-28634556edcf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -42,7 +42,7 @@
         },
         "age": {
           "name": "age",
-          "type": "pet_age",
+          "type": "pet_ages",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
@@ -505,8 +505,8 @@
     }
   },
   "enums": {
-    "public.pet_age": {
-      "name": "pet_age",
+    "public.pet_ages": {
+      "name": "pet_ages",
       "schema": "public",
       "values": [
         "cachorro",
