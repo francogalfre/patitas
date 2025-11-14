@@ -9,6 +9,8 @@ import PhotosGrid from "./components/photos-grid";
 import OwnerInfo from "./components/owner-information";
 import Buttons from "./components/buttons";
 import SpecialCares from "./components/special-cares";
+import AdoptedBadge from "@/components/adopted-badge";
+import AttributesBadges from "./components/attributes-badges";
 
 const PatitasMascotDetailsPage = async ({
 	params,
@@ -34,10 +36,13 @@ const PatitasMascotDetailsPage = async ({
 					</div>
 
 					<div className="mt-6 space-y-6 sm:mt-8 lg:mt-0">
-						<div className="space-y-4">
+						{pet.is_adopted && <AdoptedBadge />}
+
+						<div className="space-y-3">
 							<h1 className="text-xl font-semibold tracking-tighter text-gray-900 sm:text-6xl dark:text-white">
 								{pet.name}
 							</h1>
+
 							<span className="text-xl font-medium flex items-center gap-2">
 								<MapPin size={18} />
 								{pet.location_city}
@@ -48,7 +53,7 @@ const PatitasMascotDetailsPage = async ({
 							{pet.description}
 						</p>
 
-						<div className="mt-4 text-lg font-raleway sm:flex sm:items-center sm:gap-10">
+						<div className="mb-12 text-lg font-raleway sm:flex sm:items-center sm:gap-10">
 							<p className="font-normal">
 								Especie:{" "}
 								<span className="capitalize font-medium">{pet.species}</span>
@@ -63,6 +68,8 @@ const PatitasMascotDetailsPage = async ({
 							</p>
 						</div>
 
+						<AttributesBadges {...pet} />
+
 						{!pet.is_adopted && (
 							<Buttons
 								isOwner={isOwner}
@@ -73,7 +80,7 @@ const PatitasMascotDetailsPage = async ({
 						)}
 
 						{pet.is_adopted && (
-							<p className="mb-6 text-gray-600 font-raleway text-pretty">
+							<p className="my-12 text-gray-600 font-raleway text-pretty">
 								¡Buenas noticias! {pet.name} ya está con su nueva familia, listo
 								para vivir una vida llena de mimos y aventuras.
 							</p>

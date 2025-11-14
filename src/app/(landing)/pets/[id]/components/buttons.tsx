@@ -53,11 +53,11 @@ const Buttons = ({ isOwner, mail, whatsapp, petId }: ButtonsProps) => {
 	};
 
 	return (
-		<div className="mt-6 sm:mt-8 sm:flex sm:items-center sm:gap-4">
+		<div className="mt-6 sm:mt-12 flex flex-col sm:flex-row sm:items-center sm:gap-4">
 			<Button
 				onClick={handleSetPetAdopted}
 				size="lg"
-				className="text-lg px-12 py-6 cursor-pointer"
+				className="text-lg px-12 py-6 cursor-pointer w-full sm:flex-1"
 				disabled={isAdopting}
 			>
 				{isAdopting ? "Marcando..." : "Marcar como adoptado"}
@@ -68,7 +68,7 @@ const Buttons = ({ isOwner, mail, whatsapp, petId }: ButtonsProps) => {
 				disabled={isDeleting}
 				variant={"secondary"}
 				size={"lg"}
-				className="text-lg text-white px-12 py-6 w-full cursor-pointer"
+				className="text-lg text-white px-12 py-6 w-full cursor-pointer sm:flex-1"
 			>
 				{isDeleting ? "Eliminando..." : "Eliminar mascota"}
 			</Button>

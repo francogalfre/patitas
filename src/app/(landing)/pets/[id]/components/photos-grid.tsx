@@ -28,7 +28,7 @@ const PhotosGrid = ({
 						<Image
 							onClick={() => setPrincipalImage(photos[index])}
 							key={photo + index}
-							className="w-full rounded-lg size-32 object-cover cursor-pointer"
+							className="w-full max-h-60 h-full rounded-lg size-32 object-cover cursor-pointer"
 							src={photo}
 							alt={`${name} imagen ${index + 1}`}
 							width={300}
