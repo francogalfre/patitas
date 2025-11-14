@@ -3,8 +3,6 @@ import { getPetById } from "../actions/getPets";
 import { getUserById } from "@/db/queries/getUserById";
 import { getMailLink, getWhatsappLink } from "./utils/contact-links";
 
-import { MapPin } from "lucide-react";
-
 import PhotosGrid from "./components/photos-grid";
 import OwnerInfo from "./components/owner-information";
 import Buttons from "./components/buttons";
@@ -12,17 +10,32 @@ import SpecialCares from "./components/special-cares";
 import AdoptedBadge from "@/components/adopted-badge";
 import AttributesBadges from "./components/attributes-badges";
 
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+
+import AdoptedMessage from "./components/adopted-message";
+import PetHeader from "./components/pet-header";
+import PetBasicInfo from "./components/pet-basic-info";
+
 const PatitasMascotDetailsPage = async ({
 	params,
 }: {
-	params: Promise<{ id: string }>;
+	params: { id: string };
 }) => {
-	const { id } = await params;
+	const { id } = params;
 
 	const pet = await getPetById({ id });
 	const owner = await getUserById(pet.owner_id);
 
-	const isOwner = pet.owner_id === owner?.id;
+	if (!owner) {
+		throw new Error("Owner not found");
+	}
+
+	const session = await auth.api.getSession({
+		headers: await headers(),
+	});
+
+	const isOwner = pet.owner_id === session?.session.id;
 
 	const whatsappLink = getWhatsappLink(pet.contact_phone, pet.name);
 	const mailtoLink = getMailLink(pet.contact_email);
@@ -38,35 +51,12 @@ const PatitasMascotDetailsPage = async ({
 					<div className="mt-6 space-y-6 sm:mt-8 lg:mt-0">
 						{pet.is_adopted && <AdoptedBadge />}
 
-						<div className="space-y-3">
-							<h1 className="text-xl font-semibold tracking-tighter text-gray-900 sm:text-6xl dark:text-white">
-								{pet.name}
-							</h1>
-
-							<span className="text-xl font-medium flex items-center gap-2">
-								<MapPin size={18} />
-								{pet.location_city}
-							</span>
-						</div>
-
+						<PetHeader pet={pet} />
 						<p className="mb-6 text-gray-600 font-raleway text-pretty">
 							{pet.description}
 						</p>
 
-						<div className="mb-12 text-lg font-raleway sm:flex sm:items-center sm:gap-10">
-							<p className="font-normal">
-								Especie:{" "}
-								<span className="capitalize font-medium">{pet.species}</span>
-							</p>
-							<p className="font-normal">
-								Tamaño:{" "}
-								<span className="capitalize font-medium">{pet.size}</span>
-							</p>
-							<p className="font-normal">
-								Género:{" "}
-								<span className="capitalize font-medoum">{pet.gender}</span>
-							</p>
-						</div>
+						<PetBasicInfo pet={pet} />
 
 						<AttributesBadges {...pet} />
 
@@ -79,12 +69,7 @@ const PatitasMascotDetailsPage = async ({
 							/>
 						)}
 
-						{pet.is_adopted && (
-							<p className="my-12 text-gray-600 font-raleway text-pretty">
-								¡Buenas noticias! {pet.name} ya está con su nueva familia, listo
-								para vivir una vida llena de mimos y aventuras.
-							</p>
-						)}
+						{pet.is_adopted && <AdoptedMessage name={pet.name} />}
 
 						<OwnerInfo owner={owner} />
 
