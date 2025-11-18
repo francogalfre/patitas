@@ -7,9 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
 	PetRegistrationFormSchema,
-	PetRegistrationFormType,
+	type PetRegistrationFormType,
 	stepSchema,
-	StepKey,
+	type StepKey,
 	MAX_STEP,
 	MIN_STEP,
 } from "./schema";

@@ -10,7 +10,7 @@ import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { parseAsString, useQueryState } from "nuqs";
 
 import { getAllPets } from "./actions/getPets";
-import { Pet } from "@/db/schema/pet";
+import type { Pet } from "@/db/schema/pet";
 
 import PetList from "./sections/pet-list";
 
@@ -38,7 +38,7 @@ const PatitasMascotsPage = () => {
 		const searchLower = search.toLowerCase();
 
 		return pets.filter((pet) =>
-			[pet.name, pet.species, pet.location_city, pet.species].some((f) =>
+			[pet.name, pet.species, pet.location_city].some((f) =>
 				f?.toLowerCase().includes(searchLower),
 			),
 		);

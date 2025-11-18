@@ -11,6 +11,9 @@ import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { PetCard } from "@/components/pet-card";
+import PetsList from "./components/pets-list";
+import Biography from "./components/biography";
 
 const PatitasProfilePage = async ({
 	params,
@@ -77,28 +80,12 @@ const PatitasProfilePage = async ({
 					)}
 				</header>
 				<hr />
-				<p>{user?.bio}</p>
+
+				<Biography isOwner={isOwner} user={user} />
+
 				<hr />
 
-				<section>
-					<h3 className="text-xl font-medium">
-						{isOwner ? "Tus mascotas" : "Mascotas publicadas"}
-					</h3>
-					<div className="w-full flex flex-wrap gap-6">
-						{pets.length <= 0 ? (
-							<div>
-								<h2>El usuario no tiene mascotas publicadas</h2>
-							</div>
-						) : (
-							pets.map((pet) => (
-								<div key={pet.id}>
-									<img src={pet.photos[0]} className="size-32" alt="" />
-									<h3>{pet.name}</h3>
-								</div>
-							))
-						)}
-					</div>
-				</section>
+				<PetsList isOwner={isOwner} pets={pets} />
 			</div>
 		</main>
 	);

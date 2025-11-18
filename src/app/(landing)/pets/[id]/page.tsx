@@ -35,7 +35,9 @@ const PatitasMascotDetailsPage = async ({
 		headers: await headers(),
 	});
 
-	const isOwner = pet.owner_id === session?.session.id;
+	console.log(session);
+
+	const isOwner = pet.owner_id === session?.user.id;
 
 	const whatsappLink = getWhatsappLink(pet.contact_phone, pet.name);
 	const mailtoLink = getMailLink(pet.contact_email);

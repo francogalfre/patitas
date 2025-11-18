@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FormTextInput } from "@/components/text-input";
 import { FormSelectInput } from "@/components/select-input";
 
-import {
+import type {
 	UseFormRegister,
 	FieldError,
 	FieldErrors,
@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { validAge, validGender, validSize, validSpecies } from "../../petEnums";
 
-import { PetRegistrationFormType } from "../../schema";
+import type { PetRegistrationFormType } from "../../schema";
 
 interface CreatePetStep1FormProps {
 	errors: FieldErrors<PetRegistrationFormType>;
