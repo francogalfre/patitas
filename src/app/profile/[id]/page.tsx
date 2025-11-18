@@ -1,15 +1,14 @@
-import { ArrowLeft, CircleCheck, PencilLine } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { headers } from "next/headers";
-import Image from "next/image";
+
 import Link from "next/link";
-import { PetCard } from "@/components/pet-card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+
 import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
 import { getUserById } from "@/db/queries/getUserById";
 import { auth } from "@/lib/auth";
 import Biography from "./components/biography";
 import PetsList from "./components/pets-list";
+import ProfileHeader from "./components/profile-header";
 
 const PatitasProfilePage = async ({
 	params,
@@ -41,40 +40,9 @@ const PatitasProfilePage = async ({
 					<ArrowLeft size={18} />
 					Volver al incio
 				</Link>
-				<header className="mx-auto flex items-center justify-between">
-					<div className="flex items-center gap-8">
-						<Image
-							src={user?.image}
-							width={160}
-							height={160}
-							alt={`Avatar del usuario ${user?.name}`}
-							className="rounded-full border-1 transition-transform hover:scale-105 hover:rotate-3"
-						/>
-						<div>
-							{user?.is_shelter && (
-								<Badge className="mb-4 py-1 text-sm flex items-center gap-2">
-									<CircleCheck className="size-4" />
-									Refugio Verificado
-								</Badge>
-							)}
-							<h2 className="text-4xl font-semibold font-poppins">
-								{user?.name}
-							</h2>
-							<p
-								className={`text-lg font-medium text-gray-600 font-raleway ${!user.emailVerified && "text-red-500"}`}
-							>
-								{user?.email}
-							</p>
-						</div>
-					</div>
 
-					{isOwner && (
-						<Button className="flex items-center gap-2 text-md">
-							<PencilLine className="size-4" />
-							Editar Perfil
-						</Button>
-					)}
-				</header>
+				<ProfileHeader isOwner={isOwner} user={user} />
+
 				<hr />
 
 				<Biography isOwner={isOwner} user={user} />

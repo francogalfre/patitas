@@ -1,13 +1,10 @@
 "use client";
 
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-import { Eye, EyeOff } from "lucide-react";
-
-import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 interface FormTextInputProps {
 	label?: string;
@@ -16,6 +13,7 @@ interface FormTextInputProps {
 	placeholder?: string;
 	error: FieldError;
 	isRequired?: boolean;
+	defaultValue?: string;
 }
 
 export const FormTextInput = ({
@@ -25,6 +23,7 @@ export const FormTextInput = ({
 	placeholder,
 	error,
 	isRequired = false,
+	defaultValue,
 }: FormTextInputProps) => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -45,6 +44,7 @@ export const FormTextInput = ({
 					className={`h-12 border-gray-400 ${error ? "border-red-500" : ""}`}
 					placeholder={placeholder}
 					required={isRequired}
+					defaultValue={defaultValue}
 				/>
 			) : (
 				<div className="relative">
