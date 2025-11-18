@@ -1,19 +1,15 @@
-import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
-import { getUserById } from "@/db/queries/getUserById";
-
+import { ArrowLeft, CircleCheck, PencilLine } from "lucide-react";
 import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
-
-import { CircleCheck, PencilLine, ArrowLeft } from "lucide-react";
-
 import Image from "next/image";
 import Link from "next/link";
-
+import { PetCard } from "@/components/pet-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { PetCard } from "@/components/pet-card";
-import PetsList from "./components/pets-list";
+import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
+import { getUserById } from "@/db/queries/getUserById";
+import { auth } from "@/lib/auth";
 import Biography from "./components/biography";
+import PetsList from "./components/pets-list";
 
 const PatitasProfilePage = async ({
 	params,
@@ -36,7 +32,7 @@ const PatitasProfilePage = async ({
 	const isOwner = session?.session?.userId === user.id;
 
 	return (
-		<main className="min-h-screen mt-20 w-full">
+		<main className="min-h-screen my-20 w-full">
 			<div className="max-w-4xl mx-auto px-6 py-8 bg-white rounded-xl space-y-8">
 				<Link
 					href={"/"}
