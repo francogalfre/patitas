@@ -1,14 +1,17 @@
-import React from "react";
+import GuidesPageHeader from "./components/header";
+import GuidesPostList from "./components/post-list";
 
 const PatitasGuidesPage = () => {
 	return (
-		<div>
-			<h3>Pagina de Guias</h3>
-			<p>
-				En esta pagina van a encontrar articulos/guias sobre la adopcion (tips
-				para cuidar a tu mascota)
-			</p>
-		</div>
+		<main className="py-48">
+			<div className="container mx-auto flex flex-col items-center gap-16">
+				<GuidesPageHeader />
+
+				<section className="max-w-5xl w-full mx-auto px-4">
+					<GuidesPostList />
+				</section>
+			</div>
+		</main>
 	);
 };
 

@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
-
+import { parseAsString, useQueryState } from "nuqs";
+import { useEffect, useMemo, useState } from "react";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import type { Pet } from "@/db/schema/pet";
 import SectionContainer from "../components/SectionContainer";
 
-import { HeaderSection } from "./sections/header-section";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
-
-import { parseAsString, useQueryState } from "nuqs";
-
 import { getAllPets } from "./actions/getPets";
-import type { Pet } from "@/db/schema/pet";
+import { HeaderSection } from "./sections/header-section";
 
 import PetList from "./sections/pet-list";
 

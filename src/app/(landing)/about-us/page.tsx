@@ -1,13 +1,11 @@
-import SectionContainer from "../components/SectionContainer";
-
-import { Button } from "@/components/ui/button";
+import { Heart, Home, Sparkles, Users } from "lucide-react";
 import Link from "next/link";
-
-import { Heart, Users, Home, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import SectionContainer from "../components/SectionContainer";
 
 const PatitasAboutPage = () => {
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen pt-48">
 			<section className="relative overflow-hidden min-h-screen px-6 pt-10 text-black">
 				<SectionContainer>
 					<div className="grid gap-12 md:grid-cols-2 md:items-center">

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { SEO_CONFIG } from "@/constants/seo";
-
-import Navbar from "./components/navbar";
+import { fontVariables } from "@/styles/font";
 import Background from "./components/Background";
 import Footer from "./components/Footer";
-
-import { fontVariables } from "@/styles/font";
+import Navbar from "./components/navbar";
 import "@/app/globals.css";
 
-import { AuthProvider } from "@/providers/AuthProvider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { AuthProvider } from "@/providers/AuthProvider";
 
 export const metadata: Metadata = {
 	title: SEO_CONFIG.title,
