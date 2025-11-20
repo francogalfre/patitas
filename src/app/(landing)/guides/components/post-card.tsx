@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,8 +24,8 @@ const GuidesPostCard = ({ post }: { post: Post }) => {
 	return (
 		<Card className="grid grid-rows-[auto_auto_1fr_auto] shadow-none border-border h-full rounded-xl">
 			<div className="aspect-[4/3] w-full overflow-hidden">
-				<a
-					href={post.url}
+				<Link
+					href={`guides/${post.slug}`}
 					className="transition-opacity duration-300 fade-in hover:opacity-80"
 				>
 					<Image
@@ -34,7 +35,7 @@ const GuidesPostCard = ({ post }: { post: Post }) => {
 						alt={post.title}
 						className="h-full w-full object-cover object-center rounded-t-xl"
 					/>
-				</a>
+				</Link>
 			</div>
 			<CardHeader className="pb-2">
 				<Badge
