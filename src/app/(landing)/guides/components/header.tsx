@@ -17,7 +17,7 @@ function GuidesPageHeader() {
 					felicidad y el bienestar de tu compañero.
 				</p>
 			</BlurFade>
-			<BlurFade delay={0.6}>
+			<BlurFade delay={0.8}>
 				<Button className="w-full sm:w-auto" asChild>
 					<a href={"/adopcion"} rel="noopener">
 						Ver Mascotas en Adopción

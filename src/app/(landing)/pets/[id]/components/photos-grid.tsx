@@ -15,6 +15,7 @@ const PhotosGrid = ({
 	return (
 		<div className="mx-auto space-y-4">
 			<Image
+				loading="eager"
 				className="w-full rounded-lg size-96 object-cover"
 				src={principalImage}
 				alt={`${name} imagen principal`}
@@ -26,6 +27,7 @@ const PhotosGrid = ({
 				<div className="flex w-full justify-between gap-4">
 					{photos.map((photo, index) => (
 						<Image
+							loading="eager"
 							onClick={() => setPrincipalImage(photos[index])}
 							key={photo + index}
 							className="w-full max-h-60 h-full rounded-lg size-32 object-cover cursor-pointer"

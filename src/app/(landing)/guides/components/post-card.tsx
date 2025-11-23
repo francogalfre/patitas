@@ -25,7 +25,7 @@ const GuidesPostCard = ({ post }: { post: Post }) => {
 		<Card className="grid grid-rows-[auto_auto_1fr_auto] shadow-none border-border h-full rounded-xl">
 			<div className="aspect-[4/3] w-full overflow-hidden">
 				<Link
-					href={`guides/${post.slug}`}
+					href={post.url}
 					className="transition-opacity duration-300 fade-in hover:opacity-80"
 				>
 					<Image

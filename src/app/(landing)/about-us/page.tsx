@@ -1,7 +1,7 @@
 import { Heart, Home, Sparkles, Users } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import SectionContainer from "../components/SectionContainer";
+import SectionContainer from "../components/section-container";
 
 const PatitasAboutPage = () => {
 	return (

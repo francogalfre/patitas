@@ -1,28 +1,24 @@
-import { getPetById } from "../actions/getPets";
-
-import { getUserById } from "@/db/queries/getUserById";
-import { getMailLink, getWhatsappLink } from "./utils/contact-links";
-
-import PhotosGrid from "./components/photos-grid";
-import OwnerInfo from "./components/owner-information";
-import Buttons from "./components/buttons";
-import SpecialCares from "./components/special-cares";
-import AdoptedBadge from "@/components/adopted-badge";
-import AttributesBadges from "./components/attributes-badges";
-
-import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-
+import AdoptedBadge from "@/components/adopted-badge";
+import { getUserById } from "@/db/queries/getUserById";
+import { auth } from "@/lib/auth";
+import { getPetById } from "../actions/getPets";
 import AdoptedMessage from "./components/adopted-message";
-import PetHeader from "./components/pet-header";
+import AttributesBadges from "./components/attributes-badges";
+import Buttons from "./components/buttons";
+import OwnerInfo from "./components/owner-information";
 import PetBasicInfo from "./components/pet-basic-info";
+import PetHeader from "./components/pet-header";
+import PhotosGrid from "./components/photos-grid";
+import SpecialCares from "./components/special-cares";
+import { getMailLink, getWhatsappLink } from "./utils/contact-links";
 
 const PatitasMascotDetailsPage = async ({
 	params,
 }: {
 	params: { id: string };
 }) => {
-	const { id } = params;
+	const { id } = await params;
 
 	const pet = await getPetById({ id });
 	const owner = await getUserById(pet.owner_id);
@@ -34,8 +30,6 @@ const PatitasMascotDetailsPage = async ({
 	const session = await auth.api.getSession({
 		headers: await headers(),
 	});
-
-	console.log(session);
 
 	const isOwner = pet.owner_id === session?.user.id;
 

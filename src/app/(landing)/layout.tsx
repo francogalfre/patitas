@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { SEO_CONFIG } from "@/constants/seo";
 import { fontVariables } from "@/styles/font";
-import Background from "./components/Background";
-import Footer from "./components/Footer";
+import Background from "./components/background";
+import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "@/app/globals.css";
 
@@ -26,7 +26,7 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html data-scroll-behaviour="smooth" lang="en">
 			<body
 				className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
 			>

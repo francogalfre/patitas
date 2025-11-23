@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"slug": "cinco-claves-alimentacion-canina",
-		"url": "/guias/cinco-claves-alimentacion-canina",
+		"url": "/guides/cinco-claves-alimentacion-canina",
 		"image": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?q=80&w=1280&auto=format&fit=crop",
 		"title": "5 Claves para la Nutrición Canina",
 		"summary": "Descubre los 5 pilares esenciales para una dieta balanceada en tu perro en todas sus etapas de vida.",
@@ -11,7 +11,7 @@
 	{
 		"id": 2,
 		"slug": "bano-gatos-sin-estres",
-		"url": "/guias/bano-gatos-sin-estres",
+		"url": "/guides/bano-gatos-sin-estres",
 		"image": "https://images.unsplash.com/photo-1547565527-389ccd19e85b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"title": "Bañar Gatos: Guía sin Estrés",
 		"summary": "Consejos clave para preparar el ambiente, evitar pánico y realizar el baño de tu gato de forma segura.",
@@ -20,7 +20,7 @@
 	{
 		"id": 3,
 		"slug": "transicion-alimento-mascota",
-		"url": "/guias/transicion-alimento-mascota",
+		"url": "/guides/transicion-alimento-mascota",
 		"image": "https://images.unsplash.com/photo-1676193866128-03a926df76ef?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"title": "Transición de Alimentos (Regla de 7 Días)",
 		"summary": "Evita el malestar digestivo. Sigue el 'Plan de 7 Días' para cambiar la comida de tu mascota correctamente.",
@@ -29,8 +29,8 @@
 	{
 		"id": 4,
 		"slug": "socializacion-cachorro",
-		"url": "/guias/socializacion-cachorro",
-		"image": "https://images.unsplash.com/photo-1595818415886-4e6215a658f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		"url": "/guides/socializacion-cachorro",
+		"image": "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"title": "Socialización de Cachorros (3 a 16 Semanas)",
 		"summary": "La ventana crítica: guía sobre la exposición positiva a entornos, personas y perros para un temperamento equilibrado.",
 		"category": "Comportamiento Canino"
@@ -38,7 +38,7 @@
 	{
 		"id": 5,
 		"slug": "enriquecimiento-ambiental-gatos",
-		"url": "/guias/enriquecimiento-ambiental-gatos",
+		"url": "/guides/enriquecimiento-ambiental-gatos",
 		"image": "https://images.unsplash.com/photo-1690335466263-35e97fb80499?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"title": "Enriquecimiento para Gatos de Interior",
 		"summary": "El mapa del gato feliz: cómo usar la verticalidad, puzles de comida y juegos para combatir el aburrimiento y el estrés.",
@@ -46,8 +46,8 @@
 	},
 	{
 		"id": 6,
-		"slug": "senales-dolor-mascota",
-		"url": "/guias/senales-dolor-mascota",
+		"slug": "senales-dolor-mascotas",
+		"url": "/guides/senales-dolor-mascotas",
 		"image": "https://images.unsplash.com/photo-1599442996649-9aaa85137482?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"title": "7 Señales Sutiles de Dolor en Mascotas",
 		"summary": "Aprende a reconocer el aislamiento, la agresividad o el lamido excesivo para detectar el dolor en perros y gatos a tiempo.",

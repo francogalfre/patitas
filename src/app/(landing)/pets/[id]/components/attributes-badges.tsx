@@ -54,11 +54,12 @@ const AttributesBadges = ({
 				.filter((badge) => badge.condition)
 				.map((badge) => (
 					<Image
+						className="size-24"
 						key={badge.key}
 						src={badge.src}
 						alt={badge.alt}
-						width={92}
-						height={92}
+						width={72}
+						height={72}
 					/>
 				))}
 		</div>

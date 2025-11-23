@@ -6,7 +6,7 @@ const GuidesPostList = () => {
 	return (
 		<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 			{posts.map((post, index) => (
-				<BlurFade delay={0.8} duration={0.8 * index} inView key={post.id}>
+				<BlurFade delay={index * 0.2} inView key={post.id}>
 					<GuidesPostCard post={post} />
 				</BlurFade>
 			))}

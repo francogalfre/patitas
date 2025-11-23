@@ -4,7 +4,7 @@ import { parseAsString, useQueryState } from "nuqs";
 import { useEffect, useMemo, useState } from "react";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import type { Pet } from "@/db/schema/pet";
-import SectionContainer from "../components/SectionContainer";
+import SectionContainer from "../components/section-container";
 
 import { getAllPets } from "./actions/getPets";
 import { HeaderSection } from "./sections/header-section";

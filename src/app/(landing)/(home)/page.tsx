@@ -1,4 +1,4 @@
-import SectionContainer from "../components/SectionContainer";
+import SectionContainer from "../components/section-container";
 import { CallToActionSection } from "./sections/CallToAction";
 import { FAQSection } from "./sections/FAQs";
 import { FeaturesSection } from "./sections/Features";
