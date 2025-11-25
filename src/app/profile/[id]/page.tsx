@@ -1,13 +1,15 @@
 import { ArrowLeft } from "lucide-react";
 import { headers } from "next/headers";
-
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
 import { getUserById } from "@/db/queries/getUserById";
 import { auth } from "@/lib/auth";
+
 import Biography from "./components/biography";
 import PetsList from "./components/pets-list";
+
 import ProfileHeader from "./components/profile-header";
 
 const PatitasProfilePage = async ({
@@ -20,7 +22,7 @@ const PatitasProfilePage = async ({
 	const user = await getUserById(id);
 
 	if (!user) {
-		return <h2>Usuario no encontrado</h2>;
+		return notFound();
 	}
 
 	const pets = await getPetsByOwnerId(user.id);

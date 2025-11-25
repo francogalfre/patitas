@@ -1,8 +1,12 @@
 import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+
 import AdoptedBadge from "@/components/adopted-badge";
+
 import { getUserById } from "@/db/queries/getUserById";
 import { auth } from "@/lib/auth";
 import { getPetById } from "../actions/getPets";
+
 import AdoptedMessage from "./components/adopted-message";
 import AttributesBadges from "./components/attributes-badges";
 import Buttons from "./components/buttons";
@@ -11,6 +15,7 @@ import PetBasicInfo from "./components/pet-basic-info";
 import PetHeader from "./components/pet-header";
 import PhotosGrid from "./components/photos-grid";
 import SpecialCares from "./components/special-cares";
+
 import { getMailLink, getWhatsappLink } from "./utils/contact-links";
 
 const PatitasMascotDetailsPage = async ({
@@ -21,10 +26,15 @@ const PatitasMascotDetailsPage = async ({
 	const { id } = await params;
 
 	const pet = await getPetById({ id });
+
+	if (!pet) {
+		return notFound();
+	}
+
 	const owner = await getUserById(pet.owner_id);
 
 	if (!owner) {
-		throw new Error("Owner not found");
+		return notFound();
 	}
 
 	const session = await auth.api.getSession({
@@ -56,14 +66,13 @@ const PatitasMascotDetailsPage = async ({
 
 						<AttributesBadges {...pet} />
 
-						{!pet.is_adopted && (
-							<Buttons
-								isOwner={isOwner}
-								mail={mailtoLink}
-								whatsapp={whatsappLink}
-								petId={pet.id}
-							/>
-						)}
+						<Buttons
+							isOwner={isOwner}
+							isAdopted={pet.is_adopted}
+							mail={mailtoLink}
+							whatsapp={whatsappLink}
+							petId={pet.id}
+						/>
 
 						{pet.is_adopted && <AdoptedMessage name={pet.name} />}
 

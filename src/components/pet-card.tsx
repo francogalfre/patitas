@@ -1,8 +1,8 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import * as React from "react";
 import AdoptedBadge from "@/components/adopted-badge";
+import { cn } from "@/lib/utils";
 
 interface PetCardProps extends React.HTMLAttributes<HTMLDivElement> {
 	id: string;

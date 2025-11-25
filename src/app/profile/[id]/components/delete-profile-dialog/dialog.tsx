@@ -37,7 +37,7 @@ const DeleteProfileDialog = ({ user }: { user: User }) => {
 					<Button asChild>
 						<Button
 							variant="destructive"
-							className="flex items-center gap-2 w-full text-md bg-red-500 hover:bg-red-600 duration-200"
+							className="flex items-center gap-2 w-full text-md bg-red-400 hover:bg-red-500 duration-200"
 						>
 							<Trash className="size-4" />
 							Eliminar Cuenta

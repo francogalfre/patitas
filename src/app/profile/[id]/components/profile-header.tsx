@@ -20,7 +20,7 @@ const ProfileHeader = ({ user, isOwner }: ProfileHeaderProps) => {
 					width={160}
 					height={160}
 					alt={`Avatar del usuario ${user?.name}`}
-					className="rounded-full border-1 transition-transform hover:scale-105 hover:rotate-3"
+					className="rounded-full border-1 duration-300 transition-transform hover:scale-105 hover:rotate-3"
 					loading="eager"
 				/>
 

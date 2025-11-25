@@ -18,9 +18,7 @@ export default function RootLayout({
 			<body
 				className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
 			>
-				<>
-					<main className="">{children}</main>
-				</>
+				<main className="">{children}</main>
 			</body>
 		</html>
 	);

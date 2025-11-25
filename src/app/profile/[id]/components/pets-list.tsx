@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PetCard } from "@/components/pet-card";
 import type { Pet } from "@/db/schema/pet";
 
@@ -14,10 +15,22 @@ const PetsList = ({ isOwner, pets }: PetsListProps) => {
 			</h3>
 			<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				{pets.length <= 0 ? (
-					<div className="col-span-full flex justify-center items-center">
-						<h2 className="text-center text-lg font-raleway">
-							El usuario no tiene mascotas publicadas
-						</h2>
+					<div className="col-span-full flex flex-col gap-4 justify-center items-center">
+						<Image
+							src="/sad-dog-illustration.webp"
+							width={120}
+							height={120}
+							alt="Sad Dog Illustration"
+						/>
+						<div className="max-w-lg w-full">
+							<h2 className="text-center text-2xl font-semibold font-raleway">
+								Sin mascotas publicadas
+							</h2>
+							<p className="text-center text-md text-gray-600 mt-2">
+								No hay mascotas por ahora. Cuando el usuario publique una
+								aparecerán aquí.
+							</p>
+						</div>
 					</div>
 				) : (
 					pets.map((pet) => (
