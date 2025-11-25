@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
 import type { User } from "@/db/schema/user";
+import DeleteProfileDialog from "./delete-profile-dialog/dialog";
 import EditProfileDialog from "./edit-profile-dialog/dialog";
 
 interface ProfileHeaderProps {
@@ -20,6 +21,7 @@ const ProfileHeader = ({ user, isOwner }: ProfileHeaderProps) => {
 					height={160}
 					alt={`Avatar del usuario ${user?.name}`}
 					className="rounded-full border-1 transition-transform hover:scale-105 hover:rotate-3"
+					loading="eager"
 				/>
 
 				<div>
@@ -38,7 +40,12 @@ const ProfileHeader = ({ user, isOwner }: ProfileHeaderProps) => {
 				</div>
 			</div>
 
-			{isOwner && <EditProfileDialog user={user} />}
+			{isOwner && (
+				<div className="space-y-3">
+					<EditProfileDialog user={user} />
+					<DeleteProfileDialog user={user} />
+				</div>
+			)}
 		</header>
 	);
 };

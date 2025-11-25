@@ -21,11 +21,9 @@ const EditProfileDialog = ({ user }: { user: User }) => {
 		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<form>
 				<DialogTrigger asChild>
-					<Button asChild>
-						<Button className="flex items-center gap-2 text-md">
-							<PencilLine className="size-4" />
-							Editar Perfil
-						</Button>
+					<Button className="flex items-center gap-2 text-md duration-200 w-full">
+						<PencilLine className="size-4" />
+						Editar Perfil
 					</Button>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[425px] lg:max-w-[540px] space-y-4">

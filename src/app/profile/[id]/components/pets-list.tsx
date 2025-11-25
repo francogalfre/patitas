@@ -14,8 +14,10 @@ const PetsList = ({ isOwner, pets }: PetsListProps) => {
 			</h3>
 			<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				{pets.length <= 0 ? (
-					<div>
-						<h2>El usuario no tiene mascotas publicadas</h2>
+					<div className="col-span-full flex justify-center items-center">
+						<h2 className="text-center text-lg font-raleway">
+							El usuario no tiene mascotas publicadas
+						</h2>
 					</div>
 				) : (
 					pets.map((pet) => (

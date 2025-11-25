@@ -56,7 +56,7 @@ const EditProfileDialogForm = ({
 			<DialogFooter>
 				<DialogClose asChild>
 					<Button variant="outline" size={"lg"} className="text-md">
-						Cancel
+						Cancelar
 					</Button>
 				</DialogClose>
 				<Button
@@ -65,7 +65,7 @@ const EditProfileDialogForm = ({
 					className="text-md"
 					disabled={isSubmitting || isLoading}
 				>
-					Save changes
+					Guardar cambios
 				</Button>
 			</DialogFooter>
 		</form>
