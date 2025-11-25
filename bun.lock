@@ -16,7 +16,6 @@
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-slot": "^1.2.4",
         "@radix-ui/react-switch": "^1.2.6",
-        "@react-email/render": "^1.2.3",
         "@supabase/supabase-js": "^2.76.0",
         "@tailwindcss/typography": "^0.5.19",
         "@types/mdx": "^2.0.13",
