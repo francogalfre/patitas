@@ -25,6 +25,8 @@ const getRandomAvatar = () => {
 };
 
 export const auth = betterAuth({
+  baseURL: process.env.BASE_URL!,
+
   database: drizzleAdapter(db, {
     provider: "pg",
   }),
@@ -76,4 +78,6 @@ export const auth = betterAuth({
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
   },
+
+  trustedOrigins: ["http://localhost:3000", "https://www.patitas.site"],
 });
