@@ -1,16 +1,17 @@
 import { BlurFade } from "@/components/ui/blur-fade";
-import Link from "next/link";
+
+import Image from "next/image";
 
 const members = [
   {
     name: "Franco Galfré",
     role: "Lider de Tecnologia - CTO",
-    avatar: "https://alt.tailus.io/images/team/member-one.webp",
+    avatar: "/landing/about/franco.webp",
   },
   {
     name: "Melody Taieti",
     role: "Lider de Comunidad y Operaciones - COO",
-    avatar: "https://alt.tailus.io/images/team/member-two.webp",
+    avatar: "/landing/about/melody.webp",
   },
 ];
 
@@ -33,14 +34,14 @@ export default function TeamSection() {
       </BlurFade>
 
       <BlurFade delay={0.6} inView>
-        <div className="mt-12 md:mt-12">
+        <div className="mt-12 md:mt-16">
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-2">
             {members.map((member, index) => (
               <div key={index} className="group overflow-hidden">
-                <img
+                <Image
                   className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl"
                   src={member.avatar}
-                  alt="team member"
+                  alt={`Imagen de ${member.name}`}
                   width="826"
                   height="1239"
                 />
