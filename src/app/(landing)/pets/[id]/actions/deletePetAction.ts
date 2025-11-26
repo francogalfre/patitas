@@ -2,13 +2,35 @@
 
 import { redirect } from "next/navigation";
 import { deletePet } from "@/db/queries/deletePet";
+import { supabaseStorage } from "@/db/supabase/storage/client";
 
-export const deletePetAction = async (petId: string) => {
-	const { success } = await deletePet(petId);
+import { extractFilePath } from "../utils/extract-path";
 
-	if (success) {
-		redirect("/pets");
-	} else {
-		throw new Error("No se pudo eliminar la mascota");
-	}
+export const deletePetAction = async (petId: string, photos: string[]) => {
+  const { success } = await deletePet(petId);
+
+  if (!success) {
+    return {
+      success: false,
+      error: "Error al eliminar la mascota",
+    };
+  }
+
+  const filePaths = photos.map(extractFilePath);
+
+  console.log(filePaths);
+
+  const { error } = await supabaseStorage.storage
+    .from("pet-pics")
+    .remove(filePaths);
+
+  if (error) {
+    console.error(error);
+    return {
+      success: false,
+      error: "Error al eliminar las imágenes del Storage",
+    };
+  }
+
+  redirect("/pets");
 };

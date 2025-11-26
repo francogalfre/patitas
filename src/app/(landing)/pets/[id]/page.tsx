@@ -82,6 +82,7 @@ const PatitasMascotDetailsPage = async ({
               mail={mailtoLink}
               whatsapp={whatsappLink}
               petId={pet.id}
+              photos={pet.photos}
             />
 
             {pet.is_adopted && <AdoptedMessage name={pet.name} />}
