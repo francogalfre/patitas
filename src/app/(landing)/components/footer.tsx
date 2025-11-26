@@ -1,4 +1,6 @@
 import { BlurFade } from "@/components/ui/blur-fade";
+
+import Image from "next/image";
 import Link from "next/link";
 
 const links = [
@@ -26,14 +28,16 @@ export default function Footer() {
       <footer className="border-t border-gray-300 py-8">
         <div className="mx-auto max-w-5xl px-6">
           <Link
-            href="#hero"
+            href="/"
             aria-label="Ir al inicio"
             className="mx-auto block size-fit"
           >
-            <img
+            <Image
               src="/patitas/logo1000.webp"
               alt="Logo de Patitas"
-              className="size-18"
+              className="size-18 transition-transform duration-200 hover:scale-105 hover:rotate-6"
+              width={72}
+              height={72}
             />
           </Link>
 
@@ -43,7 +47,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={link.href}
-                  className="text-black hover:text-gray-800 block duration-150 text-md"
+                  className="text-black hover:text-gray-600 block duration-150 text-md"
                 >
                   <span>{link.title}</span>
                 </Link>
