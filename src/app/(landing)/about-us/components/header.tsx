@@ -22,7 +22,7 @@ const AboutUsPageHeader = () => {
         </BlurFade>
         <BlurFade delay={0.8}>
           <Button className="w-full sm:w-auto" asChild>
-            <a href={"/adopcion"} rel="noopener">
+            <a href="/pets" rel="noopener">
               Ver Mascotas en Adopción
               <ArrowRight className="ml-2 size-4" />
             </a>
