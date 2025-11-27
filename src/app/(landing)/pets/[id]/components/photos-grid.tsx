@@ -24,18 +24,19 @@ const PhotosGrid = ({
 			/>
 
 			{photos?.length > 1 && (
-				<div className="flex w-full justify-between gap-4">
+				<div className="w-full flex flex-wrap gap-6">
 					{photos.map((photo, index) => (
-						<Image
-							loading="eager"
-							onClick={() => setPrincipalImage(photos[index])}
-							key={photo + index}
-							className="w-full max-h-60 h-full rounded-lg size-32 object-cover cursor-pointer"
-							src={photo}
-							alt={`${name} imagen ${index + 1}`}
-							width={300}
-							height={300}
-						/>
+						<div key={photo} className="flex-1 min-w-0 max-w-full">
+							<Image
+								loading="eager"
+								onClick={() => setPrincipalImage(photos[index])}
+								className="w-full max-h-60 h-full rounded-lg object-cover cursor-pointer"
+								src={photo}
+								alt={`${name} imagen ${index + 1}`}
+								width={400}
+								height={400}
+							/>
+						</div>
 					))}
 				</div>
 			)}

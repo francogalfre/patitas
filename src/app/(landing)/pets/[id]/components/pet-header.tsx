@@ -8,10 +8,21 @@ export default function PetHeader({ pet }: { pet: Pet }) {
 				{pet.name}
 			</h1>
 
-			<span className="text-xl font-medium flex items-center gap-2">
-				<MapPin size={18} />
-				{pet.location_city}
-			</span>
+			<aside
+				aria-label={`Información de localización y publicación de ${pet.name}`}
+				className="flex items-end w-full justify-between"
+			>
+				<address
+					className="not-italic flex items-center gap-2 text-xl font-medium"
+					aria-label="Ubicación"
+				>
+					<MapPin size={18} aria-hidden="true" />
+					<span>{pet.location_city}</span>
+				</address>
+				<span>
+					Fecha de publicación: {new Date(pet.createdAt).toLocaleDateString()}
+				</span>
+			</aside>
 		</div>
 	);
 }
