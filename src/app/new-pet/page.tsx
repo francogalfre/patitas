@@ -1,30 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import {
-	PetRegistrationFormSchema,
-	type PetRegistrationFormType,
-	stepSchema,
-	type StepKey,
-	MAX_STEP,
-	MIN_STEP,
-} from "./schema";
-
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-
 import { authClient } from "@/lib/auth-client";
 import { createPetAdoption } from "./actions/createPet";
-
-import CreatePetFormHeader from "./components/header";
 
 import CreatePetStep1Form from "./components/forms/step1";
 import CreatePetStep2Form from "./components/forms/step2";
 import CreatePetStep3Form from "./components/forms/step3";
+
+import CreatePetFormHeader from "./components/header";
 import SuccessModal from "./components/success-modal";
+import {
+	MAX_STEP,
+	MIN_STEP,
+	PetRegistrationFormSchema,
+	type PetRegistrationFormType,
+	type StepKey,
+	stepSchema,
+} from "./schema";
 
 const PatitasCreateNewPetPage = () => {
 	const [step, setStep] = useState(MIN_STEP);
@@ -101,7 +97,7 @@ const PatitasCreateNewPetPage = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className=" rounded-xl space-y-8 flex-2 p-12"
 				>
-					{step == 1 && (
+					{step === 1 && (
 						<>
 							<h2 className="text-xl font-poppins font-light">
 								Datos basicos de la mascota
@@ -114,7 +110,7 @@ const PatitasCreateNewPetPage = () => {
 						</>
 					)}
 
-					{step == 2 && (
+					{step === 2 && (
 						<>
 							<h2 className="text-lg font-medium">
 								Características y Cuidados
@@ -123,7 +119,7 @@ const PatitasCreateNewPetPage = () => {
 						</>
 					)}
 
-					{step == 3 && (
+					{step === 3 && (
 						<>
 							<h2 className="text-lg font-medium">
 								Datos de Contacto y Ubicación

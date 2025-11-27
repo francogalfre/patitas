@@ -1,12 +1,9 @@
+import type { FieldError, FieldErrors, UseFormRegister } from "react-hook-form";
+import { FormCheckboxInput } from "@/components/checkbox-input";
 import { FormFileInput } from "@/components/file-input";
-
-import type { UseFormRegister, FieldError, FieldErrors } from "react-hook-form";
-
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
 import type { PetRegistrationFormType } from "../../schema";
-import { FormCheckboxInput } from "@/components/checkbox-input";
 
 interface CreatePetStep2FormProps {
 	errors: FieldErrors<PetRegistrationFormType>;

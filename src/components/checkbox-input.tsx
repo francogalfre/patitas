@@ -1,11 +1,8 @@
 "use client";
 
-import React from "react";
-
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "./ui/checkbox";
-
-import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 interface FormCheckboxInputProps {
 	label?: string;
@@ -23,16 +20,17 @@ export const FormCheckboxInput = ({
 	return (
 		<div className="flex items-center gap-4 w-fit">
 			<Checkbox
+				type="checkbox"
 				className={`${error && "border-red-500"} border-gray-400 shadow-none`}
 				required={isRequired}
 				{...registration}
-				id={registration.name}
+				id={label || registration.name}
 			/>
 
 			{label && (
 				<Label
-					htmlFor={registration.name}
-					className={`${error && "text-red-500"} text-md font-normal text-gray-700 flex items-center gap-1`}
+					htmlFor={label || registration.name}
+					className={`${error && "text-red-500"} text-md font-normal text-gray-700 flex items-center gap-1 cursor-pointer`}
 				>
 					{label}
 				</Label>
