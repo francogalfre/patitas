@@ -31,7 +31,7 @@ export default async function RootLayout({
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
-        <Suspense fallback={<h2>Cargando...</h2>}>
+        <Suspense>
           <AuthProvider>
             <NuqsAdapter>
               <Navbar />
