@@ -5,9 +5,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+
   turbopack: {
     root: path.join(__dirname, "../.."),
   },
+
   images: {
     remotePatterns: [
       {
