@@ -8,6 +8,7 @@ import SectionContainer from "../components/section-container";
 
 import { getAllPets } from "./actions/getPets";
 import { HeaderSection } from "./sections/header-section";
+import { normalize } from "@/utils/normalize";
 
 import PetList from "./sections/pet-list";
 
@@ -32,11 +33,11 @@ const PatitasMascotsPage = () => {
   const filteredPets = useMemo(() => {
     if (!search) return pets;
 
-    const searchLower = search.toLowerCase();
+    const normalizedQuery = normalize(search);
 
     return pets.filter((pet) =>
       [pet.name, pet.species, pet.location_city].some((f) =>
-        f?.toLowerCase().includes(searchLower)
+        f ? normalize(f).includes(normalizedQuery) : false
       )
     );
   }, [search, pets]);

@@ -1,93 +1,66 @@
-# Patitas 🐾
+<div align="center">
+  <picture>
+    <img src="./assets/patitas-logo.webp" alt="Patitas Logo" width="160" height="160">
+  </picture>
 
-### The Responsible Adoption Platform
+  <h1 align="center">Patitas</h1>
 
-Welcome to **Patitas**, a modern web platform designed to connect animals looking for a home with responsible and committed adopters.  
-The main goal of Patitas is to provide a safe, organized, and accessible space where shelters, rescue organizations, and verified individuals can publish animals for adoption while users can easily browse, filter, and find their ideal companion.
+  <p align="center">
+    Aplicación para la adopción responsable de mascotas, conectando refugios y adoptantes de manera simple y segura.
+  </p>
 
----
+  <p align="center">
+    <a href="https://github.com/francogalfre/patitas/graphs/contributors">
+      <img src="https://img.shields.io/github/contributors/francogalfre/patitas?style=for-the-badge" alt="Contributors">
+    </a>
+    <a href="https://github.com/francogalfre/patitas/stargazers">
+      <img src="https://img.shields.io/github/stars/francogalfre/patitas?style=for-the-badge" alt="Stars">
+    </a>
+    <a href="https://github.com/francogalfre/patitas/issues">
+      <img src="https://img.shields.io/github/issues/francogalfre/patitas?style=for-the-badge" alt="Issues">
+    </a>
+  </p>
+</div>
 
-## 🚀 About the Project
+<br>
 
-Patitas was created as a complete web solution that addresses the growing need for ethical and transparent adoption processes.  
-Instead of relying on scattered posts across social media, Patitas centralizes adoption information and presents it in a clean, trustworthy, and user-friendly way.
+## ¿Qué es Patitas?
 
-The platform focuses on:
+Patitas es una plataforma creada para facilitar el proceso de adopción responsable de mascotas. Su objetivo es conectar refugios, protectoras, rescatistas independientes y adoptantes en un entorno moderno, confiable y accesible.
 
-- Simplifying the adoption experience.
-- Ensuring all published animals come from legitimate and responsible sources.
-- Helping users make better adoption decisions with clear and accurate information.
-- Promoting responsible pet ownership through education and resources.
+El sistema permite:
 
----
+- Publicar mascotas en adopción.
+- Gestionar perfiles de refugios o usuarios.
+- Filtrar mascotas según ubicación, especie, tamaño, edad, etc.
+- Iniciar solicitudes de adopción.
+- Presentar perfiles verificados para mayor confianza.
+- Comunicar adoptantes y refugios mediante un flujo claro y ordenado.
 
-## ✨ Key Features
-
-- **Adoption Gallery:** Browse all available animals published by verified shelters or users.
-- **Advanced Filtering:** Search by species, size, age, health status, behavior, and location.
-- **Pet Profiles:** Each animal has its own page including photos, description, personality, weight, breed, and adoption requirements.
-- **Account System:** Users and shelters can register to publish or manage their pets.
-- **Location-Based Search:** Filter animals by proximity to adopters’ zones.
-- **Secure Contact Flow:** Communicate safely and transparently with the shelter or responsible user.
-- **Responsive Design:** Fully optimized for mobile and desktop use.
-
----
-
-## 🛠️ Technologies Used
-
-- **Next.js** – React framework for optimized performance and SEO.
-- **TypeScript** – Type-safe development for scalability and reliability.
-- **Tailwind CSS** – Utility-first styling for a clean and modern interface.
-- **Supabase (PostgreSQL)** – Database and authentication for structured data management.
-- **Shadcn/UI** – Component library for consistent design (optional).
+La misión del proyecto es reducir la cantidad de animales sin hogar y agilizar el proceso de adopción.
 
 ---
 
-## 📦 Getting Started (Local Development)
+<div align="center">
+  <img src="./assets/web-screenshot.webp" alt="Patitas Web Screenshot" width="100%" style="max-width: 1200px; border-radius: 8px;">
+</div>
 
-1.  **Clone the repository:**
+## Tecnologías utilizadas
 
-    ```bash
-    git clone https://github.com/francogalfre/patitas
-    cd patitas
-    ```
+<div align="start">
 
-2.  **Install dependencies:**
+### Frontend
 
-    ```bash
-    npm install
-    # or yarn install / pnpm install
-    ```
+Next.js • TypeScript • Tailwind CSS • Shadcn/UI • React Hook Form • Zod
 
-3.  **Set up environment variables:**
-    Create a `.env.local` file by copying the example file. Then, add your credentials (e.g., Supabase URL and keys).
+### Backend / API
 
-    ```bash
-    cp .env.example .env.local
-    ```
+Node.js • Express • Supabase (Auth + Database + Storage)
 
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-    Open http://localhost:3000 in your browser to see the project.
+### Infraestructura
+
+Vercel (Frontend) • Railway / Supabase Edge Functions (según despliegue)
+
+</div>
 
 ---
-
-## 🤝 Contributions
-
-This is an open project.
-If you want to contribute ideas, improvements, or fixes, feel free to fork the repo and submit a pull request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## ✉️ Contact
-
-Developed by:
-
-- Franco Galfré
-- Melody Taieti
-
-Thank you for supporting ethical and responsible animal adoption. ❤️🐾
