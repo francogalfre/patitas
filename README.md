@@ -1,66 +1,112 @@
 <div align="center">
   <picture>
-    <img src="./assets/patitas-logo.webp" alt="Patitas Logo" width="160" height="160">
+    <img src="./assets/patitas-logo.webp" alt="Patitas Logo" width="120" height="120">
   </picture>
-
   <h1 align="center">Patitas</h1>
-
   <p align="center">
-    Aplicación para la adopción responsable de mascotas, conectando refugios y adoptantes de manera simple y segura.
-  </p>
-
-  <p align="center">
-    <a href="https://github.com/francogalfre/patitas/graphs/contributors">
-      <img src="https://img.shields.io/github/contributors/francogalfre/patitas?style=for-the-badge" alt="Contributors">
-    </a>
-    <a href="https://github.com/francogalfre/patitas/stargazers">
-      <img src="https://img.shields.io/github/stars/francogalfre/patitas?style=for-the-badge" alt="Stars">
-    </a>
-    <a href="https://github.com/francogalfre/patitas/issues">
-      <img src="https://img.shields.io/github/issues/francogalfre/patitas?style=for-the-badge" alt="Issues">
-    </a>
+    Platform for responsible pet adoption, connecting shelters and adopters in a simple and secure way.
   </p>
 </div>
 
 <br>
 
-## ¿Qué es Patitas?
+## What is Patitas?
 
-Patitas es una plataforma creada para facilitar el proceso de adopción responsable de mascotas. Su objetivo es conectar refugios, protectoras, rescatistas independientes y adoptantes en un entorno moderno, confiable y accesible.
+Patitas is a platform designed to facilitate the responsible adoption of pets. 🐾 Its goal is to connect shelters, rescuers, and adopters in a modern, reliable, and accessible environment.
 
-El sistema permite:
-
-- Publicar mascotas en adopción.
-- Gestionar perfiles de refugios o usuarios.
-- Filtrar mascotas según ubicación, especie, tamaño, edad, etc.
-- Iniciar solicitudes de adopción.
-- Presentar perfiles verificados para mayor confianza.
-- Comunicar adoptantes y refugios mediante un flujo claro y ordenado.
-
-La misión del proyecto es reducir la cantidad de animales sin hogar y agilizar el proceso de adopción.
-
----
+<br>
 
 <div align="center">
-  <img src="./assets/web-screenshot.webp" alt="Patitas Web Screenshot" width="100%" style="max-width: 1200px; border-radius: 8px;">
+  <img src="./assets/web-screenshot.webp" alt="Patitas Web Screenshot" width="100%">
 </div>
 
-## Tecnologías utilizadas
+<br>
+
+## Features
+
+- Search pets — Explore profiles with photos, descriptions, and location
+- Create your profile — Show who you are and why you want to adopt
+- Publish pets — Create complete profiles with images and details
+- Direct contact — Communicate with shelters and owners
+- Update status — Mark pets as available, in process, or adopted
+- Care guides — Learn about responsible animal care
+- Edit profile — Keep your information up to date
+
+The mission of the project is to reduce the number of homeless animals and streamline the adoption process.
+
+<br>
+
+## 🛠️ Tech Stack
 
 <div align="start">
 
-### Frontend
+#### Frontend
 
 Next.js • TypeScript • Tailwind CSS • Shadcn/UI • React Hook Form • Zod
 
-### Backend / API
+#### Backend / API
 
 Node.js • Express • Supabase (Auth + Database + Storage)
 
-### Infraestructura
+#### Infrastructure
 
-Vercel (Frontend) • Railway / Supabase Edge Functions (según despliegue)
+Vercel (Frontend) • Railway (Backend)
 
 </div>
 
----
+<br>
+
+## Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/francogalfre/patitas.git
+cd patitas
+
+# Install dependencies
+bun install
+bun dev
+```
+
+<br>
+
+## Contributing
+
+We welcome contributions from the community! Whether you're fixing bugs, adding features, or improving documentation, your help is appreciated 🤝.
+
+Please read our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- Development setup and workflow
+- Coding standards and best practices
+- Testing requirements
+- Pull request process
+- How to report issues
+
+Quick start for contributors:
+
+```bash
+# Fork and clone the repository
+git clone https://github.com/francogalfre/patitas.git
+cd patitas
+
+# Install dependencies
+bun install
+
+# Make your changes, add tests, then run quality checks
+bun lint && bun format && bun test
+
+# Create a pull request
+```
+
+<br>
+
+## License
+
+📄 MIT License - see [LICENSE](LICENSE) for details.
+
+<br>
+<br>
+
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/francogalfre">@francogalfre</a>
+</div>
