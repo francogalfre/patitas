@@ -1,9 +1,9 @@
 import { Router } from "express";
 
+import petRoutes from "./pets.routes";
+
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "API funcionando!" });
-});
+router.use("/pets", petRoutes);
 
 export default router;

@@ -21,7 +21,7 @@ app.get("/health", (req: Request, res: Response) => {
   });
 });
 
-app.get("/api", routes);
+app.use("/api", routes);
 
 app.listen(PORT, () => {
   console.log("🐾 PATITAS API ");
