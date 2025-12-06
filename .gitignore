@@ -15,3 +15,6 @@ apps/api/dist
 
 # OS
 .DS_Store
+
+# Turborepo
+.turbo

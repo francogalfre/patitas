@@ -7,6 +7,7 @@
     "start": "bun src/index.ts"
   },
   "dependencies": {
+    "better-auth": "^1.4.5",
     "cors": "^2.8.5",
     "drizzle-orm": "^0.44.7",
     "express": "^4.18.2",

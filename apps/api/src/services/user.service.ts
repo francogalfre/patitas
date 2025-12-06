@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
-import { user } from "../db/schema";
+import { db } from "../database";
+import { user } from "../database/schema";
 
 export const getProfileById = async (id: string) => {
   return await db.select().from(user).where(eq(user.id, id));

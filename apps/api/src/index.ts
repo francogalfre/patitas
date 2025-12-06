@@ -1,5 +1,8 @@
 import express, { type Request, type Response } from "express";
 
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./lib/auth";
+
 import cors from "cors";
 import { corsOptions } from "./config/cors";
 
@@ -9,6 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors(corsOptions));
+
+app.all("/api/auth/*", toNodeHandler(auth));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -8,13 +8,16 @@ import {
   deletePetHandler,
 } from "../controllers/pet.controller";
 
+import { authMiddleware } from "../middleware/auth";
+
 const router = Router();
 
-router.get("/", getAllPetsHandler);
-router.get("/:id", getPetByIdHandler);
+router.get("/", authMiddleware(false), getAllPetsHandler);
+router.get("/:id", authMiddleware(false), getPetByIdHandler);
 
-router.post("/", createPetHandler);
-router.patch("/:id/adopt", markPetAsAdoptedHandler);
-router.delete("/:id", deletePetHandler);
+// Rutas protegidas
+router.post("/", authMiddleware(true), createPetHandler);
+router.patch("/:id/adopt", authMiddleware(true), markPetAsAdoptedHandler);
+router.delete("/:id", authMiddleware(true), deletePetHandler);
 
 export default router;

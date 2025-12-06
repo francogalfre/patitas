@@ -9,8 +9,11 @@ import {
 import { ZodError } from "zod";
 
 export const getAllPetsHandler = async (req: Request, res: Response) => {
+  const page = parseInt(req.query.page as string) || 1;
+  const limit = 9;
+
   try {
-    const pets = await petService.getAllPets();
+    const pets = await petService.getAllPets({ page, limit });
     sendSuccess(res, pets, "Listado de mascotas recuperado.");
   } catch (error) {
     sendError(
@@ -49,6 +52,16 @@ export const getPetByIdHandler = async (req: Request, res: Response) => {
 
 export const createPetHandler = async (req: Request, res: Response) => {
   try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return sendError(
+        res,
+        "Usuario no autenticado.",
+        HTTP_STATUS.UNAUTHORIZED
+      );
+    }
+
     const validatedData: PetCreationPayload = PetCreationPayloadSchema.parse(
       req.body
     );
@@ -83,6 +96,15 @@ export const createPetHandler = async (req: Request, res: Response) => {
 export const markPetAsAdoptedHandler = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return sendError(
+        res,
+        "Usuario no autenticado.",
+        HTTP_STATUS.UNAUTHORIZED
+      );
+    }
 
     if (!id) {
       if (!id) {
@@ -94,7 +116,7 @@ export const markPetAsAdoptedHandler = async (req: Request, res: Response) => {
       }
     }
 
-    const pet = await petService.markAsAdopted(id);
+    const pet = await petService.markAsAdopted(id, userId);
 
     sendSuccess(res, pet, "La mascota fue marcada como adoptada.");
   } catch (error) {
@@ -106,6 +128,15 @@ export const markPetAsAdoptedHandler = async (req: Request, res: Response) => {
 export const deletePetHandler = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return sendError(
+        res,
+        "Usuario no autenticado.",
+        HTTP_STATUS.UNAUTHORIZED
+      );
+    }
 
     if (!id) {
       if (!id) {
@@ -117,7 +148,7 @@ export const deletePetHandler = async (req: Request, res: Response) => {
       }
     }
 
-    const pet = await petService.deletePet(id);
+    const pet = await petService.deletePet(id, userId);
 
     sendSuccess(res, pet, "La mascota fue eliminada con exito.");
   } catch (error) {
