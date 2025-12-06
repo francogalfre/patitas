@@ -18,3 +18,9 @@ apps/api/dist
 
 # Turborepo
 .turbo
+.turbo/
+.turbo/*
+dist/ 
+build/
+.next/ 
+

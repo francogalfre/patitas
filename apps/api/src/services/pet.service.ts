@@ -9,9 +9,14 @@ type NewPet = InferInsertModel<typeof pet>;
 type PaginationParams = {
   page: number;
   limit: number;
+  searchQuery: string;
 };
 
-export const getAllPets = async ({ page, limit }: PaginationParams) => {
+export const getAllPets = async ({
+  page,
+  limit,
+  searchQuery,
+}: PaginationParams) => {
   const offset = (page - 1) * limit;
 
   const pets = await db

@@ -10,10 +10,12 @@ import { ZodError } from "zod";
 
 export const getAllPetsHandler = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
+  const searchQuery = req.query.search as string;
+
   const limit = 9;
 
   try {
-    const pets = await petService.getAllPets({ page, limit });
+    const pets = await petService.getAllPets({ page, limit, searchQuery });
     sendSuccess(res, pets, "Listado de mascotas recuperado.");
   } catch (error) {
     sendError(
@@ -29,13 +31,11 @@ export const getPetByIdHandler = async (req: Request, res: Response) => {
     const id = req.params.id;
 
     if (!id) {
-      if (!id) {
-        return sendError(
-          res,
-          "El identificador de la mascota es requerido.",
-          HTTP_STATUS.BAD_REQUEST
-        );
-      }
+      return sendError(
+        res,
+        "El identificador de la mascota es requerido.",
+        HTTP_STATUS.BAD_REQUEST
+      );
     }
 
     const pet = await petService.getPetById(id);
