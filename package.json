@@ -7,17 +7,23 @@
     "apps/web",
     "apps/api"
   ],
-  "packageManager": "npm@10",
+  "packageManager": "npm@10.9.2",
   "scripts": {
-    "dev:web": "npm --workspace apps/web run dev",
-    "dev:api": "npm --workspace apps/api run dev",
-    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
-    "build:web": "npm --workspace apps/web run build",
-    "build:api": "npm --workspace apps/api run build",
-    "build": "npm run build:web && npm run build:api"
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=web",
+    "dev:api": "turbo run dev --filter=api",
+    "build": "turbo run build",
+    "build:web": "turbo run build --filter=web",
+    "build:api": "turbo run build --filter=api",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "db:generate": "turbo run db:generate --filter=web",
+    "db:push": "turbo run db:push --filter=web",
+    "db:migrate": "turbo run db:migrate --filter=web",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/.next apps/*/dist .turbo"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0",
+    "turbo": "^2.6.3",
     "typescript": "^5.3.3"
   },
   "repository": {
