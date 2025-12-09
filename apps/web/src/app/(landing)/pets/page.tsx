@@ -1,20 +1,24 @@
 "use client";
 
-import { parseAsString, useQueryState } from "nuqs";
-import { useEffect, useMemo, useState } from "react";
+import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
+import type { Pet } from "@/types/pet";
+
+import { useEffect, useState } from "react";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
-import type { Pet } from "@/db/schema/pet";
-import SectionContainer from "../components/section-container";
 
-import { getAllPets } from "./actions/getPets";
+import { getAllPets } from "./actions/getAllPets";
 import { HeaderSection } from "./sections/header-section";
-import { normalize } from "@/utils/normalize";
 
+import SectionContainer from "../components/section-container";
 import PetList from "./sections/pet-list";
 
 const PatitasMascotsPage = () => {
   const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [hasNextPage, setHasNextPage] = useState(false);
+
+  const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
+
   const [search, setSearch] = useQueryState(
     "search",
     parseAsString.withDefault("")
@@ -22,25 +26,32 @@ const PatitasMascotsPage = () => {
 
   useEffect(() => {
     const fetchPets = async () => {
-      const allPets = await getAllPets();
-      setPets(allPets);
-      setIsLoading(false);
+      setIsLoading(true);
+
+      try {
+        const { pets, hasNextPage, message, success } = await getAllPets(
+          page,
+          search
+        );
+
+        if (!success) {
+          console.error(message);
+          setPets([]);
+          return;
+        }
+
+        setPets(pets);
+        setHasNextPage(hasNextPage);
+      } catch (error) {
+        console.error("Error fetching pets:", error);
+        setPets([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchPets();
-  }, [search]);
-
-  const filteredPets = useMemo(() => {
-    if (!search) return pets;
-
-    const normalizedQuery = normalize(search);
-
-    return pets.filter((pet) =>
-      [pet.name, pet.species, pet.location_city].some((f) =>
-        f ? normalize(f).includes(normalizedQuery) : false
-      )
-    );
-  }, [search, pets]);
+  }, [search, page]);
 
   return (
     <main className="pt-48">
@@ -52,7 +63,12 @@ const PatitasMascotsPage = () => {
             <LoadingSpinner />
           </div>
         ) : (
-          <PetList filteredPets={filteredPets} />
+          <PetList
+            pets={pets}
+            page={page}
+            setPage={setPage}
+            hasNextPage={hasNextPage}
+          />
         )}
       </SectionContainer>
     </main>

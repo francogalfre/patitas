@@ -4,24 +4,24 @@ import { fontVariables } from "@/styles/font";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-	title: "Patitas | Publicar nueva mascota",
-	description: "Publicar una nueva mascota",
+  title: "Patitas | Publicar nueva mascota",
+  description: "Publicar una nueva mascota",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
-			>
-				<main className="flex items-center justify-center py-12 max-w-7xl w-full h-screen mx-auto">
-					{children}
-				</main>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en" data-scroll-behavior="smooth">
+      <body
+        className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
+      >
+        <main className="flex items-center justify-center py-12 max-w-7xl w-full h-screen mx-auto">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
 }

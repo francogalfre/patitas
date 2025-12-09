@@ -15,9 +15,11 @@ export const getAllPetsHandler = async (req: Request, res: Response) => {
   const limit = 9;
 
   try {
-    const pets = await petService.getAllPets({ page, limit, searchQuery });
-    sendSuccess(res, pets, "Listado de mascotas recuperado.");
+    const result = await petService.getAllPets({ page, limit, searchQuery });
+
+    sendSuccess(res, result, "Listado de mascotas recuperado.");
   } catch (error) {
+    console.error(error);
     sendError(
       res,
       "No fue posible listar las mascotas.",

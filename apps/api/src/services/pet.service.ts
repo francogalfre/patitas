@@ -1,4 +1,4 @@
-import { eq, and, type InferInsertModel } from "drizzle-orm";
+import { eq, and, or, ilike, type InferInsertModel, sql } from "drizzle-orm";
 import { db } from "../database";
 import { pet } from "../database/schema";
 
@@ -19,14 +19,40 @@ export const getAllPets = async ({
 }: PaginationParams) => {
   const offset = (page - 1) * limit;
 
+  const hasSearch = Boolean(searchQuery && searchQuery.trim());
+
+  if (hasSearch) {
+    const searchTerm = `%${searchQuery}%`;
+
+    return await db
+      .select()
+      .from(pet)
+      .where(
+        or(
+          ilike(sql`${pet.name}::text`, searchTerm),
+          ilike(sql`${pet.species}::text`, searchTerm),
+          ilike(sql`${pet.location_city}::text`, searchTerm),
+          ilike(sql`${pet.gender}::text`, searchTerm)
+        )
+      )
+      .orderBy(pet.createdAt)
+      .limit(limit)
+      .offset(offset);
+  }
+
   const pets = await db
     .select()
     .from(pet)
-    .orderBy(pet.id)
+    .orderBy(pet.createdAt)
     .limit(limit)
     .offset(offset);
 
-  return pets;
+  const hasNextPage = pets.length === limit;
+
+  return {
+    pets,
+    hasNextPage,
+  };
 };
 
 export const getPetById = async (id: string) => {
