@@ -6,7 +6,7 @@ interface SearchInputProps {
   setSearch: (value: string) => void;
 }
 
-export const SearchInput = ({ search, setSearch }: SearchInputProps) => {
+const SearchInput = ({ search, setSearch }: SearchInputProps) => {
   return (
     <div className="w-full flex justify-center items-center">
       <div className="relative max-w-xl w-full">
@@ -21,3 +21,5 @@ export const SearchInput = ({ search, setSearch }: SearchInputProps) => {
     </div>
   );
 };
+
+export default SearchInput;

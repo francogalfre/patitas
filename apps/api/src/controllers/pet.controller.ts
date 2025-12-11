@@ -118,11 +118,10 @@ export const markPetAsAdoptedHandler = async (req: Request, res: Response) => {
       }
     }
 
-    const pet = await petService.markAsAdopted(id, userId);
+    const result = await petService.markAsAdopted(id, userId);
 
-    sendSuccess(res, pet, "La mascota fue marcada como adoptada.");
+    sendSuccess(res, result, "La mascota fue marcada como adoptada.");
   } catch (error) {
-    res.json({ Error: error });
     sendError(res, "Error al marcar la mascota como adoptada");
   }
 };
@@ -150,9 +149,9 @@ export const deletePetHandler = async (req: Request, res: Response) => {
       }
     }
 
-    const pet = await petService.deletePet(id, userId);
+    const result = await petService.deletePet(id, userId);
 
-    sendSuccess(res, pet, "La mascota fue eliminada con exito.");
+    sendSuccess(res, result, "La mascota fue eliminada con exito.");
   } catch (error) {
     sendError(res, "Error al dar de baja a la mascota.");
   }

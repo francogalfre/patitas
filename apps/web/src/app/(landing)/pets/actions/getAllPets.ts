@@ -3,7 +3,7 @@
 import { fetcher } from "@/lib/fetcher";
 
 import type { Pet } from "@/types/pet";
-import { normalize } from "@/utils/normalize";
+import { normalize } from "@/utils";
 
 interface GetAllPetsResponse {
   data: {
@@ -14,7 +14,17 @@ interface GetAllPetsResponse {
   success: boolean;
 }
 
-export async function getAllPets(page: number = 1, search?: string) {
+interface getAllPetsReturn {
+  pets: Pet[] | [];
+  hasNextPage: boolean;
+  success: boolean;
+  message: string;
+}
+
+export async function getAllPets(
+  page: number = 1,
+  search?: string
+): Promise<getAllPetsReturn> {
   try {
     const params = new URLSearchParams();
     params.set("page", page.toString());
@@ -27,19 +37,32 @@ export async function getAllPets(page: number = 1, search?: string) {
       `/api/pets?${params.toString()}`
     );
 
+    const { data, success, message } = response;
+
+    if (!data) {
+      console.error("❌ No hay data en la respuesta:", message);
+      return {
+        pets: [],
+        hasNextPage: false,
+        success: false,
+        message: "Respuesta inválida del servidor",
+      };
+    }
+
     return {
-      pets: response.data.pets,
-      hasNextPage: response.data.hasNextPage,
-      success: response.success,
-      message: response.message,
+      pets: data.pets || [],
+      hasNextPage: data.hasNextPage,
+      success: success,
+      message: message,
     };
   } catch (error) {
+    console.error("Error en Server Action al buscar mascotas:", error);
+
     return {
       pets: [],
       hasNextPage: false,
       success: false,
-      message:
-        error instanceof Error ? error.message : "Error al obtener mascotas",
+      message: "Fallo de conexión o error en el servidor de la API.",
     };
   }
 }

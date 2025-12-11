@@ -1,5 +1,5 @@
 import { BlurFade } from "@/components/ui/blur-fade";
-import { SearchInput } from "../components/search";
+import { HeaderSearchInput } from "../components/";
 
 interface HeaderSectionProps {
   search: string;
@@ -28,7 +28,7 @@ export const HeaderSection = ({ search, setSearch }: HeaderSectionProps) => {
       </div>
 
       <BlurFade delay={0.6} inView>
-        <SearchInput search={search} setSearch={setSearch} />
+        <HeaderSearchInput search={search} setSearch={setSearch} />
       </BlurFade>
     </header>
   );

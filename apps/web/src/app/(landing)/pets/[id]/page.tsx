@@ -1,20 +1,28 @@
+"use state";
+
+import Link from "next/link";
+
 import { MoveLeft } from "lucide-react";
 import { headers } from "next/headers";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import AdoptedBadge from "@/components/adopted-badge";
-import { getUserById } from "@/db/queries/getUserById";
+
 import { auth } from "@/lib/auth";
-import { getPetById } from "../actions/getPets";
-import AdoptedMessage from "./components/adopted-message";
-import AttributesBadges from "./components/attributes-badges";
-import Buttons from "./components/buttons";
-import OwnerInfo from "./components/owner-information";
-import PetBasicInfo from "./components/pet-basic-info";
-import PetHeader from "./components/pet-header";
-import PhotosGrid from "./components/photos-grid";
-import SpecialCares from "./components/special-cares";
-import { getMailLink, getWhatsappLink } from "./utils/contact-links";
+import { getPetById } from "../actions/getPetById";
+import { getUserById } from "../actions/getUserById";
+
+import AdoptedBadge from "@/components/adopted-badge";
+import {
+  AdoptedMessage,
+  AttributesBadges,
+  Buttons,
+  OwnerInfo,
+  PetBasicInfo,
+  PetHeader,
+  PhotosGrid,
+  SpecialCares,
+} from "../components";
+
+import { getMailLink, getWhatsappLink } from "@/utils";
 
 const PatitasMascotDetailsPage = async ({
   params,
@@ -23,21 +31,26 @@ const PatitasMascotDetailsPage = async ({
 }) => {
   const { id } = await params;
 
-  const pet = await getPetById({ id });
-
-  if (!pet) {
+  if (!id) {
     return notFound();
   }
 
-  const owner = await getUserById(pet.owner_id);
+  const { pet, message, success } = await getPetById({ id });
 
-  if (!owner) {
+  if (!pet || !success) {
+    console.error(message);
     return notFound();
   }
+
+  const { profile: owner } = await getUserById({ id: pet.owner_id });
 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
+  if (!owner) {
+    return notFound();
+  }
 
   const isOwner =
     pet.owner_id === session?.user.id ||
@@ -65,6 +78,7 @@ const PatitasMascotDetailsPage = async ({
             {pet.is_adopted && <AdoptedBadge />}
 
             <PetHeader pet={pet} />
+
             <p className="mb-6 text-gray-600 font-raleway text-pretty">
               {pet.description}
             </p>

@@ -2,8 +2,9 @@
 
 import { useTransition } from "react";
 import { Button } from "@/components/ui/button";
-import { deletePetAction } from "../actions/deletePetAction";
-import { setPetAdoptedAction } from "../actions/setPetAdoptedAction";
+import { deletePet } from "../actions/deletePet";
+import { setPetAdopted } from "../actions/setPetAdopted";
+import { useRouter } from "next/navigation";
 
 interface ButtonsProps {
   isOwner: boolean;
@@ -20,10 +21,11 @@ const Buttons = ({
   mail,
   whatsapp,
   petId,
-  photos,
 }: ButtonsProps) => {
   const [isDeleting, startDeleteTransition] = useTransition();
   const [isAdopting, startAdoptTransition] = useTransition();
+
+  const router = useRouter();
 
   if (!isOwner && !isAdopted) {
     return (
@@ -49,14 +51,22 @@ const Buttons = ({
   }
 
   const handleDelete = () => {
-    startDeleteTransition(() => {
-      deletePetAction(petId, photos);
+    startDeleteTransition(async () => {
+      const result = await deletePet({ id: petId });
+
+      if (result.success) {
+        router.push("/");
+      }
     });
   };
 
   const handleSetPetAdopted = () => {
-    startAdoptTransition(() => {
-      setPetAdoptedAction(petId);
+    startAdoptTransition(async () => {
+      const result = await setPetAdopted({ id: petId });
+
+      if (result.success) {
+        router.refresh();
+      }
     });
   };
 

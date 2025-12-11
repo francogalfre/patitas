@@ -13,48 +13,48 @@ import PetsList from "./components/pets-list";
 import ProfileHeader from "./components/profile-header";
 
 const PatitasProfilePage = async ({
-	params,
+  params,
 }: {
-	params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 }) => {
-	const { id } = await params;
+  const { id } = await params;
 
-	const user = await getUserById(id);
+  const user = await getUserById(id);
 
-	if (!user) {
-		return notFound();
-	}
+  if (!user) {
+    return notFound();
+  }
 
-	const pets = await getPetsByOwnerId(user.id);
-	const session = await auth.api.getSession({
-		headers: await headers(),
-	});
+  const pets = await getPetsByOwnerId(user.id);
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-	const isOwner = session?.session?.userId === user.id;
+  const isOwner = session?.session?.userId === user.id;
 
-	return (
-		<main className="min-h-screen my-20 w-full">
-			<div className="max-w-4xl mx-auto px-6 py-8 bg-white rounded-xl space-y-8">
-				<Link
-					href={"/"}
-					className="flex items-center gap-2 text-md font-medium"
-				>
-					<ArrowLeft size={18} />
-					Volver al incio
-				</Link>
+  return (
+    <main className="min-h-screen my-20 w-full">
+      <div className="max-w-4xl mx-auto px-6 py-8 bg-white rounded-xl space-y-8">
+        <Link
+          href={"/"}
+          className="flex items-center gap-2 text-md font-medium"
+        >
+          <ArrowLeft size={18} />
+          Volver al incio
+        </Link>
 
-				<ProfileHeader isOwner={isOwner} user={user} />
+        <ProfileHeader isOwner={isOwner} user={user} />
 
-				<hr />
+        <hr />
 
-				<Biography isOwner={isOwner} user={user} />
+        <Biography isOwner={isOwner} user={user} />
 
-				<hr />
+        <hr />
 
-				<PetsList isOwner={isOwner} pets={pets} />
-			</div>
-		</main>
-	);
+        <PetsList isOwner={isOwner} pets={pets} />
+      </div>
+    </main>
+  );
 };
 
 export default PatitasProfilePage;

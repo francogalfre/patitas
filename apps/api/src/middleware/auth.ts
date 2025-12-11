@@ -39,7 +39,7 @@ export function authMiddleware(required: boolean = true) {
         return next();
       }
 
-      if (required) {
+      if (required && !session) {
         return res.status(401).json({
           error: "No autorizado",
           message: "Debes iniciar sesión para acceder a este recurso",
