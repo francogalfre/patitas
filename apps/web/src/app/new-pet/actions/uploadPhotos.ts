@@ -3,69 +3,69 @@
 import { supabaseStorage } from "@/db/supabase/storage/client";
 
 export interface UploadResult {
-	success: boolean;
-	urls?: string[];
-	error?: string;
+  success: boolean;
+  urls?: string[];
+  error?: string;
 }
 
 export async function uploadPetPhotos(
-	petId: string,
-	photos: FileList,
+  id: string,
+  photos: FileList
 ): Promise<UploadResult> {
-	const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
-	const invalidFiles = Array.from(photos).filter(
-		(photo) => !allowedTypes.includes(photo.type),
-	);
+  const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
+  const invalidFiles = Array.from(photos).filter(
+    (photo) => !allowedTypes.includes(photo.type)
+  );
 
-	if (invalidFiles.length > 0) {
-		return {
-			success: false,
-			error: "Formato de imagen no permitido",
-		};
-	}
+  if (invalidFiles.length > 0) {
+    return {
+      success: false,
+      error: "Formato de imagen no permitido",
+    };
+  }
 
-	if (photos.length === 0) {
-		return {
-			success: false,
-			error: "Sin imagenes para subir",
-		};
-	}
+  if (photos.length === 0) {
+    return {
+      success: false,
+      error: "Sin imagenes para subir",
+    };
+  }
 
-	if (photos.length > 3) {
-		return {
-			success: false,
-			error: "El maximo es de 3 imagenes",
-		};
-	}
+  if (photos.length > 3) {
+    return {
+      success: false,
+      error: "El maximo es de 3 imagenes",
+    };
+  }
 
-	const uploadUrls = [];
+  const uploadUrls = [];
 
-	for (let i = 0; i < photos.length; i++) {
-		const photo = photos[i];
+  for (let i = 0; i < photos.length; i++) {
+    const photo = photos[i];
 
-		const fileExt = photo.name.split(".").pop() || "jpg";
-		const fileName = `${petId}_${Date.now()}.${fileExt}`;
-		const filePath = `${fileName}`;
+    const fileExt = photo.name.split(".").pop() || "jpg";
+    const fileName = `${id}_${Date.now()}.${fileExt}`;
+    const filePath = `${fileName}`;
 
-		const { error } = await supabaseStorage.storage
-			.from("pet-pics")
-			.upload(filePath, photo);
+    const { error } = await supabaseStorage.storage
+      .from("pet-pics")
+      .upload(filePath, photo);
 
-		if (error) {
-			return {
-				success: false,
-				error: "Error al guardar la imagen",
-			};
-		}
+    if (error) {
+      return {
+        success: false,
+        error: "Error al guardar la imagen",
+      };
+    }
 
-		const { data } = supabaseStorage.storage
-			.from("pet-pics")
-			.getPublicUrl(filePath);
-		uploadUrls.push(data.publicUrl);
-	}
+    const { data } = supabaseStorage.storage
+      .from("pet-pics")
+      .getPublicUrl(filePath);
+    uploadUrls.push(data.publicUrl);
+  }
 
-	return {
-		success: true,
-		urls: uploadUrls,
-	};
+  return {
+    success: true,
+    urls: uploadUrls,
+  };
 }

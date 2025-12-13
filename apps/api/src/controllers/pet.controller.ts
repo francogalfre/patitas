@@ -1,11 +1,11 @@
 import type { Request, Response } from "express";
-import * as petService from "../services/pet.service";
+import * as petService from "@/services/pet.service";
 
-import { sendSuccess, sendError, HTTP_STATUS } from "../utils/response";
+import { sendSuccess, sendError, HTTP_STATUS } from "@/utils/response";
 import {
   type PetCreationPayload,
   PetCreationPayloadSchema,
-} from "../schemas/pet.schema";
+} from "@/schemas/pet.schema";
 import { ZodError } from "zod";
 
 export const getAllPetsHandler = async (req: Request, res: Response) => {
@@ -40,14 +40,17 @@ export const getPetByIdHandler = async (req: Request, res: Response) => {
       );
     }
 
-    const pet = await petService.getPetById(id);
+    const result = await petService.getPetById(id);
 
-    if (!pet) {
+    console.log(result);
+
+    if (!result) {
       return sendError(res, "Mascota no encontrada.", HTTP_STATUS.NOT_FOUND);
     }
 
-    sendSuccess(res, pet, "Detalle de mascota recuperado.");
+    sendSuccess(res, result, "Detalle de mascota recuperado.");
   } catch (error) {
+    console.error(error);
     sendError(res, "Error al procesar la búsqueda de la mascota.");
   }
 };
@@ -68,7 +71,18 @@ export const createPetHandler = async (req: Request, res: Response) => {
       req.body
     );
 
-    const newPet = await petService.createPet(validatedData);
+    if (
+      !Array.isArray(validatedData.photos) ||
+      validatedData.photos.length === 0
+    ) {
+      return sendError(
+        res,
+        "Debe incluir al menos una foto (URL).",
+        HTTP_STATUS.BAD_REQUEST
+      );
+    }
+
+    const newPet = await petService.createPet(validatedData, userId);
 
     sendSuccess(
       res,
@@ -78,20 +92,19 @@ export const createPetHandler = async (req: Request, res: Response) => {
     );
   } catch (error) {
     if (error instanceof ZodError) {
-      console.error("DEBUG ZOD ERROR:", error);
-
       return sendError(
         res,
-        "Validación fallida. Revise los detalles de la validación.",
+        "Validación fallida.",
         HTTP_STATUS.BAD_REQUEST,
         error.issues
       );
     }
 
-    const errorMessage =
-      (error as Error).message || "Error interno desconocido.";
-
-    sendError(res, errorMessage, HTTP_STATUS.INTERNAL_SERVER_ERROR);
+    sendError(
+      res,
+      "Error interno del servidor.",
+      HTTP_STATUS.INTERNAL_SERVER_ERROR
+    );
   }
 };
 

@@ -10,7 +10,7 @@ import { authMiddleware } from "../middleware/auth";
 
 const router = Router();
 
-router.get("/:id", authMiddleware(false), getProfileByIdHandler);
+router.get("/:id", getProfileByIdHandler);
 
 // Rutas protegidas
 router.patch("/:id/edit", authMiddleware(true), updateProfileHandler);

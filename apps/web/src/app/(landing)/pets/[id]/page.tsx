@@ -8,7 +8,6 @@ import { notFound } from "next/navigation";
 
 import { auth } from "@/lib/auth";
 import { getPetById } from "../actions/getPetById";
-import { getUserById } from "../actions/getUserById";
 
 import AdoptedBadge from "@/components/adopted-badge";
 import {
@@ -35,14 +34,12 @@ const PatitasMascotDetailsPage = async ({
     return notFound();
   }
 
-  const { pet, message, success } = await getPetById({ id });
+  const { pet, owner, message, success } = await getPetById({ id });
 
   if (!pet || !success) {
     console.error(message);
     return notFound();
   }
-
-  const { profile: owner } = await getUserById({ id: pet.owner_id });
 
   const session = await auth.api.getSession({
     headers: await headers(),

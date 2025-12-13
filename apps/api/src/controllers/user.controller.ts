@@ -22,9 +22,11 @@ export const getProfileByIdHandler = async (req: Request, res: Response) => {
       );
     }
 
-    const profile = await profileService.getProfileById(id);
-    sendSuccess(res, profile, "Perfil del usuario recuperado");
+    const response = await profileService.getProfileById(id);
+
+    sendSuccess(res, response, "Perfil del usuario recuperado");
   } catch (error) {
+    console.error(error);
     sendError(
       res,
       "No fue posible encontrar al usuario",

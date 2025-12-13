@@ -11,8 +11,6 @@ const petAgeEnum = z.enum(ageValues);
 const petSizeEnum = z.enum(sizeValues);
 
 export const PetCreationPayloadSchema = z.object({
-  owner_id: z.string().min(1, "El ID del dueño es requerido."),
-
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   species: petSpeciesEnum,
   gender: petGenderEnum,

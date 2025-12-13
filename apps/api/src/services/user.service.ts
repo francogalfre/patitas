@@ -1,9 +1,12 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "../database";
-import { user } from "../database/schema";
+import { pet, user } from "../database/schema";
 
 export const getProfileById = async (id: string) => {
-  return await db.select().from(user).where(eq(user.id, id));
+  const profile = await db.select().from(user).where(eq(user.id, id));
+  const pets = await db.select().from(pet).where(eq(pet.owner_id, id));
+
+  return { profile, pets };
 };
 
 export const updateProfileBio = async (

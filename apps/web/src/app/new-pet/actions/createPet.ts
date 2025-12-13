@@ -1,54 +1,83 @@
-"use server";
-
-import { db } from "@/db";
-import { pet } from "@/db/schema/pet";
-
-import type { PetRegistrationFormType } from "../schema";
-
+import { fetcher } from "@/lib/fetcher";
+import { Pet } from "@/types/pet";
+import { PetRegistrationFormType } from "../schema";
 import { uploadPetPhotos } from "./uploadPhotos";
-import { eq } from "drizzle-orm";
 
-export async function createPetAdoption(
+interface CreatePetResponse {
+  data: Pet;
+  message: string;
+  success: boolean;
+}
+
+interface CreatePetReturn {
+  success: boolean;
+  message: string;
+  petId: string;
+}
+
+export async function createPet(
   formData: PetRegistrationFormType,
   ownerId: string
-) {
+): Promise<CreatePetReturn> {
   try {
-    const [createdPet] = await db
-      .insert(pet)
-      .values({
-        owner_id: ownerId,
-        ...formData,
-        photos: [],
-      })
-      .returning({
-        id: pet.id,
-      });
+    const tempId = crypto.randomUUID();
 
-    const { urls, success, error } = await uploadPetPhotos(
-      createdPet.id,
-      formData.photos
-    );
+    const {
+      urls,
+      success: uploadSuccess,
+      error,
+    } = await uploadPetPhotos(tempId, formData.photos);
 
-    if (!success) {
+    if (!uploadSuccess || !urls) {
       return {
         success: false,
-        message: `Fallo al guardar las imagenes: ${error}.`,
+        message: `Fallo al guardar las imágenes: ${error || "Error desconocido"}.`,
+        petId: "Error la crear la mascota",
       };
     }
 
-    await db
-      .update(pet)
-      .set({
-        photos: urls,
-      })
-      .where(eq(pet.id, createdPet.id));
+    const { photos: _, ...restFormData } = formData;
 
-    return { success: true, message: "Mascota registrada con éxito." };
+    const petData = {
+      ...restFormData,
+      photos: urls,
+      ownerId: ownerId,
+    };
+
+    const { data, message, success } = await fetcher<CreatePetResponse>(
+      "/api/pets",
+      {
+        method: "POST",
+        body: JSON.stringify({ ...petData }),
+      }
+    );
+
+    console.log("Mascota creada", data);
+
+    if (!success || !data) {
+      console.error("❌ Error al crear mascota:", message);
+      return {
+        success: false,
+        message: message || "Error al crear la mascota",
+        petId: "Error la crear la mascota",
+      };
+    }
+
+    return {
+      success: true,
+      message: message,
+      petId: data.id,
+    };
   } catch (error) {
-    console.error("DB Error:", error);
+    console.error("Error en Server Action al crear mascota:", error);
+
     return {
       success: false,
-      message: `Fallo al registrar la mascota: ${error}`,
+      message:
+        error instanceof Error
+          ? error.message
+          : "Fallo de conexión o error en el servidor de la API.",
+      petId: "Error la crear la mascota",
     };
   }
 }

@@ -12,8 +12,8 @@ import { authMiddleware } from "../middleware/auth";
 
 const router = Router();
 
-router.get("/", authMiddleware(false), getAllPetsHandler);
-router.get("/:id", authMiddleware(false), getPetByIdHandler);
+router.get("/", getAllPetsHandler);
+router.get("/:id", getPetByIdHandler);
 
 // Rutas protegidas
 router.post("/", authMiddleware(true), createPetHandler);

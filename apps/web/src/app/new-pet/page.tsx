@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
-import { createPetAdoption } from "./actions/createPet";
+import { createPet } from "./actions/createPet";
 
 import CreatePetStep1Form from "./components/forms/step1";
 import CreatePetStep2Form from "./components/forms/step2";
@@ -27,6 +27,7 @@ import type { User } from "@/db/schema/user";
 const PatitasCreateNewPetPage = () => {
   const [step, setStep] = useState(MIN_STEP);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [petId, setPetId] = useState<string>("");
 
   const session = authClient.useSession();
 
@@ -77,9 +78,10 @@ const PatitasCreateNewPetPage = () => {
     }
 
     try {
-      const result = await createPetAdoption(data, ownerId);
+      const result = await createPet(data, ownerId);
 
       if (result.success) {
+        setPetId(result.petId);
         setIsSuccess(true);
       } else {
         console.error(result.message);
@@ -91,7 +93,7 @@ const PatitasCreateNewPetPage = () => {
 
   return (
     <>
-      {isSuccess && <SuccessModal />}
+      {isSuccess && <SuccessModal petId={petId} />}
 
       <main className="flex w-full bg-white border border-gray-300 rounded-xl">
         <CreatePetFormHeader step={step} MAX_STEP={MAX_STEP} />

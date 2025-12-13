@@ -7,14 +7,13 @@ import {
   sql,
   desc,
 } from "drizzle-orm";
-import { db } from "../database";
-import { pet } from "../database/schema";
+import { db } from "@/database";
 
-import type { PetCreationPayload } from "../schemas/pet.schema";
-import { supabaseStorage } from "../config/supabase";
-import { extractFilePath } from "../utils/extract-storage-path";
+import { pet, user } from "@/database/schema";
 
-type NewPet = InferInsertModel<typeof pet>;
+import type { PetCreationPayload } from "@/schemas/pet.schema";
+import { supabaseStorage } from "@/config/supabase";
+import { extractFilePath } from "@/utils/extract-storage-path";
 
 type PaginationParams = {
   page: number;
@@ -69,17 +68,36 @@ export const getAllPets = async ({
 };
 
 export const getPetById = async (id: string) => {
-  return await db.select().from(pet).where(eq(pet.id, id));
+  const [selectedPet] = await db.select().from(pet).where(eq(pet.id, id));
+
+  if (!selectedPet) {
+    return null;
+  }
+
+  const owner = await db
+    .select()
+    .from(user)
+    .where(eq(user.id, selectedPet.owner_id));
+
+  return {
+    pet: selectedPet,
+    owner: owner,
+  };
 };
 
-export const createPet = async (petData: PetCreationPayload) => {
-  const dataToInsert = petData as NewPet;
-
-  const result = await db
+export const createPet = async (
+  petData: PetCreationPayload,
+  ownerId: string
+) => {
+  const [newPet] = await db
     .insert(pet)
-    .values(dataToInsert)
-    .returning({ id: pet.id });
-  return result[0];
+    .values({
+      owner_id: ownerId,
+      ...petData,
+    })
+    .returning();
+
+  return newPet;
 };
 
 export const markAsAdopted = async (id: string, userId: string | undefined) => {
