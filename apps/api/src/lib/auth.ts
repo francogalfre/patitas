@@ -7,6 +7,10 @@ export const auth = betterAuth({
     provider: "pg",
   }),
 
+  emailAndPassword: {
+    enabled: true,
+  },
+
   baseURL: process.env.API_URL || "http://localhost:3001",
   trustedOrigins: [process.env.WEB_URL || "http://localhost:3000"],
 

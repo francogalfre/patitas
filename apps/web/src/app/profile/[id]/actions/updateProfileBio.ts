@@ -6,27 +6,25 @@ import { revalidatePath } from "next/cache";
 import { User } from "@/types/user";
 import { headers } from "next/headers";
 
-interface updateProfileResponse {
+interface updateProfileBioResponse {
   data: User[];
   message: string;
   success: boolean;
 }
 
-interface updateProfileReturn {
+interface updateProfileBioReturn {
   profile: User | null;
   success: boolean;
   message: string;
 }
 
-export async function updateProfile({
+export async function updateProfileBio({
   id,
-  fullName,
-  email,
+  bio,
 }: {
   id: string;
-  fullName: string;
-  email: string;
-}): Promise<updateProfileReturn> {
+  bio: string;
+}): Promise<updateProfileBioReturn> {
   const requestHeaders = await headers();
 
   const cookieHeaderValue = requestHeaders.get("Cookie");
@@ -40,11 +38,11 @@ export async function updateProfile({
   }
 
   try {
-    const { data, success, message } = await fetcher<updateProfileResponse>(
-      `/api/profiles/${id}/edit`,
+    const { data, success, message } = await fetcher<updateProfileBioResponse>(
+      `/api/profiles/${id}/edit/bio`,
       {
         method: "PATCH",
-        body: JSON.stringify({ fullName, email }),
+        body: JSON.stringify({ bio }),
         headers: fetchHeaders,
       }
     );
@@ -68,7 +66,10 @@ export async function updateProfile({
       message: message,
     };
   } catch (error) {
-    console.error("Error en Server Action al editar el perfil:", error);
+    console.error(
+      "Error en Server Action al editar la biografia del perfil:",
+      error
+    );
 
     return {
       profile: null,

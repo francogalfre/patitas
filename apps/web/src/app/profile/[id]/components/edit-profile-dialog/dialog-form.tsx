@@ -1,11 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Button } from "@/components/ui/button";
+import { FormTextInput } from "@/components/text-input";
+import { DialogClose, DialogFooter } from "@/components/ui/dialog";
+import { updateProfile } from "../../actions/updateProfile";
+
+import type { User } from "@/types/user";
 import type { Dispatch, SetStateAction } from "react";
 import { type FieldError, useForm } from "react-hook-form";
-import { FormTextInput } from "@/components/text-input";
-import { Button } from "@/components/ui/button";
-import { DialogClose, DialogFooter } from "@/components/ui/dialog";
-import type { User } from "@/db/schema/user";
-import { updateUserProfile } from "../../actions/updateProfile";
 import { type EditProfileData, EditProfileFormSchema } from "../../schema";
 
 const EditProfileDialogForm = ({
@@ -25,11 +27,11 @@ const EditProfileDialogForm = ({
   });
 
   const onSubmit = async (data: EditProfileData) => {
-    const { success } = await updateUserProfile(
-      user.id,
-      data.fullName,
-      data.email
-    );
+    const { success } = await updateProfile({
+      id: user.id,
+      fullName: data.fullName,
+      email: data.email,
+    });
 
     if (success) {
       setIsOpen(false);
@@ -61,7 +63,7 @@ const EditProfileDialogForm = ({
         </DialogClose>
         <Button
           type="submit"
-          size={"lg"}
+          size="lg"
           className="text-md"
           disabled={isSubmitting || isLoading}
         >

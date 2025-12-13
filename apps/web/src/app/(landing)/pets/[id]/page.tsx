@@ -1,5 +1,3 @@
-"use state";
-
 import Link from "next/link";
 
 import { MoveLeft } from "lucide-react";

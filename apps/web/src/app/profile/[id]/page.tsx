@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
-import { getUserById } from "@/db/queries/getUserById";
+import { getUserById } from "./actions/getUserById";
 import { auth } from "@/lib/auth";
 
 import Biography from "./components/biography";
@@ -19,18 +19,18 @@ const PatitasProfilePage = async ({
 }) => {
   const { id } = await params;
 
-  const user = await getUserById(id);
+  const { profile, pets, success, message } = await getUserById({ id: id });
 
-  if (!user) {
+  if (!success || !profile) {
+    console.error("Error al cargar perfil:", message);
     return notFound();
   }
 
-  const pets = await getPetsByOwnerId(user.id);
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  const isOwner = session?.session?.userId === user.id;
+  const isOwner = session?.session?.userId === profile.id;
 
   return (
     <main className="min-h-screen my-20 w-full">
@@ -43,11 +43,11 @@ const PatitasProfilePage = async ({
           Volver al incio
         </Link>
 
-        <ProfileHeader isOwner={isOwner} user={user} />
+        <ProfileHeader isOwner={isOwner} user={profile} />
 
         <hr />
 
-        <Biography isOwner={isOwner} user={user} />
+        <Biography isOwner={isOwner} user={profile} />
 
         <hr />
 

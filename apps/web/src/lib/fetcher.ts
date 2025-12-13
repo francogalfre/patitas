@@ -30,7 +30,6 @@ export async function fetcher<T>(
     }
 
     const data = await response.json();
-    console.log("✅ Data received:", data);
 
     return data;
   } catch (error) {

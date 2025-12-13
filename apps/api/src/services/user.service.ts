@@ -19,7 +19,8 @@ export const updateProfileBio = async (
   return await db
     .update(user)
     .set({ bio })
-    .where(and(eq(user.id, id), eq(user.id, userId)));
+    .where(and(eq(user.id, id), eq(user.id, userId)))
+    .returning();
 };
 
 export const updateProfile = async (

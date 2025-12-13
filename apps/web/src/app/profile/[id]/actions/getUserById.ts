@@ -2,16 +2,21 @@
 
 import { fetcher } from "@/lib/fetcher";
 
+import { Pet } from "@/types/pet";
 import { User } from "@/types/user";
 
 interface getUserByIdResponse {
-  data: User[];
+  data: {
+    profile: User[];
+    pets: Pet[];
+  };
   message: string;
   success: boolean;
 }
 
 interface getUserByIdReturn {
   profile: User | null;
+  pets: Pet[] | [];
   success: boolean;
   message: string;
 }
@@ -30,13 +35,15 @@ export async function getUserById({
       console.error("❌ No hay data en la respuesta:", message);
       return {
         profile: null,
+        pets: [],
         success: false,
         message: "Respuesta inválida del servidor",
       };
     }
 
     return {
-      profile: data[0] || [],
+      profile: data.profile[0] || [],
+      pets: data.pets || [],
       success: success,
       message: message,
     };
@@ -45,6 +52,7 @@ export async function getUserById({
 
     return {
       profile: null,
+      pets: [],
       success: false,
       message: "Fallo de conexión o error en el servidor de la API.",
     };

@@ -70,6 +70,7 @@ export const updateProfileBioHandler = async (req: Request, res: Response) => {
     }
 
     const newProfile = await profileService.updateProfileBio(id, bio, userId);
+
     sendSuccess(
       res,
       newProfile,

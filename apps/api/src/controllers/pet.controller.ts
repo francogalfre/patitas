@@ -42,8 +42,6 @@ export const getPetByIdHandler = async (req: Request, res: Response) => {
 
     const result = await petService.getPetById(id);
 
-    console.log(result);
-
     if (!result) {
       return sendError(res, "Mascota no encontrada.", HTTP_STATUS.NOT_FOUND);
     }
