@@ -22,7 +22,7 @@ import {
   stepSchema,
 } from "./schema";
 
-import type { User } from "@/db/schema/user";
+import type { User } from "@/types/user";
 
 const PatitasCreateNewPetPage = () => {
   const [step, setStep] = useState(MIN_STEP);

@@ -1,10 +1,8 @@
 import Link from "next/link";
 
 import { MoveLeft } from "lucide-react";
-import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { auth } from "@/lib/auth";
 import { getPetById } from "../actions/getPetById";
 
 import AdoptedBadge from "@/components/adopted-badge";
@@ -20,6 +18,7 @@ import {
 } from "../components";
 
 import { getMailLink, getWhatsappLink } from "@/utils";
+import { getApiSession } from "@/actions/getApiSession";
 
 const PatitasMascotDetailsPage = async ({
   params,
@@ -39,17 +38,13 @@ const PatitasMascotDetailsPage = async ({
     return notFound();
   }
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await getApiSession();
 
   if (!owner) {
     return notFound();
   }
 
-  const isOwner =
-    pet.owner_id === session?.user.id ||
-    session?.user.id === process.env.ADMIN_ID;
+  const isOwner = pet.owner_id === session.user.id;
 
   const whatsappLink = getWhatsappLink(pet.contact_phone, pet.name);
   const mailtoLink = getMailLink(pet.contact_email);

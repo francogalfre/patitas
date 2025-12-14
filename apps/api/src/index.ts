@@ -11,12 +11,12 @@ import routes from "./routes";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors(corsOptions));
 
 app.all("/api/auth/*", toNodeHandler(auth));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.get("/health", (req: Request, res: Response) => {
   res.json({

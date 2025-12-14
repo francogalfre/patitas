@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,12 +11,10 @@ import {
 
 import { authClient } from "@/lib/auth-client";
 
-import { TriangleAlert } from "lucide-react";
-
 import Link from "next/link";
 import Image from "next/image";
 
-import type { User } from "@/db/schema/user";
+import type { User } from "@/types/user";
 
 import { motion } from "motion/react";
 
@@ -81,19 +77,11 @@ export const SessionDropdown = ({ user }: { user: User }) => {
             <DropdownMenuLabel className="text-md font-geist pb-0">
               {user.name}
             </DropdownMenuLabel>
-            <DropdownMenuLabel
-              className={`text-sm font-raleway pt-0 ${user.emailVerified ? "text-gray-600" : "text-red-500"}`}
-            >
+            <DropdownMenuLabel className="text-sm font-raleway pt-0 text-gray-60">
               {user.email}
             </DropdownMenuLabel>
           </div>
         </div>
-
-        {!user.emailVerified && (
-          <p className="flex items-center gap-1 pt-2 text-red-500 text-sm font-raleway py-2 pl-2">
-            <TriangleAlert className="size-4" /> Verifica tu correo electronico
-          </p>
-        )}
 
         <DropdownMenuSeparator className="bg-gray-300 mb-2" />
 

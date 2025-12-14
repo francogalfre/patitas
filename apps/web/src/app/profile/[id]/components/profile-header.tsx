@@ -32,9 +32,7 @@ const ProfileHeader = ({ user, isOwner }: ProfileHeaderProps) => {
             </Badge>
           )}
           <h2 className="text-4xl font-semibold font-poppins">{user?.name}</h2>
-          <p
-            className={`text-lg font-medium text-gray-600 font-raleway ${!user.emailVerified && "text-red-500"}`}
-          >
+          <p className="text-lg font-medium text-gray-600 font-raleway">
             {user?.email}
           </p>
         </div>

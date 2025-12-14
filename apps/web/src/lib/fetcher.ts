@@ -6,8 +6,6 @@ export async function fetcher<T>(
 ): Promise<T> {
   const url = `${API_URL}${endpoint}`;
 
-  console.log("🔵 Fetching:", url);
-
   try {
     const response = await fetch(url, {
       ...options,
@@ -17,8 +15,6 @@ export async function fetcher<T>(
       },
       credentials: "include",
     });
-
-    console.log("📊 Response status:", response.status);
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);

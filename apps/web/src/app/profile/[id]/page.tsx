@@ -1,16 +1,14 @@
 import { ArrowLeft } from "lucide-react";
-import { headers } from "next/headers";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
-import { getPetsByOwnerId } from "@/db/queries/getPetsByOwnerId";
 import { getUserById } from "./actions/getUserById";
-import { auth } from "@/lib/auth";
 
 import Biography from "./components/biography";
 import PetsList from "./components/pets-list";
 
 import ProfileHeader from "./components/profile-header";
+import { getApiSession } from "@/actions/getApiSession";
 
 const PatitasProfilePage = async ({
   params,
@@ -26,11 +24,9 @@ const PatitasProfilePage = async ({
     return notFound();
   }
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const { session } = await getApiSession();
 
-  const isOwner = session?.session?.userId === profile.id;
+  const isOwner = session?.userId === profile.id;
 
   return (
     <main className="min-h-screen my-20 w-full">

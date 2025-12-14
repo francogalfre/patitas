@@ -5,7 +5,7 @@ import { FormTextInput } from "@/components/text-input";
 import type { UseFormRegister, FieldError, FieldErrors } from "react-hook-form";
 import type { PetRegistrationFormType } from "../../schema";
 
-import type { User } from "@/db/schema/user";
+import type { User } from "@/types/user";
 
 interface CreatePetStep3FormProps {
   errors: FieldErrors<PetRegistrationFormType>;
