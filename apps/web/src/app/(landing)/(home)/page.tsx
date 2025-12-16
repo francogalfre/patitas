@@ -1,28 +1,29 @@
 import SectionContainer from "../components/section-container";
-import { CallToActionSection } from "./sections/CallToAction";
-import { FAQSection } from "./sections/FAQs";
-import { FeaturesSection } from "./sections/Features";
-import { HeroSection } from "./sections/Hero";
-import { TestimonialsSection } from "./sections/Testimonials";
+
+import { CallToActionSection } from "./sections/cta-section";
+import { FAQSection } from "./sections/faq-section";
+import { FeaturesSection } from "./sections/features-section";
+import { HeroSection } from "./sections/hero-section";
+import { TestimonialsSection } from "./sections/testimonials-section";
 
 export default function PatitasHomePage() {
-	return (
-		<>
-			<HeroSection />
+  return (
+    <>
+      <HeroSection />
 
-			<SectionContainer classname="pt-12">
-				<FeaturesSection />
-			</SectionContainer>
+      <SectionContainer classname="pt-12">
+        <FeaturesSection />
+      </SectionContainer>
 
-			<TestimonialsSection />
+      <TestimonialsSection />
 
-			<SectionContainer>
-				<FAQSection />
-			</SectionContainer>
+      <SectionContainer>
+        <FAQSection />
+      </SectionContainer>
 
-			<SectionContainer>
-				<CallToActionSection />
-			</SectionContainer>
-		</>
-	);
+      <SectionContainer>
+        <CallToActionSection />
+      </SectionContainer>
+    </>
+  );
 }

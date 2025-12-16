@@ -3,48 +3,50 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import FaqList from "../faqs/faq-list";
 
 interface FaqItem {
-	question: string;
-	answer: string;
+  question: string;
+  answer: string;
 }
 
 interface FAQSectionProps {
-	badge?: string;
-	heading?: string;
-	description?: string;
-	faqs: Array<FaqItem>;
+  badge?: string;
+  heading?: string;
+  description?: string;
+  faqs: Array<FaqItem>;
 }
 
 export const Faq = ({
-	badge = "FAQ",
-	heading = "Common Questions & Answers",
-	description = "Find out all the essential details about our platform and how it can serve your needs.",
-	faqs,
+  badge = "FAQ",
+  heading = "Preguntas Frecuentes",
+  description = "Encuentra respuestas a las dudas más comunes sobre nuestra plataforma.",
+  faqs,
 }: FAQSectionProps) => {
-	return (
-		<section>
-			<div className="container">
-				<div className="text-center">
-					<BlurFade className="w-fit mx-auto" delay={0.2} inView>
-						<Badge className="text-md px-4 py-1 font-medium font-raleway bg-primary/70 mb-4">
-							{badge}
-						</Badge>
-					</BlurFade>
-					<div className="flex gap-4 flex-col mt-4">
-						<BlurFade delay={0.4} inView>
-							<h2 className="font-poppins text-3xl font-medium tracking-tight sm:max-w-5xl sm:text-5xl leading-14">
-								{heading}
-							</h2>
-						</BlurFade>
-						<BlurFade delay={0.6} inView>
-							<p className="text-md max-w-[600px] sm:max-w-5xl font-raleway text-muted-foreground sm:text-xl">
-								{description}
-							</p>
-						</BlurFade>
-					</div>
-				</div>
+  return (
+    <section className="py-12 sm:py-16 lg:py-20">
+      <div className="container px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
+          <BlurFade className="w-fit mx-auto" delay={0.2} inView>
+            <Badge className="text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-1.5 font-medium font-raleway bg-primary/70">
+              {badge}
+            </Badge>
+          </BlurFade>
 
-				<FaqList faqs={faqs} />
-			</div>
-		</section>
-	);
+          <div className="flex flex-col gap-3 sm:gap-4 mt-4 sm:mt-6">
+            <BlurFade delay={0.4} inView>
+              <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight px-4">
+                {heading}
+              </h2>
+            </BlurFade>
+
+            <BlurFade delay={0.6} inView>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-raleway text-muted-foreground leading-relaxed px-4">
+                {description}
+              </p>
+            </BlurFade>
+          </div>
+        </div>
+
+        <FaqList faqs={faqs} />
+      </div>
+    </section>
+  );
 };

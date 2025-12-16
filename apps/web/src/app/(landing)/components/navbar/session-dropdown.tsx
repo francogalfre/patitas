@@ -62,7 +62,8 @@ export const SessionDropdown = ({ user }: { user: User }) => {
       >
         <p className="font-medium">{user.name}</p>
       </DropdownTrigger>
-      <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-2">
+
+      <DropdownMenuContent className="max-w-80 p-2 pr-4 mt-2 mr-4">
         <div className="flex items-center">
           {user.image && (
             <Image
@@ -89,14 +90,14 @@ export const SessionDropdown = ({ user }: { user: User }) => {
           <DropdownMenuItem
             asChild
             key={item.id}
-            className="transition-colors font-raleway"
+            className="cursor-pointer text-sm"
           >
             <Link href={item.href}>{item.text}</Link>
           </DropdownMenuItem>
         ))}
 
         <DropdownMenuItem
-          className="transition-colors font-raleway"
+          className="cursor-pointer  font-raleway"
           onClick={handleSignOut}
         >
           Cerrar Sesion
