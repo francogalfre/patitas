@@ -28,7 +28,7 @@ export const getApiSession = async () => {
 
     const data = await response.json();
 
-    return { session: data.session, user: data.user };
+    return { session: data?.session, user: data?.user };
   } catch (error) {
     console.error("Error fetching session from external API:", error);
     return { session: null };

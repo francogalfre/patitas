@@ -38,13 +38,13 @@ const PatitasMascotDetailsPage = async ({
     return notFound();
   }
 
-  const session = await getApiSession();
+  const { session, user } = await getApiSession();
 
   if (!owner) {
     return notFound();
   }
 
-  const isOwner = pet.owner_id === session.user.id;
+  const isOwner = user ? pet.owner_id === user.id : false;
 
   const whatsappLink = getWhatsappLink(pet.contact_phone, pet.name);
   const mailtoLink = getMailLink(pet.contact_email);

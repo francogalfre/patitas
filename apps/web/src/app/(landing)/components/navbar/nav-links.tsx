@@ -11,7 +11,7 @@ export const NavLinks = ({ pathname, isMobile = false }: NavLinksProps) => {
     { href: "/", label: "Inicio" },
     { href: "/pets", label: "Adoptar" },
     { href: "/guides", label: "Guías" },
-    { href: "/about", label: "Nosotros" },
+    { href: "/about-us", label: "Nosotros" },
   ];
 
   return (
