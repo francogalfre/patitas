@@ -60,10 +60,13 @@ const AuthRegisterForm = () => {
           width={100}
           height={100}
         />
-        <h2 className="font-medium text-3xl font-serif pt-6">Crea tu cuenta</h2>
-        Bienvenido a Patitas - Únete a nuestra comunidad de amantes de los
-        animales para ayudar a quienes te necesitan
-        <p className="text-gray-800"></p>
+        <h2 className="font-medium text-2xl sm:text-3xl font-serif pt-6">
+          Crea tu cuenta
+        </h2>
+        <p className="text-gray-800 text-sm sm:text-base">
+          Bienvenido a Patitas - Únete a nuestra comunidad de amantes de los
+          animales para ayudar a quienes te necesitan
+        </p>
       </header>
 
       <hr className="text-gray-300 pb-6" />
@@ -99,17 +102,16 @@ const AuthRegisterForm = () => {
           <p className="text-red-500 text-sm">{errors.root.message}</p>
         )}
 
-        <div className="text-center">
+        <div className="text-center mb-12 sm:mb-0">
           <Button
             type="submit"
             disabled={isSubmitting || isLoading}
-            className="text-white w-full text-md h-12 mb-6"
-            size={"lg"}
+            className="text-white w-full text-md h-12 mb-6 text-sm sm:text-md"
           >
             Crear cuenta
           </Button>
 
-          <span className="items-center">
+          <span className="items-center text-sm sm:text-base">
             Ya tienes una cuenta?
             <Link href={"/auth/login"} className="text-primary pl-2 underline">
               Iniciar Sesion

@@ -29,7 +29,7 @@ export const HeroSection = () => {
               width={100}
               height={100}
               alt="Logo de Patitas"
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 mx-auto hover:scale-105 hover:rotate-12 transition-transform duration-300"
+              className="sm:size-20 md:size-24 lg:size-28 mx-auto hover:scale-105 hover:rotate-12 transition-transform duration-300"
             />
           </BlurFade>
 

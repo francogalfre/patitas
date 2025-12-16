@@ -10,13 +10,14 @@ interface AuthWrapperProps {
 const AuthWrapper = ({ children, image, alt }: AuthWrapperProps) => {
   return (
     <>
-      <div className="flex h-screen w-full p-6 gap-12">
-        <div className="flex flex-col w-full my-auto mx-auto flex-4 text-start">
-          <div className="max-w-lg mx-auto">{children}</div>
+      <div className="flex flex-col lg:flex-row h-screen w-full p-4 lg:p-6 gap-6 lg:gap-12">
+        <div className="flex flex-col w-full my-auto mx-auto lg:flex-4 text-start">
+          <div className="max-w-lg w-full mx-auto">{children}</div>
         </div>
+
         <Image
           src={image}
-          className="rounded-3xl flex-3 object-cover brightness-75 opacity-95"
+          className="hidden lg:block rounded-3xl lg:flex-3 object-cover brightness-75 opacity-95"
           alt={alt}
           fetchPriority="high"
           loading="eager"
