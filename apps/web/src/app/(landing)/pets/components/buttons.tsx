@@ -29,8 +29,8 @@ const Buttons = ({
 
   if (!isOwner && !isAdopted) {
     return (
-      <div className="w-full mt-6 sm:mt-8 sm:flex sm:items-center sm:gap-4">
-        <Button asChild size="lg" className="text-lg px-12 py-6 w-full">
+      <div className="w-full mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+        <Button asChild className="text-md px-8 py-4 sm:py-6 w-full flex-1">
           <a href={mail} target="_blank" rel="noopener noreferrer">
             Quiero adoptarlo
           </a>
@@ -39,8 +39,7 @@ const Buttons = ({
         <Button
           asChild
           variant="secondary"
-          size="lg"
-          className="text-lg text-white px-12 py-6 w-full"
+          className="text-md text-white px-8 py-4 sm:py-6 w-full flex-1"
         >
           <a href={whatsapp} target="_blank" rel="noopener noreferrer">
             Contactar por WhatsApp
@@ -72,12 +71,11 @@ const Buttons = ({
 
   if (isOwner) {
     return (
-      <div className="mt-6 sm:mt-12 flex flex-col sm:flex-row sm:items-center sm:gap-4">
+      <div className="w-full mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
         {!isAdopted && (
           <Button
             onClick={handleSetPetAdopted}
-            size="lg"
-            className="text-lg px-12 py-6 cursor-pointer w-full sm:flex-1"
+            className="text-md px-8 py-4 sm:py-6 w-full flex-1"
             disabled={isAdopting}
           >
             {isAdopting ? "Marcando..." : "Marcar como adoptado"}
@@ -88,8 +86,7 @@ const Buttons = ({
           onClick={handleDelete}
           disabled={isDeleting}
           variant={"secondary"}
-          size={"lg"}
-          className="text-lg text-white px-12 py-6 w-full cursor-pointer sm:flex-1"
+          className="text-md text-white px-8 py-4 sm:py-6 w-full flex-1"
         >
           {isDeleting ? "Eliminando..." : "Eliminar mascota"}
         </Button>

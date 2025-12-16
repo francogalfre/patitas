@@ -4,7 +4,7 @@ import type { Pet } from "@/types/pet";
 export default function PetHeader({ pet }: { pet: Pet }) {
   return (
     <div className="space-y-3">
-      <h1 className="text-xl font-semibold tracking-tighter text-gray-900 sm:text-6xl dark:text-white">
+      <h1 className="text-6xl font-semibold tracking-tighter text-gray-900 sm:text-6xl dark:text-white">
         {pet.name}
       </h1>
 

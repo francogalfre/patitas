@@ -51,7 +51,7 @@ const PatitasMascotDetailsPage = async ({
 
   return (
     <section className="py-48 min-h-screen antialiased">
-      <div className="max-w-7xl px-4 mx-auto 2xl:px-0">
+      <div className="max-w-7xl px-12 lg:px-6 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           <div className="lg:sticky lg:top-36 self-start">
             <Link
