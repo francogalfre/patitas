@@ -42,5 +42,8 @@
   ],
   "author": "Franco Galfre",
   "license": "MIT",
-  "homepage": "https://github.com/francogalfre/patitas#readme"
+  "homepage": "https://github.com/francogalfre/patitas#readme",
+  "dependencies": {
+    "better-auth": "^1.4.7"
+  }
 }
