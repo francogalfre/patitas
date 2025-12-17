@@ -11,7 +11,7 @@ const NotFound = () => (
       alt="Sad Dog Illustration - Page not found"
       width={140}
       height={240}
-      className="size-24 sm:size-32 lg:size-36 mb-4 sm:mb-6 lg:mb-8"
+      className="size-24 sm:size-32 lg:size-36 mb-4 sm:mb-6 lg:mb-8 object-contain"
       priority
     />
 

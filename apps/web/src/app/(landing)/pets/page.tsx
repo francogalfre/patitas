@@ -54,7 +54,7 @@ const PatitasMascotsPage = () => {
   }, [search, page]);
 
   return (
-    <main className="pt-48">
+    <main className="pt-42 sm:pt-48 pb-12	sm:pb-20">
       <HeaderSection search={search} setSearch={setSearch} />
 
       <SectionContainer classname="w-full">
