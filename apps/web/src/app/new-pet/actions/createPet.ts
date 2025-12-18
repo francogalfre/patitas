@@ -1,7 +1,10 @@
+"use server";
+
 import { fetcher } from "@/lib/fetcher";
 import { Pet } from "@/types/pet";
 import { PetRegistrationFormType } from "../schema";
 import { uploadPetPhotos } from "./uploadPhotos";
+import { headers } from "next/headers";
 
 interface CreatePetResponse {
   data: Pet;
@@ -21,6 +24,17 @@ export async function createPet(
 ): Promise<CreatePetReturn> {
   try {
     const tempId = crypto.randomUUID();
+    const requestHeaders = await headers();
+
+    const cookieHeaderValue = requestHeaders.get("Cookie");
+
+    const fetchHeaders: HeadersInit = {
+      "Content-Type": "application/json",
+    };
+
+    if (cookieHeaderValue) {
+      fetchHeaders.Cookie = cookieHeaderValue;
+    }
 
     const {
       urls,
@@ -49,6 +63,7 @@ export async function createPet(
       {
         method: "POST",
         body: JSON.stringify({ ...petData }),
+        headers: fetchHeaders,
       }
     );
 

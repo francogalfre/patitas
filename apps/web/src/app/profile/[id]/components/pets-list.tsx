@@ -21,7 +21,7 @@ const PetsList = ({ isOwner, pets }: PetsListProps) => {
               width={120}
               height={120}
               alt="Sad Dog Illustration"
-              className="size-20 sm:size-24 md:size-[120px]"
+              className="size-20 sm:size-24 md:size-[120px] object-contain"
             />
             <div className="max-w-lg w-full px-4">
               <h2 className="text-center text-lg sm:text-xl md:text-2xl font-semibold font-raleway">
