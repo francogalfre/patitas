@@ -8,6 +8,14 @@ export const getApiSession = async () => {
   const incomingHeaders = await headers();
   const sessionCookie = incomingHeaders.get("cookie");
 
+  const fetchHeaders: HeadersInit = {
+    "Content-Type": "application/json",
+  };
+
+  if (sessionCookie) {
+    fetchHeaders.Cookie = sessionCookie;
+  }
+
   if (!sessionCookie) {
     return { session: null };
   }
@@ -17,6 +25,7 @@ export const getApiSession = async () => {
       method: "GET",
       headers: {
         Cookie: sessionCookie,
+        ...fetchHeaders,
       },
       cache: "no-store",
     });
