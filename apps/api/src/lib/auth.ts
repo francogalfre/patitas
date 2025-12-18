@@ -8,6 +8,8 @@ import { user as userTable } from "@/database/schema/user";
 import { db } from "../database";
 import { eq } from "drizzle-orm";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
@@ -37,11 +39,27 @@ export const auth = betterAuth({
     enabled: true,
   },
 
-  baseURL: process.env.API_URL || "http://localhost:3001",
+  baseURL: process.env.API_URL || "http://localhost:4000",
   trustedOrigins: [process.env.WEB_URL || "http://localhost:3000"],
 
   session: {
     expiresIn: 60 * 60 * 24 * 7,
     updateAge: 60 * 60 * 24,
+    cookieCache: {
+      enabled: true,
+      maxAge: 60 * 5,
+    },
+  },
+
+  advanced: {
+    crossSubDomainCookies: {
+      enabled: isProduction,
+    },
+    defaultCookieAttributes: {
+      sameSite: isProduction ? "none" : "lax",
+      secure: isProduction,
+      httpOnly: true,
+      path: "/",
+    },
   },
 });
