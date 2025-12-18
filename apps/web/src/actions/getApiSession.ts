@@ -8,26 +8,17 @@ export const getApiSession = async () => {
   const incomingHeaders = await headers();
   const sessionCookie = incomingHeaders.get("cookie");
 
-  const fetchHeaders: HeadersInit = {
-    "Content-Type": "application/json",
-  };
-
-  if (sessionCookie) {
-    fetchHeaders.Cookie = sessionCookie;
-  }
-
-  if (!sessionCookie) {
-    return { session: null };
-  }
+  if (!sessionCookie) return { session: null, user: null };
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/auth/get-session`, {
       method: "GET",
       headers: {
-        Cookie: sessionCookie,
-        ...fetchHeaders,
+        cookie: sessionCookie,
+        "Content-Type": "application/json",
       },
       cache: "no-store",
+      credentials: "include",
     });
 
     if (!response.ok) {
