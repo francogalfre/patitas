@@ -95,12 +95,12 @@ const PatitasCreateNewPetPage = () => {
     <>
       {isSuccess && <SuccessModal petId={petId} />}
 
-      <main className="flex w-full bg-white border border-gray-300 rounded-xl">
+      <main className="flex flex-col lg:flex-row w-full bg-white border border-gray-300 rounded-xl my-4 sm:my-0">
         <CreatePetFormHeader step={step} MAX_STEP={MAX_STEP} />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" rounded-xl space-y-8 flex-2 p-12"
+          className="rounded-xl space-y-8 flex-1 lg:flex-2 p-6 md:p-12"
         >
           {step === 1 && (
             <>

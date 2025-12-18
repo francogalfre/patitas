@@ -18,7 +18,7 @@ export default function RootLayout({
       <body
         className={`${fontVariables} antialiased overflow-x-hidden min-h-screen relative bg-[#fccdee80]/50`}
       >
-        <main className="flex items-center justify-center py-12 max-w-7xl w-full h-screen mx-auto">
+        <main className="flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl w-full min-h-screen mx-auto">
           {children}
         </main>
       </body>

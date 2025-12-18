@@ -42,50 +42,54 @@ export default function Biography({ isOwner, user }: BiographyProps) {
   return (
     <div>
       {!isOwner ? (
-        <p className="text-gray-600 text-md">{user.bio}</p>
+        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+          {user.bio}
+        </p>
       ) : (
         <div>
           {isEditing ? (
-            <form action={handleSubmit} className="space-y-4">
+            <form action={handleSubmit} className="space-y-3 sm:space-y-4">
               <Textarea
                 onChange={handleBioChange}
                 name="bio"
                 defaultValue={user.bio}
-                className="resize-none min-h-24 max-h-24 border-gray-400 w-full wrap-break-words whitespace-pre-wrap font-raleway text-gray-600"
+                className="resize-none min-h-20 sm:min-h-24 max-h-32 border-gray-400 w-full wrap-break-words whitespace-pre-wrap font-raleway text-gray-600 text-sm sm:text-base"
                 maxLength={300}
                 minLength={20}
                 wrap="soft"
                 disabled={isPending}
               />
-              <p className="text-sm text-gray-500">
-                ({bioLenght}/300) Minimo 20 caracteres
+              <p className="text-xs sm:text-sm text-gray-500">
+                ({bioLenght}/300) Mínimo 20 caracteres
               </p>
 
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="px-4 py-2 bg-primary text-md text-white rounded-lg disabled:opacity-50"
-              >
-                {isPending ? "Guardando..." : "Guardar"}
-              </Button>
-              <Button
-                type="button"
-                variant={"outline"}
-                onClick={() => setIsEditing(false)}
-                className="ml-2 px-4 py-2 rounded-lg"
-              >
-                Cancelar
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="px-3 sm:px-4 py-2 bg-primary text-sm sm:text-base text-white rounded-lg disabled:opacity-50 w-full sm:w-auto"
+                >
+                  {isPending ? "Guardando..." : "Guardar"}
+                </Button>
+                <Button
+                  type="button"
+                  variant={"outline"}
+                  onClick={() => setIsEditing(false)}
+                  className="sm:ml-2 px-3 sm:px-4 py-2 rounded-lg w-full sm:w-auto"
+                >
+                  Cancelar
+                </Button>
+              </div>
             </form>
           ) : (
-            <p className="text-gray-600 text-md">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
               {user.bio}
               <button
                 type="button"
-                className="cursor-pointer ml-2"
+                className="cursor-pointer ml-1.5 sm:ml-2 align-middle"
                 onClick={() => isOwner && setIsEditing(true)}
               >
-                <PencilLine size={18} />
+                <PencilLine className="size-4 sm:size-[18px] inline" />
               </button>
             </p>
           )}

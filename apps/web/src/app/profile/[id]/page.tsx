@@ -29,14 +29,14 @@ const PatitasProfilePage = async ({
   const isOwner = session?.userId === profile.id;
 
   return (
-    <main className="min-h-screen my-20 w-full">
-      <div className="max-w-4xl mx-auto px-6 py-8 bg-white rounded-xl space-y-8">
+    <main className="min-h-screen py-8 sm:py-12 md:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 bg-white rounded-lg sm:rounded-xl space-y-6 sm:space-y-8">
         <Link
           href={"/"}
-          className="flex items-center gap-2 text-md font-medium"
+          className="flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base font-medium hover:text-primary transition-colors"
         >
-          <ArrowLeft size={18} />
-          Volver al incio
+          <ArrowLeft className="size-4 sm:size-[18px]" />
+          Volver al inicio
         </Link>
 
         <ProfileHeader isOwner={isOwner} user={profile} />

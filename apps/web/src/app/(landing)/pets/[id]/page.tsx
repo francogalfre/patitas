@@ -50,13 +50,13 @@ const PatitasMascotDetailsPage = async ({
   const mailtoLink = getMailLink(pet.contact_email);
 
   return (
-    <section className="py-48 min-h-screen antialiased">
-      <div className="max-w-7xl px-12 lg:px-6 mx-auto 2xl:px-0">
+    <section className="pt-32 lg:pt-48 pb-12 sm:pb-16 min-h-screen antialiased">
+      <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           <div className="lg:sticky lg:top-36 self-start">
             <Link
               href="/pets"
-              className="flex items-center gap-2 no-underline bg-primary w-fit px-4 py-2 mb-6 rounded-full text-white transition-color hover:bg-primary/80 duration-200"
+              className="flex items-center gap-2 no-underline bg-primary w-fit px-3 sm:px-4 py-2 mb-4 sm:mb-6 rounded-full text-sm sm:text-base text-white transition-color hover:bg-primary/80 duration-200"
             >
               <MoveLeft size={16} /> Volver atras
             </Link>
@@ -64,12 +64,12 @@ const PatitasMascotDetailsPage = async ({
             <PhotosGrid photos={pet.photos} name={pet.name} />
           </div>
 
-          <div className="mt-6 space-y-6 sm:mt-8 lg:mt-0">
+          <div className="mt-6 space-y-4 sm:space-y-6 sm:mt-8 lg:mt-0 min-w-0">
             {pet.is_adopted && <AdoptedBadge />}
 
             <PetHeader pet={pet} />
 
-            <p className="mb-6 text-gray-600 font-raleway text-pretty">
+            <p className="mb-4 sm:mb-6 text-sm sm:text-base text-gray-600 font-raleway whitespace-normal wrap-break-words">
               {pet.description}
             </p>
 

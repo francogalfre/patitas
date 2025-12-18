@@ -8,6 +8,9 @@
     "apps/api"
   ],
   "packageManager": "npm@10.9.2",
+  "overrides": {
+    "drizzle-orm": "^0.44.7"
+  },
   "scripts": {
     "dev": "turbo run dev",
     "dev:web": "turbo run dev --filter=web",

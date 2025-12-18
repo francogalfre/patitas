@@ -28,7 +28,7 @@ export const FormTextInput = ({
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
-    <div className="space-y-1 sm:space-y-3">
+    <div className="space-y-1">
       {label && (
         <Label className="text-sm sm:text-md font-normal text-gray-700 flex items-center gap-1">
           {label}

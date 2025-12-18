@@ -54,7 +54,7 @@ const Buttons = ({
       const result = await deletePet({ id: petId });
 
       if (result.success) {
-        router.push("/");
+        router.push("/pets");
       }
     });
   };

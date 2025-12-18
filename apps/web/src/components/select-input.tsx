@@ -28,10 +28,10 @@ export const FormSelectInput = ({
   isRequired = false,
 }: FormSelectInputProps) => {
   return (
-    <div className="space-y-2">
-      <Label className="text-md font-normal text-gray-700 gap-1">
+    <div className="space-y-1">
+      <Label className="text-sm sm:text-md font-normal text-gray-700 flex items-center gap-1">
         {label}
-        {isRequired && <span className="text-red-500 text-4xl">*</span>}
+        {isRequired && <span className="text-red-500 text-3xl">*</span>}
       </Label>
       <Controller
         name={name}
@@ -44,14 +44,18 @@ export const FormSelectInput = ({
               required={isRequired}
             >
               <SelectTrigger
-                className={`capitalize max-w-xs w-full border-gray-400 min-h-12 ${error && "border-red-500"}`}
+                className={`capitalize md:max-w-xs w-full border-gray-400 md:text-sm h-12 ${error && "border-red-500"}`}
               >
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
-              <SelectContent className="capitalize">
+              <SelectContent className="capitalize text-sm sm:text-base">
                 {options.map((option: string, index: number) => (
-                  <SelectItem key={index} value={option}>
-                    {option}
+                  <SelectItem
+                    key={index}
+                    value={option}
+                    className="text-xs sm:text-base h-12 border-gray-400"
+                  >
+                    <p className="text-sm sm:text-sm">{option}</p>
                   </SelectItem>
                 ))}
               </SelectContent>
