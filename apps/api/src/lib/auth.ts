@@ -65,7 +65,7 @@ export const auth = betterAuth({
       secure: true,
       httpOnly: true,
       path: "/",
+      domain: ".patitas.site",
     },
-    useSecureCookies: false,
   },
 });
