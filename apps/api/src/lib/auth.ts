@@ -40,6 +40,7 @@ export const auth = betterAuth({
   },
 
   baseURL: process.env.API_URL || "http://localhost:4000",
+
   trustedOrigins: [
     process.env.WEB_URL || "http://localhost:3000",
     "https://patitas.site",
@@ -60,10 +61,11 @@ export const auth = betterAuth({
       enabled: isProduction,
     },
     defaultCookieAttributes: {
-      sameSite: "lax",
-      secure: isProduction,
+      sameSite: "none",
+      secure: true,
       httpOnly: true,
       path: "/",
     },
+    useSecureCookies: false,
   },
 });
